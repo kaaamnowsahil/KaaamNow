@@ -1,0 +1,74 @@
+.card {
+  position: relative;
+  height: 100%;
+  padding: 28px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-xl);
+  background: var(--gradient-card), var(--color-card);
+  box-shadow: var(--shadow-card);
+  overflow: hidden;
+  transition:
+    transform var(--duration-base) var(--ease-out),
+    border-color var(--duration-base) var(--ease-out),
+    box-shadow var(--duration-base) var(--ease-out);
+}
+
+.card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: radial-gradient(80% 60% at 50% 0%, var(--color-primary-a12), transparent 70%);
+  opacity: 0;
+  transition: opacity var(--duration-base) var(--ease-out);
+  pointer-events: none;
+}
+
+.interactive:hover {
+  transform: translateY(-4px);
+  border-color: var(--color-primary-a50);
+  box-shadow:
+    var(--shadow-card),
+    0 24px 48px -24px var(--color-primary-a35);
+}
+
+.interactive:hover::after {
+  opacity: 1;
+}
+
+.iconBox {
+  display: grid;
+  place-items: center;
+  width: 48px;
+  height: 48px;
+  border-radius: var(--radius-md);
+  color: var(--color-primary-soft);
+  background: var(--color-primary-a12);
+  border: 1px solid var(--color-primary-a20);
+  transition:
+    color var(--duration-base) var(--ease-out),
+    background var(--duration-base) var(--ease-out);
+}
+
+.interactive:hover .iconBox {
+  color: var(--color-text);
+  background: var(--gradient-primary);
+}
+
+.title {
+  margin-top: 20px;
+  font-size: var(--text-h3);
+  font-weight: 600;
+}
+
+.text {
+  margin-top: 8px;
+  color: var(--color-text-muted);
+  font-size: var(--text-base);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .interactive:hover {
+    transform: none;
+  }
+}
