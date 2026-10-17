@@ -8,6 +8,7 @@ import { BusinessCategories } from './components/sections/BusinessCategories'
 import { Categories } from './components/sections/Categories'
 import { FinalCta } from './components/sections/FinalCta'
 import { HowItWorks } from './components/sections/HowItWorks'
+import { Team } from './components/sections/Team'
 import { ProductPreview } from './components/sections/preview/ProductPreview'
 import { ComingSoonProvider } from './context/ComingSoonProvider'
 
@@ -27,6 +28,7 @@ export default function App() {
           <Categories />
           <BusinessCategories />
           <ProductPreview />
+          <Team />
           <FinalCta />
         </main>
         <Footer />

@@ -6,9 +6,8 @@
 }
 
 .mark {
-  width: 32px;
-  height: 32px;
-  filter: drop-shadow(0 6px 14px var(--color-primary-a35));
+  flex-shrink: 0;
+  filter: drop-shadow(0 4px 10px var(--color-primary-a50));
 }
 
 .wordmark {

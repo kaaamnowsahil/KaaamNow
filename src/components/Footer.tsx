@@ -27,7 +27,7 @@ const COLUMNS: { title: string; items: FooterItem[] }[] = [
   {
     title: 'Company',
     items: [
-      { label: 'About', modal: 'Our story is coming soon' },
+      { label: 'Founders', href: '#team' },
       { label: 'Contact', modal: 'Contact options are coming soon' },
       { label: 'Privacy', modal: 'Our privacy policy is coming soon' },
       { label: 'Terms', modal: 'Our terms of service are coming soon' },

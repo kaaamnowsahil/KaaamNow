@@ -1,0 +1,160 @@
+.mission {
+  position: relative;
+  max-width: 60rem;
+  margin: 0 auto clamp(3rem, 6vw, 4.5rem);
+  padding: clamp(32px, 5vw, 56px);
+  border: 1px solid var(--color-primary-a35);
+  border-radius: var(--radius-xl);
+  background:
+    radial-gradient(80% 90% at 0% 0%, var(--color-primary-a20), transparent 60%),
+    var(--gradient-card),
+    var(--color-card);
+  box-shadow: var(--shadow-card);
+  text-align: center;
+}
+
+.missionIcon {
+  display: inline-grid;
+  place-items: center;
+  width: 48px;
+  height: 48px;
+  margin-bottom: 20px;
+  border-radius: var(--radius-lg);
+  color: var(--color-text);
+  background: var(--gradient-primary);
+  box-shadow: var(--shadow-glow);
+}
+
+.missionQuote p {
+  font-size: clamp(1.25rem, 2.4vw, 1.75rem);
+  font-weight: 600;
+  line-height: 1.45;
+  letter-spacing: -0.015em;
+  color: var(--color-text);
+}
+
+.missionCaption {
+  margin-top: 20px;
+  color: var(--color-text-muted);
+  font-size: var(--text-sm);
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.grid {
+  display: grid;
+  gap: 24px;
+  max-width: 28rem;
+  margin-inline: auto;
+}
+
+.item {
+  display: flex;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-xl);
+  background: var(--gradient-card), var(--color-card);
+  box-shadow: var(--shadow-card);
+  overflow: hidden;
+  transition:
+    transform var(--duration-base) var(--ease-out),
+    border-color var(--duration-base) var(--ease-out),
+    box-shadow var(--duration-base) var(--ease-out);
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  border-color: var(--color-primary-a50);
+  box-shadow:
+    var(--shadow-card),
+    0 30px 60px -30px var(--color-primary-a50);
+}
+
+.photoWrap {
+  position: relative;
+  aspect-ratio: 4 / 5;
+  overflow: hidden;
+  background: var(--color-bg-secondary);
+}
+
+.photoWrap::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 55%, var(--color-bg-a85) 100%);
+  pointer-events: none;
+}
+
+.photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 600ms var(--ease-out);
+}
+
+.card:hover .photo {
+  transform: scale(1.04);
+}
+
+.role {
+  position: absolute;
+  left: 20px;
+  bottom: 20px;
+  z-index: 1;
+  padding: 6px 14px;
+  border: 1px solid var(--color-primary-a50);
+  border-radius: var(--radius-pill);
+  background: var(--color-bg-a70);
+  backdrop-filter: blur(8px);
+  color: var(--color-primary-soft);
+  font-size: var(--text-xs);
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.body {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  gap: 14px;
+  padding: 24px 24px 28px;
+}
+
+.name {
+  font-size: var(--text-2xl);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.thought {
+  padding-left: 16px;
+  border-left: 2px solid var(--color-primary);
+}
+
+.thought p {
+  color: var(--color-text-muted);
+  font-size: var(--text-base);
+  font-style: italic;
+  line-height: 1.6;
+}
+
+@media (min-width: 900px) {
+  .grid {
+    grid-template-columns: repeat(3, 1fr);
+    max-width: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .card:hover,
+  .card:hover .photo {
+    transform: none;
+  }
+}
