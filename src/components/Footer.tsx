@@ -28,7 +28,7 @@ const COLUMNS: { title: string; items: FooterItem[] }[] = [
     title: 'Company',
     items: [
       { label: 'Founders', href: '#team' },
-      { label: 'Contact', modal: 'Contact options are coming soon' },
+      { label: 'Contact', modal: 'Contact KaaamNow' },
       { label: 'Privacy', modal: 'Our privacy policy is coming soon' },
       { label: 'Terms', modal: 'Our terms of service are coming soon' },
     ],
@@ -62,7 +62,16 @@ export function Footer() {
                         {item.label}
                       </a>
                     ) : (
-                      <button type="button" className={styles.link} onClick={() => open({ title: item.modal })}>
+                      <button
+                        type="button"
+                        className={styles.link}
+                        onClick={() => open({
+                          title: item.modal,
+                          description: item.label === 'Contact'
+                            ? 'Email us at sahil.shrivastava@kaaamnow.in, sumit.pandey@kaaamnow.in, or anishasriwastav53@gmail.com. Call Sahil at +91 85570 62835, Anish at +91 95238 57003, or Sumit at +91 80886 75325. Visit us at 148, 1st Main, 1st Cross, Malleshpallya, 1st floor, Bengaluru, Karnataka 560075, India. KaaamNow is launching soon.'
+                            : undefined,
+                        })}
+                      >
                         {item.label}
                       </button>
                     )}
