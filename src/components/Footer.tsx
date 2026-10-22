@@ -28,7 +28,6 @@ const COLUMNS: { title: string; items: FooterItem[] }[] = [
     title: 'Company',
     items: [
       { label: 'Founders', href: '#team' },
-      { label: 'Contact', modal: 'Contact options are coming soon' },
       { label: 'Privacy', modal: 'Our privacy policy is coming soon' },
       { label: 'Terms', modal: 'Our terms of service are coming soon' },
     ],
@@ -62,7 +61,11 @@ export function Footer() {
                         {item.label}
                       </a>
                     ) : (
-                      <button type="button" className={styles.link} onClick={() => open({ title: item.modal })}>
+                      <button
+                        type="button"
+                        className={styles.link}
+                        onClick={() => open({ title: item.modal })}
+                      >
                         {item.label}
                       </button>
                     )}
@@ -72,6 +75,24 @@ export function Footer() {
             </div>
           ))}
         </nav>
+        <section className={styles.contact} aria-labelledby="footer-contact-title">
+          <h2 id="footer-contact-title" className={styles.columnTitle}>Contact</h2>
+          <div className={styles.contactGrid}>
+            <div><h3 className={styles.contactLabel}>Email</h3><ul className={styles.list}>
+              <li><a className={styles.link} href="mailto:sahil.shrivastava@kaaamnow.in">sahil.shrivastava@kaaamnow.in</a></li>
+              <li><a className={styles.link} href="mailto:sumit.pandey@kaaamnow.in">sumit.pandey@kaaamnow.in</a></li>
+              <li><a className={styles.link} href="mailto:anishasriwastav53@gmail.com">anishasriwastav53@gmail.com</a></li>
+            </ul></div>
+            <div><h3 className={styles.contactLabel}>Phone</h3><ul className={styles.list}>
+              <li><a className={styles.link} href="tel:+918557062835">Sahil · +91 85570 62835</a></li>
+              <li><a className={styles.link} href="tel:+918088675325">Sumit · +91 80886 75325</a></li>
+            </ul></div>
+            <div className={styles.location}>
+              <h3 className={styles.contactLabel}>Company location</h3>
+              <address className={styles.address}>148, 1st Main, 1st Cross, Malleshpallya, 1st floor, Bengaluru, Karnataka 560075, India</address>
+            </div>
+          </div>
+        </section>
       </div>
 
       <div className={`container ${styles.bottom}`}>
