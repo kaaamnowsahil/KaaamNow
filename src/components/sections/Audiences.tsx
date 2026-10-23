@@ -1,5 +1,4 @@
 import { ArrowRight, Building2, Check, UserRound, type LucideIcon } from 'lucide-react'
-import { useComingSoon } from '../../context/comingSoonContext'
 import { Button } from '../ui/Button'
 import { RevealGroup, RevealItem } from '../ui/Reveal'
 import { SectionHeader } from '../ui/SectionHeader'
@@ -13,8 +12,7 @@ interface AudienceCard {
   text: string
   points: string[]
   cta: string
-  modalTitle: string
-  modalText: string
+  href: string
   featured?: boolean
 }
 
@@ -32,8 +30,7 @@ const AUDIENCES: AudienceCard[] = [
       'Manage every shift from a single dashboard',
     ],
     cta: 'Post your first shift',
-    modalTitle: 'Business accounts are coming soon',
-    modalText: 'We’re preparing KaaamNow for businesses. Soon you’ll be able to post shifts and book available workers in minutes.',
+    href: 'https://www.kaaamnow.in/business/home',
     featured: true,
   },
   {
@@ -49,14 +46,11 @@ const AUDIENCES: AudienceCard[] = [
       'Build a profile that travels with you',
     ],
     cta: 'Join as a worker',
-    modalTitle: 'Worker sign-ups are coming soon',
-    modalText: 'We’re getting ready to open KaaamNow to workers. Soon you’ll be able to create a profile and start picking up shifts nearby.',
+    href: 'https://www.kaaamnow.in/worker/home',
   },
 ]
 
 export function Audiences() {
-  const { open } = useComingSoon()
-
   return (
     <section className="section" aria-labelledby="audiences-title">
       <div className="container">
@@ -108,7 +102,7 @@ export function Audiences() {
                     <Button
                       variant={audience.featured ? 'primary' : 'secondary'}
                       icon={<ArrowRight size={18} strokeWidth={2} />}
-                      onClick={() => open({ title: audience.modalTitle, description: audience.modalText })}
+                      href={audience.href}
                     >
                       {audience.cta}
                     </Button>

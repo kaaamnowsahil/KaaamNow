@@ -70,6 +70,7 @@
   color: var(--color-text-muted);
   font-size: var(--text-sm);
   text-align: left;
+  overflow-wrap: anywhere;
   transition: color var(--duration-fast) var(--ease-out);
 }
 
@@ -119,5 +120,9 @@
 @media (max-width: 639px) {
   .columns {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .contactGrid {
+    grid-template-columns: minmax(0, 1fr);
   }
 }

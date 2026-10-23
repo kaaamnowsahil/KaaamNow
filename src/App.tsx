@@ -11,8 +11,13 @@ import { HowItWorks } from './components/sections/HowItWorks'
 import { Team } from './components/sections/Team'
 import { ProductPreview } from './components/sections/preview/ProductPreview'
 import { ComingSoonProvider } from './context/ComingSoonProvider'
+import { AccountDeletionPortal } from './pages/AccountDeletionPortal'
 
 export default function App() {
+  if (window.location.pathname.replace(/\/+$/, '') === '/account-deletion') {
+    return <AccountDeletionPortal />
+  }
+
   return (
     <MotionConfig reducedMotion="user">
       <ComingSoonProvider>

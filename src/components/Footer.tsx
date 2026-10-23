@@ -3,7 +3,9 @@ import { useComingSoon } from '../context/comingSoonContext'
 import { Logo } from './Logo'
 import styles from './Footer.module.css'
 
-type FooterItem = { label: string; href: `#${string}` } | { label: string; modal: string }
+type FooterItem =
+  | { label: string; href: `#${string}` | '/account-deletion' }
+  | { label: string; modal: string }
 
 const COLUMNS: { title: string; items: FooterItem[] }[] = [
   {
@@ -30,6 +32,7 @@ const COLUMNS: { title: string; items: FooterItem[] }[] = [
       { label: 'Founders', href: '#team' },
       { label: 'Privacy', modal: 'Our privacy policy is coming soon' },
       { label: 'Terms', modal: 'Our terms of service are coming soon' },
+      { label: 'Account deletion', href: '/account-deletion' },
     ],
   },
 ]
@@ -87,6 +90,21 @@ export function Footer() {
               <li><a className={styles.link} href="tel:+918557062835">Sahil · +91 85570 62835</a></li>
               <li><a className={styles.link} href="tel:+918088675325">Sumit · +91 80886 75325</a></li>
             </ul></div>
+            <div>
+              <h3 className={styles.contactLabel}>Social</h3>
+              <ul className={styles.list}>
+                <li>
+                  <a
+                    className={styles.link}
+                    href="https://www.instagram.com/kaaamnow?exln=enhwajhqd3V1eXIw"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Instagram
+                  </a>
+                </li>
+              </ul>
+            </div>
             <div className={styles.location}>
               <h3 className={styles.contactLabel}>Company location</h3>
               <address className={styles.address}>148, 1st Main, 1st Cross, Malleshpallya, 1st floor, Bengaluru, Karnataka 560075, India</address>

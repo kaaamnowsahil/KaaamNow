@@ -1,12 +1,10 @@
 import { motion, useReducedMotion } from 'framer-motion'
 import { ArrowRight } from 'lucide-react'
-import { useComingSoon } from '../../context/comingSoonContext'
 import { Button } from '../ui/Button'
 import { Reveal } from '../ui/Reveal'
 import styles from './FinalCta.module.css'
 
 export function FinalCta() {
-  const { open } = useComingSoon()
   const reduceMotion = useReducedMotion()
 
   return (
@@ -35,24 +33,14 @@ export function FinalCta() {
                 <Button
                   size="lg"
                   icon={<ArrowRight size={18} strokeWidth={2} />}
-                  onClick={() =>
-                    open({
-                      title: 'Hiring on KaaamNow is coming soon',
-                      description: 'Business accounts open at launch. You’ll be able to post your first shift and book available workers in minutes.',
-                    })
-                  }
+                  href="https://www.kaaamnow.in/business/home"
                 >
                   Find Workers
                 </Button>
                 <Button
                   size="lg"
                   variant="secondary"
-                  onClick={() =>
-                    open({
-                      title: 'Finding work on KaaamNow is coming soon',
-                      description: 'Worker profiles open at launch. You’ll be able to browse nearby shifts and apply in a single tap.',
-                    })
-                  }
+                  href="https://www.kaaamnow.in/worker/home"
                 >
                   Find Work
                 </Button>
