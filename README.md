@@ -28,6 +28,16 @@ Preview a production build locally:
 npm run preview
 ```
 
+## Account deletion portal
+
+The public account deletion page is available at `/account-deletion`. It uses the backend API
+for passwordless sign-in and deletion-request status. Set `VITE_API_BASE_URL` to the backend
+origin for the deployment (for example, a local development API origin); the site does not
+provide a production URL by default.
+
+The portal sends one-time codes for sign-in and keeps the access token in memory and
+`sessionStorage` for the current browser tab. It does not store tokens in `localStorage`.
+
 ## Tech stack
 
 - React
