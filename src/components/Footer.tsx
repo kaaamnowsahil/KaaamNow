@@ -82,13 +82,12 @@ export function Footer() {
           <h2 id="footer-contact-title" className={styles.columnTitle}>Contact</h2>
           <div className={styles.contactGrid}>
             <div><h3 className={styles.contactLabel}>Email</h3><ul className={styles.list}>
-              <li><a className={styles.link} href="mailto:sahil.shrivastava@kaaamnow.in">sahil.shrivastava@kaaamnow.in</a></li>
               <li><a className={styles.link} href="mailto:sumit.pandey@kaaamnow.in">sumit.pandey@kaaamnow.in</a></li>
               <li><a className={styles.link} href="mailto:anishasriwastav53@gmail.com">anishasriwastav53@gmail.com</a></li>
             </ul></div>
             <div><h3 className={styles.contactLabel}>Phone</h3><ul className={styles.list}>
-              <li><a className={styles.link} href="tel:+918557062835">Sahil · +91 85570 62835</a></li>
               <li><a className={styles.link} href="tel:+918088675325">Sumit · +91 80886 75325</a></li>
+              <li><a className={styles.link} href="tel:+919523857003">Anisha · +91 95238 57003</a></li>
             </ul></div>
             <div>
               <h3 className={styles.contactLabel}>Social</h3>
