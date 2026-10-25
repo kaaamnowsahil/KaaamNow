@@ -28,14 +28,6 @@ const FOUNDERS: Founder[] = [
     thought:
       'Every shift is a promise — to the business and to the worker. Our job is to make sure it’s kept, every time.',
   },
-  {
-    id: 'sahil',
-    name: 'Sahil Shrivastava',
-    role: 'Co-founder & CTO',
-    photo: '/team/sahil-shrivastava.webp',
-    thought:
-      'Technology should remove the waiting between a business that needs help and a person who’s ready to work.',
-  },
 ]
 
 export function Team() {

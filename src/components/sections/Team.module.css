@@ -147,8 +147,8 @@
 
 @media (min-width: 900px) {
   .grid {
-    grid-template-columns: repeat(3, 1fr);
-    max-width: none;
+    grid-template-columns: repeat(2, 1fr);
+    max-width: 56rem;
   }
 }
 
