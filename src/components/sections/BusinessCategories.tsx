@@ -73,7 +73,7 @@ export function BusinessCategories() {
           id="industries-title"
           eyebrow="Business categories"
           title="Built for every kind of business"
-          description="Whatever you run, KaaamNow helps you find the right people for the shifts you need to fill."
+          description="Whatever you run, KaaamNow helps you hire blue-collar workers for the shifts you need to fill."
         />
 
         <RevealGroup as="ul" className={styles.grid} staggerBy={0.08}>

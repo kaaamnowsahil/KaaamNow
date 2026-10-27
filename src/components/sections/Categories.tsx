@@ -43,7 +43,7 @@ export function Categories() {
         <SectionHeader
           id="categories-title"
           eyebrow="Work categories"
-          title="Every kind of flexible work"
+          title="Every kind of flexible blue-collar work"
           description="From a single afternoon to a multi-week assignment, KaaamNow covers the ways businesses actually need help."
         />
 
