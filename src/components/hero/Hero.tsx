@@ -48,7 +48,7 @@ export function Hero() {
             <span className={styles.badgeIcon} aria-hidden="true">
               <Sparkles size={14} strokeWidth={2} />
             </span>
-            The on-demand workforce marketplace
+            The on-demand marketplace for blue-collar jobs
           </motion.p>
 
           <motion.h1 id="hero-title" className={styles.title} variants={stagger(0.06)}>
@@ -70,8 +70,8 @@ export function Hero() {
           </motion.h1>
 
           <motion.p className={styles.lead} variants={fadeUp}>
-            KaaamNow connects businesses with dependable people for hourly shifts, daily jobs, and
-            flexible assignments. Need someone right now? Post a Live Work request and a nearby worker
+            KaaamNow connects businesses with dependable blue-collar workers for hourly shifts, daily
+            wage jobs, and flexible assignments. Need someone right now? Post a Live Work request and a nearby worker
             is on the way in minutes. Workers pick the hours that fit their life.
           </motion.p>
 
