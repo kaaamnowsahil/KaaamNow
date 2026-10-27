@@ -22,6 +22,12 @@
   transition: color var(--duration-fast) var(--ease-out);
 }
 
+@media (max-width: 480px) {
+  .tab {
+    padding: 10px 12px;
+  }
+}
+
 .tab:hover,
 .tabActive {
   color: var(--color-text);
