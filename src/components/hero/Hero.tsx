@@ -1,5 +1,5 @@
 import { motion, useReducedMotion } from 'framer-motion'
-import { ArrowRight, BadgeCheck, Briefcase, Sparkles, Wallet } from 'lucide-react'
+import { ArrowRight, BadgeCheck, Briefcase, Sparkles, Wallet, Zap } from 'lucide-react'
 import { Fragment } from 'react'
 import { easeOut, fadeUp, stagger } from '../../lib/motion'
 import { Button } from '../ui/Button'
@@ -12,6 +12,7 @@ const LINES = [
 ]
 
 const HIGHLIGHTS = [
+  { icon: Zap, label: 'Live Work: a worker in minutes' },
   { icon: Briefcase, label: 'Hourly, daily & multi-day work' },
   { icon: Wallet, label: 'Pay shown upfront' },
   { icon: BadgeCheck, label: 'No long-term commitment' },
@@ -70,8 +71,8 @@ export function Hero() {
 
           <motion.p className={styles.lead} variants={fadeUp}>
             KaaamNow connects businesses with dependable people for hourly shifts, daily jobs, and
-            flexible assignments. Businesses fill openings faster. Workers pick the hours that fit
-            their life.
+            flexible assignments. Need someone right now? Post a Live Work request and a nearby worker
+            is on the way in minutes. Workers pick the hours that fit their life.
           </motion.p>
 
           <motion.div className={styles.ctas} variants={fadeUp}>

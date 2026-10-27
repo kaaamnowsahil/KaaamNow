@@ -18,8 +18,8 @@ const BENEFITS: Benefit[] = [
   },
   {
     icon: Zap,
-    title: 'Faster hiring',
-    text: 'Post an opening in minutes and get matched with available people — no lengthy recruitment cycles.',
+    title: 'Live Work, in minutes',
+    text: 'Need help right now? Post a Live Work request, a nearby worker accepts, and you track them on the map until they arrive.',
   },
   {
     icon: Wallet,

@@ -3,6 +3,9 @@ import {
   BadgeCheck,
   Building2,
   ClipboardList,
+  KeyRound,
+  MapPinned,
+  Zap,
   Search,
   UserRound,
   UserRoundCheck,
@@ -16,7 +19,7 @@ import { Reveal } from '../ui/Reveal'
 import { SectionHeader } from '../ui/SectionHeader'
 import styles from './HowItWorks.module.css'
 
-type Audience = 'business' | 'worker'
+type Audience = 'business' | 'live' | 'worker'
 
 interface Step {
   icon: LucideIcon
@@ -26,6 +29,7 @@ interface Step {
 
 const TABS: { id: Audience; label: string; icon: LucideIcon }[] = [
   { id: 'business', label: 'For businesses', icon: Building2 },
+  { id: 'live', label: 'Live Work', icon: Zap },
   { id: 'worker', label: 'For workers', icon: UserRound },
 ]
 
@@ -45,6 +49,23 @@ const STEPS: Record<Audience, Step[]> = {
       icon: BadgeCheck,
       title: 'Confirm and get to work',
       text: 'Lock in your team, track who’s arriving, and manage every booking from one place.',
+    },
+  ],
+  live: [
+    {
+      icon: Zap,
+      title: 'Post a live request',
+      text: 'Set the role, place, and hours. Pay upfront and nearby available workers get your request instantly.',
+    },
+    {
+      icon: MapPinned,
+      title: 'Track them on the map',
+      text: 'A worker accepts and heads over. See where they are and when they’ll reach, live.',
+    },
+    {
+      icon: KeyRound,
+      title: 'Share the arrival code',
+      text: 'When they reach the work location, share your arrival code and the work timer starts.',
     },
   ],
   worker: [
@@ -68,7 +89,11 @@ const STEPS: Record<Audience, Step[]> = {
 
 export function HowItWorks() {
   const [audience, setAudience] = useState<Audience>('business')
-  const tabRefs = useRef<Record<Audience, HTMLButtonElement | null>>({ business: null, worker: null })
+  const tabRefs = useRef<Record<Audience, HTMLButtonElement | null>>({
+    business: null,
+    live: null,
+    worker: null,
+  })
 
   const onTabKeyDown = (event: KeyboardEvent<HTMLButtonElement>) => {
     if (!['ArrowLeft', 'ArrowRight', 'Home', 'End'].includes(event.key)) return
