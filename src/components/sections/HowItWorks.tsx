@@ -38,7 +38,7 @@ const STEPS: Record<Audience, Step[]> = {
     {
       icon: ClipboardList,
       title: 'Post a shift',
-      text: 'Describe the role, location, timing, and hourly rate. It takes just a few minutes.',
+      text: 'Describe the role, location, and timing, then pay by the hour or set one fixed price for the whole task.',
     },
     {
       icon: Users,
@@ -48,14 +48,14 @@ const STEPS: Record<Audience, Step[]> = {
     {
       icon: BadgeCheck,
       title: 'Confirm and get to work',
-      text: 'Lock in your team, track who’s arriving, and manage every booking from one place.',
+      text: 'Lock in your team, track who’s arriving, and share the completion code when the work is done.',
     },
   ],
   live: [
     {
       icon: Zap,
       title: 'Post a live request',
-      text: 'Set the role, place, and hours. Pay upfront and nearby available workers get your request instantly.',
+      text: 'Set the role and place, then choose hours or one fixed task price. Pay upfront and nearby workers get your request instantly.',
     },
     {
       icon: MapPinned,
@@ -65,7 +65,7 @@ const STEPS: Record<Audience, Step[]> = {
     {
       icon: KeyRound,
       title: 'Share the arrival code',
-      text: 'When they reach the work location, share your arrival code and the work timer starts.',
+      text: 'Share the arrival code when they reach, and the completion code once the work is done.',
     },
   ],
   worker: [
@@ -82,7 +82,7 @@ const STEPS: Record<Audience, Step[]> = {
     {
       icon: Wallet,
       title: 'Work and get paid',
-      text: 'Show up, complete your shift, and see exactly what you’ve earned. No surprises.',
+      text: 'Finish the work, enter the completion code from the business, and see exactly what you’ve earned.',
     },
   ],
 }

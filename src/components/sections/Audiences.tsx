@@ -24,7 +24,7 @@ const AUDIENCES: AudienceCard[] = [
     title: 'Staff up without the scramble',
     text: 'Cover busy weekends, last-minute absences, seasonal peaks, and one-off events with people who are ready to work.',
     points: [
-      'Post hourly, daily, or multi-day openings',
+      'Post hourly, multi-day, or fixed-price task openings',
       'See who’s available before you book',
       'Set your own rates, shown upfront to workers',
       'Manage every shift from a single dashboard',
