@@ -13,7 +13,7 @@ const LINES = [
 
 const HIGHLIGHTS = [
   { icon: Zap, label: 'Live Work: a worker in minutes' },
-  { icon: Briefcase, label: 'Hourly, daily & multi-day work' },
+  { icon: Briefcase, label: 'Hourly or fixed-price task work' },
   { icon: Wallet, label: 'Pay shown upfront' },
   { icon: BadgeCheck, label: 'No long-term commitment' },
 ]
