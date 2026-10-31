@@ -86,6 +86,7 @@ export function Footer() {
               <li><a className={styles.link} href="mailto:anishasriwastav53@gmail.com">anishasriwastav53@gmail.com</a></li>
             </ul></div>
             <div><h3 className={styles.contactLabel}>Phone</h3><ul className={styles.list}>
+              <li><a className={styles.link} href="tel:+918618796332">KaaamNow · +91 86187 96332</a></li>
               <li><a className={styles.link} href="tel:+918088675325">Sumit · +91 80886 75325</a></li>
               <li><a className={styles.link} href="tel:+919523857003">Anisha · +91 95238 57003</a></li>
             </ul></div>
@@ -100,6 +101,16 @@ export function Footer() {
                     rel="noopener noreferrer"
                   >
                     Instagram
+                  </a>
+                </li>
+                <li>
+                  <a
+                    className={styles.link}
+                    href="https://www.linkedin.com/company/kaaamnow"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    LinkedIn
                   </a>
                 </li>
               </ul>
