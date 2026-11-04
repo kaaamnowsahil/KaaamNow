@@ -1,43 +1,34 @@
 import { AnimatePresence, motion } from 'framer-motion'
 import {
+  ArrowRight,
+  BadgeCheck,
+  Bell,
   Building2,
   CalendarDays,
-  ChevronRight,
-  Clock,
+  ChevronDown,
   House,
-  Plus,
-  Users,
+  MapPin,
   UsersRound,
-  Wallet,
   type LucideIcon,
 } from 'lucide-react'
-import { useMemo, useState } from 'react'
+import { useState } from 'react'
 import { useComingSoon } from '../../../context/comingSoonContext'
 import { APP_LINKS } from '../../../data/appLinks'
 import { easeOut } from '../../../lib/motion'
-import { Button } from '../../ui/Button'
-import styles from './ProductPreview.module.css'
+import styles from './AppPreview.module.css'
 
-type Status = 'open' | 'filled'
 type Segment = 'live' | 'scheduled'
-
-interface Applicant {
-  initials: string
-  name: string
-  skills: string
-}
 
 interface PostedShift {
   id: string
-  role: string
   segment: Segment
-  type: string
-  when: string
-  hours: string
-  pay: string
+  role: string
+  status: string
+  time: string
+  confirmed: number
   needed: number
-  filled: number
-  applicants: Applicant[]
+  applicants: number
+  rate: string
 }
 
 const SEGMENTS: { id: Segment; label: string }[] = [
@@ -45,101 +36,70 @@ const SEGMENTS: { id: Segment; label: string }[] = [
   { id: 'scheduled', label: 'Scheduled' },
 ]
 
-const POSTED_SHIFTS: PostedShift[] = [
+const SHIFTS: PostedShift[] = [
   {
     id: 'b1',
-    role: 'Weekend Servers',
-    segment: 'scheduled',
-    type: 'Hourly shift',
-    when: 'Sat',
-    hours: '6:00 PM – 11:00 PM',
-    pay: '₹180/hr',
-    needed: 4,
-    filled: 2,
-    applicants: [
-      { initials: 'RK', name: 'Rohan K.', skills: 'Table service · Billing' },
-      { initials: 'AM', name: 'Anjali M.', skills: 'Restaurant floor · Hindi, English' },
-      { initials: 'VS', name: 'Vikram S.', skills: 'Banquets · Order taking' },
-    ],
+    segment: 'live',
+    role: 'Kitchen Helper',
+    status: 'Live · searching',
+    time: 'Today · 6:30 PM · 4 hours',
+    confirmed: 0,
+    needed: 1,
+    applicants: 0,
+    rate: '₹160 / hour',
   },
   {
     id: 'b2',
-    role: 'Kitchen Helper',
     segment: 'live',
-    type: 'Live request',
-    when: 'Today',
-    hours: 'Next 4 hours',
-    pay: '₹160/hr',
+    role: 'Dishwasher',
+    status: 'Live · starts soon',
+    time: 'Today · 7:00 PM · 3 hours',
+    confirmed: 1,
     needed: 1,
-    filled: 0,
-    applicants: [
-      { initials: 'SP', name: 'Suresh P.', skills: 'Prep work · Dishwashing' },
-      { initials: 'NK', name: 'Neha K.', skills: 'Commercial kitchen · Hygiene' },
-    ],
+    applicants: 0,
+    rate: '₹150 / hour',
   },
   {
     id: 'b3',
-    role: 'Stock Audit Team',
     segment: 'scheduled',
-    type: 'Daily job',
-    when: 'Sun',
-    hours: '9:00 AM – 6:00 PM',
-    pay: '₹1,400/day',
-    needed: 3,
-    filled: 3,
-    applicants: [
-      { initials: 'AK', name: 'Arjun K.', skills: 'Inventory scanning' },
-      { initials: 'MD', name: 'Meera D.', skills: 'Stock counts · Excel' },
-      { initials: 'IS', name: 'Imran S.', skills: 'Warehouse audits' },
-    ],
+    role: 'Weekend Servers',
+    status: 'Scheduled',
+    time: 'Sat, 7 Nov · 6:00 PM · 5 hours',
+    confirmed: 2,
+    needed: 4,
+    applicants: 3,
+    rate: '₹180 / hour',
   },
   {
     id: 'b4',
-    role: 'Festive Season Packers',
     segment: 'scheduled',
-    type: 'Multi-day',
-    when: 'Mon – Sat',
-    hours: '7:00 AM – 3:00 PM',
-    pay: '₹170/hr',
-    needed: 6,
-    filled: 4,
-    applicants: [
-      { initials: 'DY', name: 'Deepak Y.', skills: 'Packing · Labelling' },
-      { initials: 'PR', name: 'Pooja R.', skills: 'Order sorting' },
-    ],
+    role: 'Stock Audit Team',
+    status: 'Scheduled',
+    time: 'Sun, 8 Nov · 9:00 AM · 9 hours',
+    confirmed: 3,
+    needed: 3,
+    applicants: 2,
+    rate: '₹175 / hour',
   },
 ]
 
-const SIDEBAR: { icon: LucideIcon; label: string; active?: boolean }[] = [
+const NAV: { icon: LucideIcon; label: string; active?: boolean }[] = [
   { icon: House, label: 'Dashboard', active: true },
   { icon: CalendarDays, label: 'Shifts' },
   { icon: UsersRound, label: 'Applicants' },
   { icon: Building2, label: 'Profile' },
 ]
 
-const statusOf = (shift: PostedShift): Status => (shift.filled >= shift.needed ? 'filled' : 'open')
-
 export function BusinessPreview() {
-  const [segment, setSegment] = useState<Segment>('scheduled')
-  const [selectedId, setSelectedId] = useState<string>(POSTED_SHIFTS[0].id)
+  const [segment, setSegment] = useState<Segment>('live')
   const { open } = useComingSoon()
-
-  const visible = useMemo(() => POSTED_SHIFTS.filter((shift) => shift.segment === segment), [segment])
+  const visible = SHIFTS.filter((shift) => shift.segment === segment)
   const isLive = segment === 'live'
-  const selected = visible.find((shift) => shift.id === selectedId) ?? visible[0]
+  const confirmed = visible.reduce((sum, shift) => sum + shift.confirmed, 0)
+  const needed = visible.reduce((sum, shift) => sum + shift.needed, 0)
+  const applicants = visible.reduce((sum, shift) => sum + shift.applicants, 0)
 
-  const totals = POSTED_SHIFTS.reduce(
-    (acc, shift) => ({ needed: acc.needed + shift.needed, filled: acc.filled + shift.filled }),
-    { needed: 0, filled: 0 },
-  )
-
-  const applySegment = (next: Segment) => {
-    setSegment(next)
-    const first = POSTED_SHIFTS.find((shift) => shift.segment === next)
-    if (first) setSelectedId(first.id)
-  }
-
-  const comingSoon = (title: string, description: string) =>
+  const sample = (title: string, description: string) =>
     open({
       eyebrow: 'Sample preview',
       title,
@@ -150,209 +110,150 @@ export function BusinessPreview() {
   return (
     <div className={styles.app}>
       <aside className={styles.sidebar} aria-hidden="true">
-        <div className={styles.sidebarBrand}>
-          <Building2 size={16} strokeWidth={1.75} />
-          Business account
+        <div className={styles.profile}>
+          <span className={styles.avatar}>SC</span>
+          <div>
+            <p className={styles.profileName}>Sample Café</p>
+            <p className={styles.profileMeta}>+91 90000 00001</p>
+          </div>
         </div>
-        <ul className={styles.sidebarNav}>
-          {SIDEBAR.map(({ icon: Icon, label, active }) => (
-            <li key={label} className={active ? styles.sidebarActive : undefined}>
+        <ul className={styles.nav}>
+          {NAV.map(({ icon: Icon, label, active }) => (
+            <li key={label} className={active ? styles.navActive : undefined}>
               <Icon size={16} strokeWidth={1.75} />
               {label}
             </li>
           ))}
         </ul>
-        <div className={styles.sidebarCard}>
-          <p className={styles.sidebarCardTitle}>Spots filled this week</p>
-          <p className={styles.sidebarStat}>
-            {totals.filled}
-            <span> / {totals.needed}</span>
-          </p>
-          <span className={styles.progress}>
-            <span style={{ width: `${(totals.filled / totals.needed) * 100}%` }} />
-          </span>
-        </div>
+        <p className={styles.version}>Version 0.1.0</p>
       </aside>
 
       <div className={styles.main}>
-        <div className={styles.toolbar}>
-          <div className={styles.toolbarHeading}>
-            <p className={styles.toolbarTitle}>Your team, at a glance</p>
-            <p className={styles.toolbarSub}>Sample Café · Verified business</p>
+        <div className={styles.header}>
+          <span className={styles.headerTitle}>Dashboard</span>
+          <span className={styles.bell} aria-hidden="true">
+            <Bell size={16} strokeWidth={1.75} />
+          </span>
+        </div>
+
+        <div className={styles.scroll}>
+          <div className={styles.content}>
+            <div className={styles.intro}>
+              <h3>Your team, at a glance</h3>
+              <p className={styles.identity}>
+                Sample Café
+                <BadgeCheck size={14} strokeWidth={2} aria-hidden="true" />
+              </p>
+            </div>
+
+            <div className={styles.location} aria-hidden="true">
+              <MapPin size={16} strokeWidth={1.75} />
+              <span>Indiranagar, Bengaluru, Karnataka, 560038, India</span>
+              <ChevronDown size={16} strokeWidth={1.75} />
+            </div>
+
+            <div className={styles.segments} role="group" aria-label="Shift type">
+              {SEGMENTS.map(({ id, label }) => (
+                <button
+                  key={id}
+                  type="button"
+                  className={`${styles.segment} ${segment === id ? styles.segmentActive : ''}`}
+                  aria-pressed={segment === id}
+                  onClick={() => setSegment(id)}
+                >
+                  {label}
+                </button>
+              ))}
+            </div>
+
+            <AnimatePresence mode="wait" initial={false}>
+              <motion.div
+                key={segment}
+                className={styles.content}
+                initial={{ opacity: 0, y: 6 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -6 }}
+                transition={{ duration: 0.2, ease: easeOut }}
+              >
+                <div className={styles.metrics}>
+                  <div className={styles.metric}>
+                    <strong>
+                      {confirmed}/{needed}
+                    </strong>
+                    <p>Workers confirmed</p>
+                  </div>
+                  <div className={styles.metric}>
+                    <strong>{applicants}</strong>
+                    <p>New applicants</p>
+                  </div>
+                </div>
+
+                <p className={styles.sectionHeading}>
+                  <span>
+                    {isLive && <span className={styles.liveDot} aria-hidden="true" />}
+                    {isLive ? 'Today’s live shifts' : 'Upcoming shifts'}
+                  </span>
+                  <span className={styles.viewAll}>View all</span>
+                </p>
+
+                {visible.map((shift) => (
+                  <button
+                    key={shift.id}
+                    type="button"
+                    className={styles.shift}
+                    onClick={() =>
+                      sample(
+                        'Manage real shifts in the app',
+                        `${shift.role} is a sample shift. On KaaamNow you see who applied, confirm workers in a tap, and track arrivals with arrival codes.`,
+                      )
+                    }
+                  >
+                    <span className={styles.shiftTop}>
+                      <strong className={shift.segment === 'live' ? styles.live : undefined}>
+                        {shift.status}
+                      </strong>
+                      <span>{shift.rate}</span>
+                    </span>
+                    <h4>{shift.role}</h4>
+                    <span>{shift.time}</span>
+                    <span className={styles.shiftFoot}>
+                      <span>
+                        <strong>
+                          {shift.confirmed} / {shift.needed}
+                        </strong>{' '}
+                        confirmed
+                        <small>
+                          {shift.applicants} {shift.applicants === 1 ? 'applicant' : 'applicants'}
+                        </small>
+                      </span>
+                      <ArrowRight size={16} strokeWidth={2} aria-hidden="true" />
+                    </span>
+                  </button>
+                ))}
+              </motion.div>
+            </AnimatePresence>
           </div>
+        </div>
+
+        <div className={styles.bottom}>
           <button
             type="button"
-            className={styles.postButton}
+            className={styles.primaryButton}
             onClick={() =>
               isLive
-                ? comingSoon(
+                ? sample(
                     'Post a real live request in the app',
                     'This dashboard is a sample. On KaaamNow you post a live request and workers within 30 km in that category are notified instantly.',
                   )
-                : comingSoon(
+                : sample(
                     'Create a real shift in the app',
-                    'This dashboard is a sample. On KaaamNow you create a shift in minutes — set the role, timing, and pay — and nearby workers in that category get an alert straight away.',
+                    'This dashboard is a sample. On KaaamNow you create a shift in minutes — set the role, timing, and pay — and nearby workers in that category get an alert.',
                   )
             }
           >
-            <Plus size={16} strokeWidth={2} aria-hidden="true" />
-            {isLive ? 'Post live request' : 'Create shift'}
+            {isLive ? '+ Post live request' : '+ Create shift'}
           </button>
         </div>
-
-        <div className={styles.filters} role="group" aria-label="Shift type">
-          {SEGMENTS.map(({ id, label }) => (
-            <button
-              key={id}
-              type="button"
-              className={`${styles.filter} ${segment === id ? styles.filterActive : ''}`}
-              aria-pressed={segment === id}
-              onClick={() => applySegment(id)}
-            >
-              {label}
-            </button>
-          ))}
-        </div>
-
-        <p className={styles.resultCount} aria-live="polite">
-          {isLive ? 'Today’s live shifts' : 'Upcoming shifts'} · {visible.length}
-        </p>
-
-        <motion.ul layout className={styles.listings}>
-          <AnimatePresence mode="popLayout" initial={false}>
-            {visible.map((shift) => {
-              const isSelected = selected?.id === shift.id
-              const status = statusOf(shift)
-              return (
-                <motion.li
-                  key={shift.id}
-                  layout
-                  initial={{ opacity: 0, scale: 0.97 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  exit={{ opacity: 0, scale: 0.97 }}
-                  transition={{ duration: 0.25, ease: easeOut }}
-                >
-                  <button
-                    type="button"
-                    className={`${styles.listing} ${isSelected ? styles.listingActive : ''}`}
-                    aria-pressed={isSelected}
-                    onClick={() => setSelectedId(shift.id)}
-                  >
-                    <span className={styles.listingTop}>
-                      <span className={styles.listingRole}>{shift.role}</span>
-                      <span className={`${styles.status} ${status === 'filled' ? styles.statusFilled : ''}`}>
-                        {status === 'filled'
-                          ? 'Filled'
-                          : shift.segment === 'live'
-                            ? 'Live · searching'
-                            : 'Hiring'}
-                      </span>
-                    </span>
-                    <span className={styles.listingFoot}>
-                      <span className={styles.tag}>{shift.type}</span>
-                      <span className={styles.listingTime}>
-                        <Clock size={12} strokeWidth={2} aria-hidden="true" />
-                        {shift.when} · {shift.hours}
-                      </span>
-                    </span>
-                    <span className={styles.fillRow}>
-                      <span className={styles.progress}>
-                        <span style={{ width: `${(shift.filled / shift.needed) * 100}%` }} />
-                      </span>
-                      <span className={styles.fillLabel}>
-                        {shift.filled} / {shift.needed} confirmed
-                      </span>
-                      <ChevronRight className={styles.listingChevron} size={16} strokeWidth={1.75} aria-hidden="true" />
-                    </span>
-                  </button>
-                </motion.li>
-              )
-            })}
-          </AnimatePresence>
-        </motion.ul>
-      </div>
-
-      <div className={styles.detail}>
-        <AnimatePresence mode="wait" initial={false}>
-          {selected && (
-            <motion.div
-              key={selected.id}
-              className={styles.detailInner}
-              initial={{ opacity: 0, y: 8 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -8 }}
-              transition={{ duration: 0.25, ease: easeOut }}
-            >
-              <span className={styles.tag}>{selected.type}</span>
-              <h3 className={styles.detailTitle}>{selected.role}</h3>
-              <p className={styles.detailVenue}>
-                {selected.when} · {selected.hours}
-              </p>
-
-              <dl className={styles.detailStats}>
-                <div>
-                  <dt>
-                    <Wallet size={14} strokeWidth={1.75} aria-hidden="true" /> Pay rate
-                  </dt>
-                  <dd>{selected.pay}</dd>
-                </div>
-                <div>
-                  <dt>
-                    <Users size={14} strokeWidth={1.75} aria-hidden="true" /> Filled
-                  </dt>
-                  <dd>
-                    {selected.filled} of {selected.needed}
-                  </dd>
-                </div>
-              </dl>
-
-              <p className={styles.applicantsTitle}>
-                {statusOf(selected) === 'filled' ? 'Your confirmed team' : 'Available workers'}
-              </p>
-              <ul className={styles.applicants}>
-                {selected.applicants.map((applicant) => (
-                  <li key={applicant.name} className={styles.applicant}>
-                    <span className={styles.avatar} aria-hidden="true">
-                      {applicant.initials}
-                    </span>
-                    <span className={styles.applicantBody}>
-                      <span className={styles.applicantName}>{applicant.name}</span>
-                      <span className={styles.applicantSkills}>{applicant.skills}</span>
-                    </span>
-                    {statusOf(selected) === 'filled' ? (
-                      <span className={`${styles.status} ${styles.statusFilled}`}>Booked</span>
-                    ) : (
-                      <button
-                        type="button"
-                        className={styles.inviteButton}
-                        onClick={() =>
-                          comingSoon(
-                            'Book real workers in the app',
-                            `${applicant.name} is a sample profile. On KaaamNow you see who applied and confirm workers in a tap.`,
-                          )
-                        }
-                      >
-                        Invite
-                      </button>
-                    )}
-                  </li>
-                ))}
-              </ul>
-
-              <Button
-                fullWidth
-                onClick={() =>
-                  comingSoon(
-                    'Manage real shifts in the app',
-                    'This dashboard is a sample. On KaaamNow you confirm your team, track arrivals with arrival codes, and handle payments for every shift from one place.',
-                  )
-                }
-              >
-                {statusOf(selected) === 'filled' ? 'Manage this shift' : 'Confirm your team'}
-              </Button>
-            </motion.div>
-          )}
-        </AnimatePresence>
       </div>
     </div>
   )
