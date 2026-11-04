@@ -11,8 +11,8 @@ import styles from './ProductPreview.module.css'
 type View = 'worker' | 'business'
 
 const VIEWS: { id: View; label: string; icon: LucideIcon; address: string }[] = [
-  { id: 'worker', label: 'Worker view', icon: UserRound, address: 'kaaamnow.in/shifts' },
-  { id: 'business', label: 'Business view', icon: Building2, address: 'kaaamnow.in/business' },
+  { id: 'worker', label: 'Worker view', icon: UserRound, address: 'kaaamnow.in/worker/home' },
+  { id: 'business', label: 'Business view', icon: Building2, address: 'kaaamnow.in/business/live' },
 ]
 
 export function ProductPreview() {
@@ -46,7 +46,7 @@ export function ProductPreview() {
               A marketplace that <span className="gradient-text">just makes sense</span>
             </>
           }
-          description="A first look at KaaamNow for both sides. Switch between the worker and business views, try the filters, and select a shift — everything below is illustrative sample data."
+          description="A first look at KaaamNow for both sides. Switch between the worker and business views, flip between Live Now and Scheduled, and select a shift — everything below is illustrative sample data."
         />
 
         <Reveal className={styles.viewToggleWrap}>
