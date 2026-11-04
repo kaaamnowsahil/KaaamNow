@@ -1,11 +1,10 @@
 import { AnimatePresence, motion } from 'framer-motion'
 import {
-  Bell,
   Building2,
   CalendarDays,
   ChevronRight,
   Clock,
-  LayoutDashboard,
+  House,
   Plus,
   Users,
   UsersRound,
@@ -20,7 +19,7 @@ import { Button } from '../../ui/Button'
 import styles from './ProductPreview.module.css'
 
 type Status = 'open' | 'filled'
-type Filter = 'all' | Status
+type Segment = 'live' | 'scheduled'
 
 interface Applicant {
   initials: string
@@ -31,6 +30,7 @@ interface Applicant {
 interface PostedShift {
   id: string
   role: string
+  segment: Segment
   type: string
   when: string
   hours: string
@@ -40,16 +40,16 @@ interface PostedShift {
   applicants: Applicant[]
 }
 
-const FILTERS: { id: Filter; label: string }[] = [
-  { id: 'all', label: 'All shifts' },
-  { id: 'open', label: 'Open' },
-  { id: 'filled', label: 'Filled' },
+const SEGMENTS: { id: Segment; label: string }[] = [
+  { id: 'live', label: 'Live Now' },
+  { id: 'scheduled', label: 'Scheduled' },
 ]
 
 const POSTED_SHIFTS: PostedShift[] = [
   {
     id: 'b1',
     role: 'Weekend Servers',
+    segment: 'scheduled',
     type: 'Hourly shift',
     when: 'Sat',
     hours: '6:00 PM – 11:00 PM',
@@ -65,9 +65,10 @@ const POSTED_SHIFTS: PostedShift[] = [
   {
     id: 'b2',
     role: 'Kitchen Helper',
-    type: 'Hourly shift',
-    when: 'Tomorrow',
-    hours: '10:00 AM – 3:00 PM',
+    segment: 'live',
+    type: 'Live request',
+    when: 'Today',
+    hours: 'Next 4 hours',
     pay: '₹160/hr',
     needed: 1,
     filled: 0,
@@ -79,6 +80,7 @@ const POSTED_SHIFTS: PostedShift[] = [
   {
     id: 'b3',
     role: 'Stock Audit Team',
+    segment: 'scheduled',
     type: 'Daily job',
     when: 'Sun',
     hours: '9:00 AM – 6:00 PM',
@@ -94,6 +96,7 @@ const POSTED_SHIFTS: PostedShift[] = [
   {
     id: 'b4',
     role: 'Festive Season Packers',
+    segment: 'scheduled',
     type: 'Multi-day',
     when: 'Mon – Sat',
     hours: '7:00 AM – 3:00 PM',
@@ -108,24 +111,21 @@ const POSTED_SHIFTS: PostedShift[] = [
 ]
 
 const SIDEBAR: { icon: LucideIcon; label: string; active?: boolean }[] = [
-  { icon: LayoutDashboard, label: 'Dashboard', active: true },
-  { icon: CalendarDays, label: 'Posted shifts' },
-  { icon: UsersRound, label: 'My team' },
-  { icon: Wallet, label: 'Payments' },
-  { icon: Bell, label: 'Alerts' },
+  { icon: House, label: 'Dashboard', active: true },
+  { icon: CalendarDays, label: 'Shifts' },
+  { icon: UsersRound, label: 'Applicants' },
+  { icon: Building2, label: 'Profile' },
 ]
 
 const statusOf = (shift: PostedShift): Status => (shift.filled >= shift.needed ? 'filled' : 'open')
 
 export function BusinessPreview() {
-  const [filter, setFilter] = useState<Filter>('all')
+  const [segment, setSegment] = useState<Segment>('scheduled')
   const [selectedId, setSelectedId] = useState<string>(POSTED_SHIFTS[0].id)
   const { open } = useComingSoon()
 
-  const visible = useMemo(
-    () => (filter === 'all' ? POSTED_SHIFTS : POSTED_SHIFTS.filter((shift) => statusOf(shift) === filter)),
-    [filter],
-  )
+  const visible = useMemo(() => POSTED_SHIFTS.filter((shift) => shift.segment === segment), [segment])
+  const isLive = segment === 'live'
   const selected = visible.find((shift) => shift.id === selectedId) ?? visible[0]
 
   const totals = POSTED_SHIFTS.reduce(
@@ -133,9 +133,9 @@ export function BusinessPreview() {
     { needed: 0, filled: 0 },
   )
 
-  const applyFilter = (next: Filter) => {
-    setFilter(next)
-    const first = next === 'all' ? POSTED_SHIFTS[0] : POSTED_SHIFTS.find((shift) => statusOf(shift) === next)
+  const applySegment = (next: Segment) => {
+    setSegment(next)
+    const first = POSTED_SHIFTS.find((shift) => shift.segment === next)
     if (first) setSelectedId(first.id)
   }
 
@@ -177,32 +177,37 @@ export function BusinessPreview() {
       <div className={styles.main}>
         <div className={styles.toolbar}>
           <div className={styles.toolbarHeading}>
-            <p className={styles.toolbarTitle}>Your posted shifts</p>
-            <p className={styles.toolbarSub}>Sample business dashboard</p>
+            <p className={styles.toolbarTitle}>Your team, at a glance</p>
+            <p className={styles.toolbarSub}>Sample Café · Verified business</p>
           </div>
           <button
             type="button"
             className={styles.postButton}
             onClick={() =>
-              comingSoon(
-                'Post a real shift in the app',
-                'This dashboard is a sample. On KaaamNow you post a shift in minutes — set the role, timing, and pay — and nearby workers in that category get an alert straight away.',
-              )
+              isLive
+                ? comingSoon(
+                    'Post a real live request in the app',
+                    'This dashboard is a sample. On KaaamNow you post a live request and workers within 30 km in that category are notified instantly.',
+                  )
+                : comingSoon(
+                    'Create a real shift in the app',
+                    'This dashboard is a sample. On KaaamNow you create a shift in minutes — set the role, timing, and pay — and nearby workers in that category get an alert straight away.',
+                  )
             }
           >
             <Plus size={16} strokeWidth={2} aria-hidden="true" />
-            Post a shift
+            {isLive ? 'Post live request' : 'Create shift'}
           </button>
         </div>
 
-        <div className={styles.filters} role="group" aria-label="Filter sample posted shifts by status">
-          {FILTERS.map(({ id, label }) => (
+        <div className={styles.filters} role="group" aria-label="Shift type">
+          {SEGMENTS.map(({ id, label }) => (
             <button
               key={id}
               type="button"
-              className={`${styles.filter} ${filter === id ? styles.filterActive : ''}`}
-              aria-pressed={filter === id}
-              onClick={() => applyFilter(id)}
+              className={`${styles.filter} ${segment === id ? styles.filterActive : ''}`}
+              aria-pressed={segment === id}
+              onClick={() => applySegment(id)}
             >
               {label}
             </button>
@@ -210,7 +215,7 @@ export function BusinessPreview() {
         </div>
 
         <p className={styles.resultCount} aria-live="polite">
-          {visible.length} sample {visible.length === 1 ? 'shift' : 'shifts'}
+          {isLive ? 'Today’s live shifts' : 'Upcoming shifts'} · {visible.length}
         </p>
 
         <motion.ul layout className={styles.listings}>
@@ -236,7 +241,11 @@ export function BusinessPreview() {
                     <span className={styles.listingTop}>
                       <span className={styles.listingRole}>{shift.role}</span>
                       <span className={`${styles.status} ${status === 'filled' ? styles.statusFilled : ''}`}>
-                        {status === 'filled' ? 'Filled' : 'Hiring'}
+                        {status === 'filled'
+                          ? 'Filled'
+                          : shift.segment === 'live'
+                            ? 'Live · searching'
+                            : 'Hiring'}
                       </span>
                     </span>
                     <span className={styles.listingFoot}>
@@ -251,7 +260,7 @@ export function BusinessPreview() {
                         <span style={{ width: `${(shift.filled / shift.needed) * 100}%` }} />
                       </span>
                       <span className={styles.fillLabel}>
-                        {shift.filled} of {shift.needed} filled
+                        {shift.filled} / {shift.needed} confirmed
                       </span>
                       <ChevronRight className={styles.listingChevron} size={16} strokeWidth={1.75} aria-hidden="true" />
                     </span>

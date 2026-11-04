@@ -130,27 +130,30 @@
   font-weight: 500;
 }
 
-.availabilityGrid {
-  display: grid;
-  grid-template-columns: repeat(7, 1fr);
-  gap: 4px;
-  margin-top: 10px;
-}
-
-.availabilityGrid span {
-  display: grid;
-  place-items: center;
-  aspect-ratio: 1;
-  border-radius: 6px;
-  background: var(--color-text-a04);
-  color: var(--color-text-muted);
-  font-size: 10px;
-  font-weight: 600;
-}
-
-.availabilityGrid .dayOn {
-  background: var(--color-primary);
+.availabilityLive {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 8px;
   color: var(--color-text);
+  font-size: var(--text-sm);
+  font-weight: 700;
+  letter-spacing: 0.06em;
+}
+
+.liveDot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #22c55e;
+  box-shadow: 0 0 0 4px rgb(34 197 94 / 0.2);
+}
+
+.sidebarCardHint {
+  margin-top: 6px;
+  color: var(--color-text-muted);
+  font-size: 11px;
+  line-height: 1.4;
 }
 
 /* Main list */
@@ -515,6 +518,9 @@
 }
 
 .toolbarSub {
+  display: flex;
+  align-items: center;
+  gap: 4px;
   color: var(--color-text-muted);
   font-size: var(--text-xs);
 }

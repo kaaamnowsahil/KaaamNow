@@ -4,7 +4,7 @@ import {
   CalendarDays,
   ChevronRight,
   Clock,
-  LayoutGrid,
+  House,
   MapPin,
   Search,
   SlidersHorizontal,
@@ -21,7 +21,7 @@ import { Button } from '../../ui/Button'
 import styles from './ProductPreview.module.css'
 
 type Category = 'hourly' | 'daily' | 'multi'
-type Filter = 'all' | Category
+type Segment = 'live' | 'scheduled'
 
 interface Listing {
   id: string
@@ -29,6 +29,8 @@ interface Listing {
   venue: string
   area: string
   category: Category
+  segment: Segment
+  distance: string
   when: string
   hours: string
   pay: string
@@ -37,11 +39,9 @@ interface Listing {
   skills: string[]
 }
 
-const FILTERS: { id: Filter; label: string }[] = [
-  { id: 'all', label: 'All' },
-  { id: 'hourly', label: 'Hourly' },
-  { id: 'daily', label: 'Daily' },
-  { id: 'multi', label: 'Multi-day' },
+const SEGMENTS: { id: Segment; label: string }[] = [
+  { id: 'live', label: 'Live Now' },
+  { id: 'scheduled', label: 'Scheduled' },
 ]
 
 const CATEGORY_LABEL: Record<Category, string> = {
@@ -57,6 +57,8 @@ const LISTINGS: Listing[] = [
     venue: 'Convention venue',
     area: 'City centre',
     category: 'hourly',
+    segment: 'live',
+    distance: '1.2 km',
     when: 'Today',
     hours: '5:00 PM – 10:00 PM',
     pay: '₹200/hr',
@@ -70,8 +72,10 @@ const LISTINGS: Listing[] = [
     venue: 'Neighbourhood café',
     area: 'Old town',
     category: 'hourly',
-    when: 'Tomorrow',
-    hours: '7:00 AM – 12:00 PM',
+    segment: 'live',
+    distance: '2.8 km',
+    when: 'Now',
+    hours: 'Next 4 hours',
     pay: '₹170/hr',
     spots: 1,
     description: 'Cover the morning rush: prepare espresso drinks, keep the counter tidy, and serve customers.',
@@ -83,6 +87,8 @@ const LISTINGS: Listing[] = [
     venue: 'Electronics store',
     area: 'Tech park',
     category: 'daily',
+    segment: 'scheduled',
+    distance: '4.5 km',
     when: 'Sat',
     hours: '9:00 AM – 6:00 PM',
     pay: '₹1,400/day',
@@ -96,6 +102,8 @@ const LISTINGS: Listing[] = [
     venue: 'Shopping mall',
     area: 'Riverside',
     category: 'daily',
+    segment: 'scheduled',
+    distance: '3.1 km',
     when: 'Sun',
     hours: '11:00 AM – 8:00 PM',
     pay: '₹1,300/day',
@@ -109,6 +117,8 @@ const LISTINGS: Listing[] = [
     venue: 'Fulfilment centre',
     area: 'Industrial area',
     category: 'multi',
+    segment: 'scheduled',
+    distance: '7.9 km',
     when: 'Mon – Fri',
     hours: '6:00 AM – 2:00 PM',
     pay: '₹180/hr',
@@ -122,6 +132,8 @@ const LISTINGS: Listing[] = [
     venue: 'Boutique hotel',
     area: 'Lakeside',
     category: 'multi',
+    segment: 'scheduled',
+    distance: '5.4 km',
     when: '3 days',
     hours: '2:00 PM – 10:00 PM',
     pay: '₹190/hr',
@@ -132,26 +144,24 @@ const LISTINGS: Listing[] = [
 ]
 
 const SIDEBAR: { icon: LucideIcon; label: string; active?: boolean }[] = [
-  { icon: LayoutGrid, label: 'Browse', active: true },
+  { icon: House, label: 'Discover', active: true },
   { icon: CalendarDays, label: 'My shifts' },
   { icon: Wallet, label: 'Earnings' },
-  { icon: Bell, label: 'Alerts' },
+  { icon: UserRound, label: 'Profile' },
 ]
 
 export function WorkerPreview() {
-  const [filter, setFilter] = useState<Filter>('all')
+  const [segment, setSegment] = useState<Segment>('live')
   const [selectedId, setSelectedId] = useState<string>(LISTINGS[0].id)
   const { open } = useComingSoon()
 
-  const visible = useMemo(
-    () => (filter === 'all' ? LISTINGS : LISTINGS.filter((listing) => listing.category === filter)),
-    [filter],
-  )
+  const visible = useMemo(() => LISTINGS.filter((listing) => listing.segment === segment), [segment])
   const selected = visible.find((listing) => listing.id === selectedId) ?? visible[0]
+  const isLive = segment === 'live'
 
-  const applyFilter = (next: Filter) => {
-    setFilter(next)
-    const first = next === 'all' ? LISTINGS[0] : LISTINGS.find((listing) => listing.category === next)
+  const applySegment = (next: Segment) => {
+    setSegment(next)
+    const first = LISTINGS.find((listing) => listing.segment === next)
     if (first) setSelectedId(first.id)
   }
 
@@ -171,36 +181,46 @@ export function WorkerPreview() {
           ))}
         </ul>
         <div className={styles.sidebarCard}>
-          <p className={styles.sidebarCardTitle}>Your availability</p>
-          <div className={styles.availabilityGrid}>
-            {['M', 'T', 'W', 'T', 'F', 'S', 'S'].map((day, i) => (
-              <span key={i} className={[1, 2, 4, 5].includes(i) ? styles.dayOn : undefined}>
-                {day}
-              </span>
-            ))}
-          </div>
+          <p className={styles.sidebarCardTitle}>Availability</p>
+          <p className={styles.availabilityLive}>
+            <span className={styles.liveDot} />
+            LIVE
+          </p>
+          <p className={styles.sidebarCardHint}>Nearby businesses can send you requests</p>
         </div>
       </aside>
 
       <div className={styles.main}>
         <div className={styles.toolbar}>
+          <div className={styles.toolbarHeading}>
+            <p className={styles.toolbarTitle}>Hello, Priya 👋</p>
+            <p className={styles.toolbarSub}>
+              <MapPin size={12} strokeWidth={2} aria-hidden="true" /> Indiranagar, Bengaluru
+            </p>
+          </div>
+          <span className={styles.toolbarIcon} aria-hidden="true">
+            <Bell size={16} strokeWidth={1.75} />
+          </span>
+        </div>
+
+        <div className={styles.toolbar}>
           <div className={styles.search} aria-hidden="true">
             <Search size={16} strokeWidth={1.75} />
-            <span>Search roles or locations</span>
+            <span>Search shifts...</span>
           </div>
           <span className={styles.toolbarIcon} aria-hidden="true">
             <SlidersHorizontal size={16} strokeWidth={1.75} />
           </span>
         </div>
 
-        <div className={styles.filters} role="group" aria-label="Filter sample shifts by category">
-          {FILTERS.map(({ id, label }) => (
+        <div className={styles.filters} role="group" aria-label="Work schedule">
+          {SEGMENTS.map(({ id, label }) => (
             <button
               key={id}
               type="button"
-              className={`${styles.filter} ${filter === id ? styles.filterActive : ''}`}
-              aria-pressed={filter === id}
-              onClick={() => applyFilter(id)}
+              className={`${styles.filter} ${segment === id ? styles.filterActive : ''}`}
+              aria-pressed={segment === id}
+              onClick={() => applySegment(id)}
             >
               {label}
             </button>
@@ -208,7 +228,9 @@ export function WorkerPreview() {
         </div>
 
         <p className={styles.resultCount} aria-live="polite">
-          {visible.length} sample {visible.length === 1 ? 'shift' : 'shifts'}
+          {isLive
+            ? `${visible.length} live ${visible.length === 1 ? 'request' : 'requests'} in your categories`
+            : `${visible.length} scheduled ${visible.length === 1 ? 'shift' : 'shifts'} near you`}
         </p>
 
         <motion.ul layout className={styles.listings}>
@@ -237,11 +259,13 @@ export function WorkerPreview() {
                     <span className={styles.listingMeta}>
                       <span>
                         <MapPin size={12} strokeWidth={2} aria-hidden="true" />
-                        {listing.venue} · {listing.area}
+                        {listing.venue} · {listing.distance} away
                       </span>
                     </span>
                     <span className={styles.listingFoot}>
-                      <span className={styles.tag}>{CATEGORY_LABEL[listing.category]}</span>
+                      <span className={styles.tag}>
+                        {listing.segment === 'live' ? 'Live Now' : CATEGORY_LABEL[listing.category]}
+                      </span>
                       <span className={styles.listingTime}>
                         <Clock size={12} strokeWidth={2} aria-hidden="true" />
                         {listing.when} · {listing.hours}
@@ -267,7 +291,9 @@ export function WorkerPreview() {
               exit={{ opacity: 0, y: -8 }}
               transition={{ duration: 0.25, ease: easeOut }}
             >
-              <span className={styles.tag}>{CATEGORY_LABEL[selected.category]}</span>
+              <span className={styles.tag}>
+                {selected.segment === 'live' ? 'Live Now' : CATEGORY_LABEL[selected.category]}
+              </span>
               <h3 className={styles.detailTitle}>{selected.role}</h3>
               <p className={styles.detailVenue}>
                 {selected.venue} · {selected.area}
@@ -315,13 +341,13 @@ export function WorkerPreview() {
                 onClick={() =>
                   open({
                     eyebrow: 'Sample preview',
-                    title: 'Apply to real shifts in the app',
+                    title: isLive ? 'Accept real requests in the app' : 'Apply to real shifts in the app',
                     description: `This ${selected.role.toLowerCase()} listing is a sample. Open KaaamNow to see real shifts near you in your work categories and take one in a tap.`,
                     action: { label: 'Find work on KaaamNow', href: APP_LINKS.workerHome },
                   })
                 }
               >
-                Apply for this shift
+                {isLive ? 'Accept shift' : 'Apply for this shift'}
               </Button>
             </motion.div>
           )}
