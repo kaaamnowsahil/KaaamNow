@@ -1,4 +1,14 @@
-import { CalendarClock, Compass, Wallet, Zap, type LucideIcon } from 'lucide-react'
+import {
+  BellRing,
+  CalendarClock,
+  Compass,
+  RotateCcw,
+  ShieldCheck,
+  Tags,
+  Wallet,
+  Zap,
+  type LucideIcon,
+} from 'lucide-react'
 import { RevealGroup, RevealItem } from '../ui/Reveal'
 import { SectionHeader } from '../ui/SectionHeader'
 import card from '../ui/Card.module.css'
@@ -20,6 +30,26 @@ const BENEFITS: Benefit[] = [
     icon: Zap,
     title: 'Live Work, in minutes',
     text: 'Need help right now? Post a Live Work request, a nearby worker accepts, and you track them on the map until they arrive.',
+  },
+  {
+    icon: RotateCcw,
+    title: 'No worker? Search again',
+    text: 'If nobody accepts in time, raise the pay and search again, or take a full refund. If the last search finds no one, the refund is automatic.',
+  },
+  {
+    icon: Tags,
+    title: 'Matched by skill',
+    text: 'Workers only see jobs in the work categories they picked, so the person who shows up knows the work.',
+  },
+  {
+    icon: BellRing,
+    title: 'Instant alerts',
+    text: 'Nearby workers get a notification the moment a matching job is posted. Businesses hear the moment someone accepts.',
+  },
+  {
+    icon: ShieldCheck,
+    title: 'Reliable by design',
+    text: 'Arrival and completion codes confirm every job. Repeated no-shows or walk-offs put a worker’s account on hold.',
   },
   {
     icon: Wallet,

@@ -1,10 +1,11 @@
 import { ArrowUp } from 'lucide-react'
 import { useComingSoon } from '../context/comingSoonContext'
+import { APP_LINKS } from '../data/appLinks'
 import { Logo } from './Logo'
 import styles from './Footer.module.css'
 
 type FooterItem =
-  | { label: string; href: `#${string}` | '/account-deletion' }
+  | { label: string; href: `#${string}` | '/account-deletion' | `https://${string}` }
   | { label: string; modal: string }
 
 const COLUMNS: { title: string; items: FooterItem[] }[] = [
@@ -24,6 +25,7 @@ const COLUMNS: { title: string; items: FooterItem[] }[] = [
       { label: 'For businesses', href: '#businesses' },
       { label: 'For workers', href: '#workers' },
       { label: 'Join KaaamNow', href: '#get-started' },
+      { label: 'FAQ', href: APP_LINKS.faq },
     ],
   },
   {
@@ -31,7 +33,7 @@ const COLUMNS: { title: string; items: FooterItem[] }[] = [
     items: [
       { label: 'Founders', href: '#team' },
       { label: 'Privacy', modal: 'Our privacy policy is coming soon' },
-      { label: 'Terms', modal: 'Our terms of service are coming soon' },
+      { label: 'Terms', href: APP_LINKS.terms },
       { label: 'Account deletion', href: '/account-deletion' },
     ],
   },

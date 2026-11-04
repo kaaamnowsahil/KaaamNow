@@ -42,7 +42,7 @@ export function Team() {
               Built by people who <span className="gradient-text">believe in work.</span>
             </>
           }
-          description="KaaamNow is being built by a small team that wants flexible work to feel fair, fast, and dependable for everyone involved."
+          description="KaaamNow is built by a small team that wants flexible work to feel fair, fast, and dependable for everyone involved."
         />
 
         <Reveal>

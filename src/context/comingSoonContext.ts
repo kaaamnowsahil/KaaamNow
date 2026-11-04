@@ -3,6 +3,8 @@ import { createContext, useContext } from 'react'
 export interface ComingSoonOptions {
   title: string
   description?: string
+  eyebrow?: string
+  action?: { label: string; href: string }
 }
 
 export interface ComingSoonContextValue {
