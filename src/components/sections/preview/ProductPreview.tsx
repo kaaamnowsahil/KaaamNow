@@ -1,5 +1,5 @@
 import { AnimatePresence, motion } from 'framer-motion'
-import { Building2, UserRound, type LucideIcon } from 'lucide-react'
+import { Building2, Moon, Sun, UserRound, type LucideIcon } from 'lucide-react'
 import { useRef, useState, type KeyboardEvent } from 'react'
 import { easeOut } from '../../../lib/motion'
 import { Reveal } from '../../ui/Reveal'
@@ -9,6 +9,7 @@ import { WorkerPreview } from './WorkerPreview'
 import styles from './ProductPreview.module.css'
 
 type View = 'worker' | 'business'
+type Theme = 'dark' | 'light'
 
 const VIEWS: { id: View; label: string; icon: LucideIcon; address: string }[] = [
   { id: 'worker', label: 'Worker view', icon: UserRound, address: 'kaaamnow.in/worker/home' },
@@ -17,6 +18,8 @@ const VIEWS: { id: View; label: string; icon: LucideIcon; address: string }[] = 
 
 export function ProductPreview() {
   const [view, setView] = useState<View>('worker')
+  const [theme, setTheme] = useState<Theme>('dark')
+  const nextTheme: Theme = theme === 'dark' ? 'light' : 'dark'
   const tabRefs = useRef<Record<View, HTMLButtonElement | null>>({ worker: null, business: null })
   const current = VIEWS.find((v) => v.id === view) ?? VIEWS[0]
 
@@ -92,15 +95,33 @@ export function ProductPreview() {
             role="tabpanel"
             aria-labelledby={`preview-tab-${view}`}
             className={styles.window}
+            data-app-theme={theme}
           >
-            <div className={styles.chrome} aria-hidden="true">
-              <span className={styles.dots}>
+            <div className={styles.chrome}>
+              <span className={styles.dots} aria-hidden="true">
                 <span />
                 <span />
                 <span />
               </span>
-              <span className={styles.address}>{current.address}</span>
-              <span className={styles.chromeSpacer} />
+              <span className={styles.address} aria-hidden="true">
+                {current.address}
+              </span>
+              <span className={styles.chromeSpacer}>
+                <button
+                  type="button"
+                  className={styles.themeToggle}
+                  onClick={() => setTheme(nextTheme)}
+                  aria-label={`Show ${nextTheme} theme`}
+                  title={`Show ${nextTheme} theme`}
+                >
+                  {theme === 'dark' ? (
+                    <Sun size={14} strokeWidth={1.75} aria-hidden="true" />
+                  ) : (
+                    <Moon size={14} strokeWidth={1.75} aria-hidden="true" />
+                  )}
+                  {theme === 'dark' ? 'Light' : 'Dark'}
+                </button>
+              </span>
             </div>
 
             <AnimatePresence mode="wait" initial={false}>
