@@ -93,7 +93,7 @@ export function ComingSoonModal({ options, onClose }: ComingSoonModalProps) {
               <Sparkles size={24} strokeWidth={1.75} />
             </div>
 
-            <p className={styles.eyebrow}>Coming soon</p>
+            <p className={styles.eyebrow}>{options.eyebrow ?? 'Coming soon'}</p>
             <h2 id={titleId} className={styles.title}>
               {options.title}
             </h2>
@@ -103,8 +103,13 @@ export function ComingSoonModal({ options, onClose }: ComingSoonModalProps) {
             </p>
 
             <div className={styles.actions}>
-              <Button onClick={onClose} fullWidth>
-                Got it
+              {options.action && (
+                <Button href={options.action.href} fullWidth>
+                  {options.action.label}
+                </Button>
+              )}
+              <Button variant={options.action ? 'secondary' : 'primary'} onClick={onClose} fullWidth>
+                {options.action ? 'Keep exploring' : 'Got it'}
               </Button>
             </div>
           </motion.div>

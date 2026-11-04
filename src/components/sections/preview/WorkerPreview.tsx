@@ -15,6 +15,7 @@ import {
 } from 'lucide-react'
 import { useMemo, useState } from 'react'
 import { useComingSoon } from '../../../context/comingSoonContext'
+import { APP_LINKS } from '../../../data/appLinks'
 import { easeOut } from '../../../lib/motion'
 import { Button } from '../../ui/Button'
 import styles from './ProductPreview.module.css'
@@ -313,8 +314,10 @@ export function WorkerPreview() {
                 fullWidth
                 onClick={() =>
                   open({
-                    title: 'Applying opens at launch',
-                    description: `This ${selected.role.toLowerCase()} listing is a sample. When KaaamNow launches, you’ll be able to apply to real shifts like this in a single tap.`,
+                    eyebrow: 'Sample preview',
+                    title: 'Apply to real shifts in the app',
+                    description: `This ${selected.role.toLowerCase()} listing is a sample. Open KaaamNow to see real shifts near you in your work categories and take one in a tap.`,
+                    action: { label: 'Find work on KaaamNow', href: APP_LINKS.workerHome },
                   })
                 }
               >

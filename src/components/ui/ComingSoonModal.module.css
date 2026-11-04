@@ -85,4 +85,6 @@
 
 .actions {
   margin-top: 28px;
+  display: grid;
+  gap: 10px;
 }

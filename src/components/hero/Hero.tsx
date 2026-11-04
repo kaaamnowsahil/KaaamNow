@@ -1,5 +1,5 @@
 import { motion, useReducedMotion } from 'framer-motion'
-import { ArrowRight, BadgeCheck, Briefcase, Sparkles, Wallet, Zap } from 'lucide-react'
+import { ArrowRight, BadgeCheck, BellRing, Briefcase, Sparkles, Wallet, Zap } from 'lucide-react'
 import { Fragment } from 'react'
 import { easeOut, fadeUp, stagger } from '../../lib/motion'
 import { Button } from '../ui/Button'
@@ -15,6 +15,7 @@ const HIGHLIGHTS = [
   { icon: Zap, label: 'Live Work: a worker in minutes' },
   { icon: Briefcase, label: 'Hourly or fixed-price task work' },
   { icon: Wallet, label: 'Pay shown upfront' },
+  { icon: BellRing, label: 'Instant job alerts' },
   { icon: BadgeCheck, label: 'No long-term commitment' },
 ]
 

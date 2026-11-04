@@ -1,5 +1,6 @@
 import { motion, useReducedMotion } from 'framer-motion'
 import { ArrowRight } from 'lucide-react'
+import { APP_LINKS } from '../../data/appLinks'
 import { Button } from '../ui/Button'
 import { Reveal } from '../ui/Reveal'
 import styles from './FinalCta.module.css'
@@ -21,26 +22,26 @@ export function FinalCta() {
             <div className={styles.grid} aria-hidden="true" />
 
             <div className={styles.content}>
-              <p className={styles.eyebrow}>Launching soon</p>
+              <p className={styles.eyebrow}>Live now</p>
               <h2 id="cta-title" className={styles.title}>
                 Your next shift <span className="gradient-text">starts here.</span>
               </h2>
               <p className={styles.text}>
-                Whether you need an extra pair of hands this weekend or you’re looking for work that
-                fits around your life, KaaamNow is being built for you.
+                Whether you need an extra pair of hands in the next hour or you’re looking for work that
+                fits around your life, KaaamNow is ready. Sign up in a minute with your phone number.
               </p>
               <div className={styles.actions}>
                 <Button
                   size="lg"
                   icon={<ArrowRight size={18} strokeWidth={2} />}
-                  href="https://www.kaaamnow.in/business/home"
+                  href={APP_LINKS.businessHome}
                 >
                   Find Workers
                 </Button>
                 <Button
                   size="lg"
                   variant="secondary"
-                  href="https://www.kaaamnow.in/worker/home"
+                  href={APP_LINKS.workerHome}
                 >
                   Find Work
                 </Button>

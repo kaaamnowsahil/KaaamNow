@@ -1,4 +1,5 @@
 import { ArrowRight, Building2, Check, UserRound, type LucideIcon } from 'lucide-react'
+import { APP_LINKS } from '../../data/appLinks'
 import { Button } from '../ui/Button'
 import { RevealGroup, RevealItem } from '../ui/Reveal'
 import { SectionHeader } from '../ui/SectionHeader'
@@ -25,12 +26,12 @@ const AUDIENCES: AudienceCard[] = [
     text: 'Cover busy weekends, last-minute absences, seasonal peaks, and one-off events with people who are ready to work.',
     points: [
       'Post hourly, multi-day, or fixed-price task openings',
-      'See who’s available before you book',
-      'Set your own rates, shown upfront to workers',
-      'Manage every shift from a single dashboard',
+      'Live Work: nearby workers in that category are alerted instantly',
+      'Get notified the moment a worker accepts or a shift is full',
+      'Arrival and completion codes confirm the work was done',
     ],
     cta: 'Post your first shift',
-    href: 'https://www.kaaamnow.in/business/home',
+    href: APP_LINKS.businessHome,
     featured: true,
   },
   {
@@ -40,13 +41,13 @@ const AUDIENCES: AudienceCard[] = [
     title: 'Pick up work on your terms',
     text: 'Find shifts that match your skills and schedule — whether you want a few extra hours or a full week of work.',
     points: [
-      'Browse shifts near you by category and time',
-      'Know the pay rate before you apply',
-      'Choose only the shifts that fit your life',
-      'Build a profile that travels with you',
+      'See only jobs in the work categories you choose',
+      'Get alerts for nearby shifts and Live Work requests',
+      'Know the pay rate before you take a job',
+      'Show up reliably and keep getting more shifts',
     ],
     cta: 'Join as a worker',
-    href: 'https://www.kaaamnow.in/worker/home',
+    href: APP_LINKS.workerHome,
   },
 ]
 

@@ -38,7 +38,7 @@ const STEPS: Record<Audience, Step[]> = {
     {
       icon: ClipboardList,
       title: 'Post a shift',
-      text: 'Describe the role, location, and timing, then pay by the hour or set one fixed price for the whole task.',
+      text: 'Describe the role, location, and timing, then pay by the hour or set one fixed price. Nearby workers in that category get an alert.',
     },
     {
       icon: Users,
@@ -48,19 +48,19 @@ const STEPS: Record<Audience, Step[]> = {
     {
       icon: BadgeCheck,
       title: 'Confirm and get to work',
-      text: 'Lock in your team, track who’s arriving, and share the completion code when the work is done.',
+      text: 'Lock in your team, get notified as workers confirm, track who’s arriving, and share the completion code when the work is done.',
     },
   ],
   live: [
     {
       icon: Zap,
       title: 'Post a live request',
-      text: 'Set the role and place, then choose hours or one fixed task price. Pay upfront and nearby workers get your request instantly.',
+      text: 'Set the role and place, then choose hours or one fixed task price. Pay upfront and nearby workers in that category are alerted instantly.',
     },
     {
       icon: MapPinned,
       title: 'Track them on the map',
-      text: 'A worker accepts and heads over. See where they are and when they’ll reach, live.',
+      text: 'You’re notified the moment a worker accepts, then see them on the map, live. No one yet? Raise the pay and search again, or take a full refund.',
     },
     {
       icon: KeyRound,
@@ -72,12 +72,12 @@ const STEPS: Record<Audience, Step[]> = {
     {
       icon: UserRoundCheck,
       title: 'Create your profile',
-      text: 'Add your skills, preferred roles, and the days and hours you’re available to work.',
+      text: 'Add your skills, pick your work categories, and set the days and hours you’re available to work.',
     },
     {
       icon: Search,
       title: 'Browse nearby shifts',
-      text: 'Filter openings by category, distance, timing, and pay — then apply in a tap.',
+      text: 'Get alerts for nearby jobs in your categories, filter by distance, timing, and pay, then take one in a tap.',
     },
     {
       icon: Wallet,

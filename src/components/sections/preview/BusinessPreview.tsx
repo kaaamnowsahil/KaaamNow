@@ -14,6 +14,7 @@ import {
 } from 'lucide-react'
 import { useMemo, useState } from 'react'
 import { useComingSoon } from '../../../context/comingSoonContext'
+import { APP_LINKS } from '../../../data/appLinks'
 import { easeOut } from '../../../lib/motion'
 import { Button } from '../../ui/Button'
 import styles from './ProductPreview.module.css'
@@ -138,7 +139,13 @@ export function BusinessPreview() {
     if (first) setSelectedId(first.id)
   }
 
-  const comingSoon = (title: string, description: string) => open({ title, description })
+  const comingSoon = (title: string, description: string) =>
+    open({
+      eyebrow: 'Sample preview',
+      title,
+      description,
+      action: { label: 'Find workers on KaaamNow', href: APP_LINKS.businessHome },
+    })
 
   return (
     <div className={styles.app}>
@@ -178,8 +185,8 @@ export function BusinessPreview() {
             className={styles.postButton}
             onClick={() =>
               comingSoon(
-                'Posting shifts opens at launch',
-                'When KaaamNow launches, you’ll be able to post a shift in minutes — set the role, timing, and pay, and get matched with available workers.',
+                'Post a real shift in the app',
+                'This dashboard is a sample. On KaaamNow you post a shift in minutes — set the role, timing, and pay — and nearby workers in that category get an alert straight away.',
               )
             }
           >
@@ -311,8 +318,8 @@ export function BusinessPreview() {
                         className={styles.inviteButton}
                         onClick={() =>
                           comingSoon(
-                            'Booking workers opens at launch',
-                            `${applicant.name} is a sample profile. When KaaamNow launches, you’ll be able to invite and confirm available workers in a tap.`,
+                            'Book real workers in the app',
+                            `${applicant.name} is a sample profile. On KaaamNow you see who applied and confirm workers in a tap.`,
                           )
                         }
                       >
@@ -327,8 +334,8 @@ export function BusinessPreview() {
                 fullWidth
                 onClick={() =>
                   comingSoon(
-                    'Managing shifts opens at launch',
-                    'When KaaamNow launches, you’ll be able to confirm your team, track arrivals, and handle payments for every shift from one dashboard.',
+                    'Manage real shifts in the app',
+                    'This dashboard is a sample. On KaaamNow you confirm your team, track arrivals with arrival codes, and handle payments for every shift from one place.',
                   )
                 }
               >
