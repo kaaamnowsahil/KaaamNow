@@ -1,6 +1,7 @@
-/* Mirrors the KaaamNow web app's light theme so the preview looks like the real product. */
+/* Mirrors the KaaamNow web app's light and dark themes so the preview looks like the real product. */
 .app {
   --app-bg: #ffffff;
+  --app-card: #ffffff;
   --app-surface: #f8fafc;
   --app-border: #e2e8f0;
   --app-text: #0b1020;
@@ -16,6 +17,20 @@
   color: var(--app-text);
   font-size: 13px;
   text-align: left;
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease;
+}
+
+:global([data-app-theme='dark']) .app {
+  --app-bg: #0b1020;
+  --app-card: #171f35;
+  --app-surface: #171f35;
+  --app-border: #29334b;
+  --app-text: #f8fafc;
+  --app-muted: #a7b0c4;
+  --app-subtle: #7c879f;
+  --app-primary-soft: #261f48;
 }
 
 /* Sidebar */
@@ -149,7 +164,7 @@
   padding: 12px 14px;
   border: 1px solid var(--app-border);
   border-radius: 14px;
-  background: var(--app-bg);
+  background: var(--app-card);
 }
 
 .availability {
@@ -309,7 +324,7 @@
   padding: 12px 14px;
   border: 1px solid var(--app-border);
   border-radius: 14px;
-  background: var(--app-bg);
+  background: var(--app-card);
   color: var(--app-muted);
   font-size: 11px;
   text-align: left;
