@@ -126,7 +126,7 @@ export function Footer() {
       </div>
 
       <div className={`container ${styles.bottom}`}>
-        <p>© {year} KaaamNow. All rights reserved.</p>
+        <p>© {year} KAAAMNOW TECHNOLOGY LLP. All rights reserved.</p>
         <a href="#top" className={styles.backToTop}>
           Back to top
           <ArrowUp size={16} strokeWidth={1.75} aria-hidden="true" />
