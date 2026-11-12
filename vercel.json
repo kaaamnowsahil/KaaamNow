@@ -2,7 +2,8 @@
   "trailingSlash": false,
   "rewrites": [
     { "source": "/admin", "destination": "https://kaaamnow-admin.vercel.app/admin/" },
-    { "source": "/admin/:path*", "destination": "https://kaaamnow-admin.vercel.app/admin/:path*" }
+    { "source": "/admin/:path*", "destination": "https://kaaamnow-admin.vercel.app/admin/:path*" },
+    { "source": "/(.*)", "destination": "/index.html" }
   ],
   "headers": [
     {

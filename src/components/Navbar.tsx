@@ -9,7 +9,9 @@ import { Logo } from './Logo'
 import { Button } from './ui/Button'
 import styles from './Navbar.module.css'
 
-const SECTION_IDS = NAV_LINKS.map((link) => link.href.slice(1))
+const SECTION_IDS = NAV_LINKS.flatMap((link) =>
+  link.href.startsWith('#') ? [link.href.slice(1)] : [],
+)
 const MOBILE_MENU_ID = 'mobile-navigation'
 
 export function Navbar() {

@@ -8,14 +8,30 @@ import { BusinessCategories } from './components/sections/BusinessCategories'
 import { Categories } from './components/sections/Categories'
 import { FinalCta } from './components/sections/FinalCta'
 import { HowItWorks } from './components/sections/HowItWorks'
-import { Team } from './components/sections/Team'
 import { ProductPreview } from './components/sections/preview/ProductPreview'
 import { ComingSoonProvider } from './context/ComingSoonProvider'
 import { AccountDeletionPortal } from './pages/AccountDeletionPortal'
+import { PrivacyPolicy } from './pages/PrivacyPolicy'
+import { TeamPage } from './pages/TeamPage'
+import { TermsPage } from './pages/TermsPage'
 
 export default function App() {
-  if (window.location.pathname.replace(/\/+$/, '') === '/account-deletion') {
+  const path = window.location.pathname.replace(/\/+$/, '') || '/'
+  if ((path === '/' || path === '/index.html') && window.location.hash === '#team') {
+    window.history.replaceState(null, '', '/team')
+    return <TeamPage />
+  }
+  if (path === '/account-deletion') {
     return <AccountDeletionPortal />
+  }
+  if (path === '/privacy') {
+    return <PrivacyPolicy />
+  }
+  if (path === '/team') {
+    return <TeamPage />
+  }
+  if (path === '/terms' || path === '/terms/workers' || path === '/terms/businesses') {
+    return <TermsPage path={path} />
   }
 
   return (
@@ -33,7 +49,6 @@ export default function App() {
           <Categories />
           <BusinessCategories />
           <ProductPreview />
-          <Team />
           <FinalCta />
         </main>
         <Footer />

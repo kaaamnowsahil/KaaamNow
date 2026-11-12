@@ -1,12 +1,12 @@
 import { ArrowUp } from 'lucide-react'
-import { useComingSoon } from '../context/comingSoonContext'
 import { APP_LINKS } from '../data/appLinks'
 import { Logo } from './Logo'
 import styles from './Footer.module.css'
 
-type FooterItem =
-  | { label: string; href: `#${string}` | '/account-deletion' | `https://${string}` }
-  | { label: string; modal: string }
+type FooterItem = {
+  label: string
+  href: `#${string}` | '/account-deletion' | '/privacy' | '/team' | '/terms' | `https://${string}`
+}
 
 const COLUMNS: { title: string; items: FooterItem[] }[] = [
   {
@@ -31,16 +31,15 @@ const COLUMNS: { title: string; items: FooterItem[] }[] = [
   {
     title: 'Company',
     items: [
-      { label: 'Founders', href: '#team' },
-      { label: 'Privacy', modal: 'Our privacy policy is coming soon' },
-      { label: 'Terms', href: APP_LINKS.terms },
+      { label: 'Founders', href: '/team' },
+      { label: 'Privacy', href: '/privacy' },
+      { label: 'Terms', href: '/terms' },
       { label: 'Account deletion', href: '/account-deletion' },
     ],
   },
 ]
 
 export function Footer() {
-  const { open } = useComingSoon()
   const year = new Date().getFullYear()
 
   return (
@@ -61,19 +60,9 @@ export function Footer() {
               <ul className={styles.list}>
                 {column.items.map((item) => (
                   <li key={item.label}>
-                    {'href' in item ? (
-                      <a href={item.href} className={styles.link}>
-                        {item.label}
-                      </a>
-                    ) : (
-                      <button
-                        type="button"
-                        className={styles.link}
-                        onClick={() => open({ title: item.modal })}
-                      >
-                        {item.label}
-                      </button>
-                    )}
+                    <a href={item.href} className={styles.link}>
+                      {item.label}
+                    </a>
                   </li>
                 ))}
               </ul>

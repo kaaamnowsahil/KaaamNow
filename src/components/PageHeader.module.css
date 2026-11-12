@@ -1,0 +1,40 @@
+.header {
+  min-height: var(--nav-height);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.back {
+  display: grid;
+  width: 36px;
+  height: 36px;
+  flex: 0 0 36px;
+  place-items: center;
+  border: 1px solid var(--color-border);
+  border-radius: 50%;
+  color: var(--color-text);
+  transition: background-color var(--duration-fast) var(--ease-out);
+}
+
+.back:hover {
+  background: var(--color-text-a08);
+}
+
+.brand {
+  color: var(--color-text);
+  font-size: var(--text-xl);
+  font-weight: 800;
+  letter-spacing: -0.06em;
+}
+
+.brand span {
+  color: var(--color-primary-soft);
+}
+
+@media (max-width: 600px) {
+  .header {
+    min-height: 64px;
+  }
+}

@@ -1,4 +1,5 @@
 import { useEffect, useState, type FormEvent } from 'react'
+import { PageHeader } from '../components/PageHeader'
 import styles from './AccountDeletionPortal.module.css'
 
 type DeletionStatus = 'pending' | 'approved' | 'on_hold' | 'completed'
@@ -267,15 +268,9 @@ export function AccountDeletionPortal() {
 
   return (
     <div className={styles.page}>
-      <header className={`container ${styles.header}`}>
-        <a href="/" className={styles.brand} aria-label="KaaamNow home">
-          Kaaam<span>Now</span>
-        </a>
-        <a href="/" className={styles.backLink}>Back to KaaamNow</a>
-      </header>
+      <PageHeader />
 
       <main className={`container ${styles.main}`}>
-        <a href="/" className={styles.backMobile}>← Back to KaaamNow</a>
         <div className={styles.intro}>
           <p className={styles.eyebrow}>Account support</p>
           <h1>Account deletion</h1>

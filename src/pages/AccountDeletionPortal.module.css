@@ -5,48 +5,13 @@
     var(--color-bg);
 }
 
-.header {
-  min-height: var(--nav-height);
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  border-bottom: 1px solid var(--color-border);
-}
-
-.brand {
-  color: var(--color-text);
-  font-size: var(--text-xl);
-  font-weight: 800;
-  letter-spacing: -0.06em;
-}
-
-.brand span {
-  color: var(--color-primary-soft);
-}
-
-.backLink,
-.backMobile {
-  color: var(--color-text-muted);
-  font-size: var(--text-sm);
-  transition: color var(--duration-fast) var(--ease-out);
-}
-
-.backLink:hover,
-.backMobile:hover {
-  color: var(--color-primary-soft);
-}
-
-.backMobile {
-  display: none;
-}
-
 .main {
-  max-width: 800px;
-  padding-block: clamp(3rem, 8vw, 6rem);
+  max-width: 760px;
+  padding-block: 1.25rem 3rem;
 }
 
 .intro {
-  max-width: 680px;
+  max-width: none;
 }
 
 .eyebrow {
@@ -58,14 +23,13 @@
 }
 
 .intro h1 {
-  margin-top: 12px;
-  font-size: clamp(2.4rem, 6vw, 4rem);
-  line-height: 1.05;
+  margin-top: 8px;
+  font-size: clamp(2rem, 4vw, 2.75rem);
+  line-height: 1.1;
 }
 
 .lede {
-  max-width: 620px;
-  margin-top: 20px;
+  margin-top: 12px;
   color: var(--color-text-muted);
   font-size: var(--text-lg);
 }
@@ -376,21 +340,8 @@
 }
 
 @media (max-width: 600px) {
-  .header {
-    min-height: 64px;
-  }
-
-  .backLink {
-    display: none;
-  }
-
-  .backMobile {
-    display: inline-block;
-    margin-bottom: 28px;
-  }
-
   .main {
-    padding-block: 28px 56px;
+    padding-block: 1rem 2.5rem;
   }
 
   .statusHeader {
