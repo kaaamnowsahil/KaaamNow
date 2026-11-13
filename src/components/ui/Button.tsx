@@ -53,7 +53,13 @@ export function Button(props: ButtonProps) {
 
   if (props.href !== undefined) {
     return (
-      <motion.a href={props.href} onClick={props.onClick} className={classes} {...buttonMotion}>
+      <motion.a
+        href={props.href}
+        onClick={props.onClick}
+        className={classes}
+        rel={props.href.startsWith('http') ? 'nofollow' : undefined}
+        {...buttonMotion}
+      >
         {content}
       </motion.a>
     )

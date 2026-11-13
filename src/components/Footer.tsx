@@ -61,7 +61,11 @@ export function Footer() {
               <ul className={styles.list}>
                 {column.items.map((item) => (
                   <li key={item.label}>
-                    <a href={item.href} className={styles.link}>
+                    <a
+                      href={item.href}
+                      className={styles.link}
+                      rel={item.href.startsWith('http') ? 'nofollow' : undefined}
+                    >
                       {item.label}
                     </a>
                   </li>
