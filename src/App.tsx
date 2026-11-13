@@ -1,3 +1,4 @@
+import { useEffect } from 'react'
 import { MotionConfig } from 'framer-motion'
 import { Footer } from './components/Footer'
 import { Navbar } from './components/Navbar'
@@ -14,13 +15,22 @@ import { AccountDeletionPortal } from './pages/AccountDeletionPortal'
 import { PrivacyPolicy } from './pages/PrivacyPolicy'
 import { TeamPage } from './pages/TeamPage'
 import { TermsPage } from './pages/TermsPage'
+import { applyPageMeta, metaForPath } from './seo/pageMeta'
 
 export default function App() {
-  const path = window.location.pathname.replace(/\/+$/, '') || '/'
-  if ((path === '/' || path === '/index.html') && window.location.hash === '#team') {
-    window.history.replaceState(null, '', '/team')
-    return <TeamPage />
-  }
+  const raw = window.location.pathname.replace(/\/+$/, '') || '/'
+  const path =
+    (raw === '/' || raw === '/index.html') && window.location.hash === '#team'
+      ? '/team'
+      : raw === '/index.html'
+        ? '/'
+        : raw
+  useEffect(() => {
+    if (path === '/team' && window.location.pathname !== '/team') {
+      window.history.replaceState(null, '', '/team')
+    }
+    applyPageMeta(metaForPath(path))
+  }, [path])
   if (path === '/account-deletion') {
     return <AccountDeletionPortal />
   }

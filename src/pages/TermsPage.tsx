@@ -1,4 +1,4 @@
-import { useEffect, type ReactNode } from 'react'
+import type { ReactNode } from 'react'
 import { PageHeader } from '../components/PageHeader'
 import { BUSINESS_RULES, COMMON_RULES, WORKER_RULES, type TermsSection } from '../data/termsRules'
 import styles from './PrivacyPolicy.module.css'
@@ -79,14 +79,6 @@ function RuleSections({ sections }: { sections: TermsSection[] }) {
 
 export function TermsPage({ path }: { path: TermsPath }) {
   const page = PAGES[path]
-
-  useEffect(() => {
-    const previous = document.title
-    document.title = `${page.title} — KaaamNow`
-    return () => {
-      document.title = previous
-    }
-  }, [page.title])
 
   return (
     <div className={styles.page}>

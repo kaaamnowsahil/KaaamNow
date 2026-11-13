@@ -1,4 +1,4 @@
-import { useEffect, type ReactNode } from 'react'
+import type { ReactNode } from 'react'
 import { PageHeader } from '../components/PageHeader'
 import styles from './PrivacyPolicy.module.css'
 
@@ -206,14 +206,6 @@ const SECTIONS: { title: string; body: ReactNode }[] = [
 ]
 
 export function PrivacyPolicy() {
-  useEffect(() => {
-    const previous = document.title
-    document.title = 'Privacy Policy — KaaamNow'
-    return () => {
-      document.title = previous
-    }
-  }, [])
-
   return (
     <div className={styles.page}>
       <PageHeader />
