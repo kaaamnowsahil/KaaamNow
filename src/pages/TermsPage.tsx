@@ -1,5 +1,6 @@
 import type { ReactNode } from 'react'
 import { PageHeader } from '../components/PageHeader'
+import { COMPANY_ADDRESS, COMPANY_MAPS_URL } from '../data/company'
 import { BUSINESS_RULES, COMMON_RULES, WORKER_RULES, type TermsSection } from '../data/termsRules'
 import styles from './PrivacyPolicy.module.css'
 
@@ -30,7 +31,23 @@ function RuleBody({ body }: { body: string }) {
 
   const flushParagraph = () => {
     if (paragraph.length === 0) return
-    blocks.push(<p key={`p-${blocks.length}`}>{paragraph.join(' ')}</p>)
+    const text = paragraph.join(' ')
+    const addressAt = text.indexOf(COMPANY_ADDRESS)
+    blocks.push(
+      <p key={`p-${blocks.length}`}>
+        {addressAt === -1 ? (
+          text
+        ) : (
+          <>
+            {text.slice(0, addressAt)}
+            <a href={COMPANY_MAPS_URL} target="_blank" rel="noopener noreferrer">
+              {COMPANY_ADDRESS}
+            </a>
+            {text.slice(addressAt + COMPANY_ADDRESS.length)}
+          </>
+        )}
+      </p>,
+    )
     paragraph = []
   }
 

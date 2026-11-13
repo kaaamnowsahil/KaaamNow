@@ -1,5 +1,6 @@
 import { ArrowUp } from 'lucide-react'
 import { APP_LINKS } from '../data/appLinks'
+import { COMPANY_ADDRESS, COMPANY_MAPS_URL } from '../data/company'
 import { Logo } from './Logo'
 import styles from './Footer.module.css'
 
@@ -108,7 +109,11 @@ export function Footer() {
             </div>
             <div className={styles.location}>
               <h3 className={styles.contactLabel}>Company location</h3>
-              <address className={styles.address}>148, 1st Main, 1st Cross, Malleshpallya, 1st floor, Bengaluru, Karnataka 560075, India</address>
+              <address className={styles.address}>
+                <a className={styles.link} href={COMPANY_MAPS_URL} target="_blank" rel="noopener noreferrer">
+                  {COMPANY_ADDRESS}
+                </a>
+              </address>
             </div>
           </div>
         </section>

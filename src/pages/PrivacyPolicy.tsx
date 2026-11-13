@@ -1,6 +1,15 @@
 import type { ReactNode } from 'react'
 import { PageHeader } from '../components/PageHeader'
+import { COMPANY_ADDRESS, COMPANY_MAPS_URL } from '../data/company'
 import styles from './PrivacyPolicy.module.css'
+
+function CompanyAddressLink() {
+  return (
+    <a href={COMPANY_MAPS_URL} target="_blank" rel="noopener noreferrer">
+      {COMPANY_ADDRESS}
+    </a>
+  )
+}
 
 const SECTIONS: { title: string; body: ReactNode }[] = [
   {
@@ -8,9 +17,8 @@ const SECTIONS: { title: string; body: ReactNode }[] = [
     body: (
       <>
         <p>
-          KaaamNow (kaaamnow.in and the KaaamNow apps) is operated by KAAAMNOW TECHNOLOGY LLP,
-          148, 1st Main, 1st Cross, Malleshpallya, 1st floor, Bengaluru, Karnataka 560075, India
-          (“KaaamNow”, “we”, “us”).
+          KaaamNow (kaaamnow.in and the KaaamNow apps) is operated by KAAAMNOW TECHNOLOGY LLP,{' '}
+          <CompanyAddressLink /> (“KaaamNow”, “we”, “us”).
         </p>
         <p>
           KaaamNow is a marketplace. It connects businesses and households who need work done with
@@ -192,8 +200,7 @@ const SECTIONS: { title: string; body: ReactNode }[] = [
           Contact support in the app.
         </p>
         <p>
-          KAAAMNOW TECHNOLOGY LLP, 148, 1st Main, 1st Cross, Malleshpallya, 1st floor, Bengaluru,
-          Karnataka 560075, India. Phone:{' '}
+          KAAAMNOW TECHNOLOGY LLP, <CompanyAddressLink />. Phone:{' '}
           <a href="tel:+918618796332">+91 86187 96332</a>. We acknowledge complaints within 24
           hours and aim to resolve them within 15 days.
         </p>
