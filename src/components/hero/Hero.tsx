@@ -3,6 +3,7 @@ import { ArrowRight, BadgeCheck, BellRing, Briefcase, Sparkles, Wallet, Zap } fr
 import { Fragment } from 'react'
 import { easeOut, fadeUp, stagger } from '../../lib/motion'
 import { Button } from '../ui/Button'
+import { ActivePresence } from './ActivePresence'
 import { HeroVisual } from './HeroVisual'
 import styles from './Hero.module.css'
 
@@ -75,6 +76,10 @@ export function Hero() {
             wage jobs, and flexible assignments. Need someone right now? Post a Live Work request and a nearby worker
             is on the way in minutes. Workers pick the hours that fit their life.
           </motion.p>
+
+          <motion.div variants={fadeUp}>
+            <ActivePresence />
+          </motion.div>
 
           <motion.div className={styles.ctas} variants={fadeUp}>
             <Button size="lg" href="#businesses" icon={<ArrowRight size={18} strokeWidth={2} />}>

@@ -1,6 +1,7 @@
 import { ArrowUp } from 'lucide-react'
 import { APP_LINKS } from '../data/appLinks'
 import { COMPANY_ADDRESS, COMPANY_MAPS_URL } from '../data/company'
+import { CONTACT_EMAILS } from '../data/contacts'
 import { Logo } from './Logo'
 import styles from './Footer.module.css'
 
@@ -78,8 +79,13 @@ export function Footer() {
           <h2 id="footer-contact-title" className={styles.columnTitle}>Contact</h2>
           <div className={styles.contactGrid}>
             <div><h3 className={styles.contactLabel}>Email</h3><ul className={styles.list}>
-              <li><a className={styles.link} href="mailto:sumit.pandey@kaaamnow.in">sumit.pandey@kaaamnow.in</a></li>
-              <li><a className={styles.link} href="mailto:anishasriwastav53@gmail.com">anishasriwastav53@gmail.com</a></li>
+              {CONTACT_EMAILS.map((contact) => (
+                <li key={contact.email}>
+                  <a className={styles.link} href={`mailto:${contact.email}`}>
+                    {contact.label} · {contact.email}
+                  </a>
+                </li>
+              ))}
             </ul></div>
             <div><h3 className={styles.contactLabel}>Phone</h3><ul className={styles.list}>
               <li><a className={styles.link} href="https://wa.me/918618796332" target="_blank" rel="noopener noreferrer">KaaamNow · +91 86187 96332</a></li>

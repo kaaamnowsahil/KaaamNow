@@ -1,6 +1,7 @@
 import type { ReactNode } from 'react'
 import { PageHeader } from '../components/PageHeader'
 import { COMPANY_ADDRESS, COMPANY_MAPS_URL } from '../data/company'
+import { LEGAL_EMAIL, SUPPORT_EMAIL } from '../data/contacts'
 import styles from './PrivacyPolicy.module.css'
 
 function CompanyAddressLink() {
@@ -195,8 +196,8 @@ const SECTIONS: { title: string; body: ReactNode }[] = [
       <>
         <p>
           Questions or complaints about your information: write to{' '}
-          <a href="mailto:sumit.pandey@kaaamnow.in">sumit.pandey@kaaamnow.in</a> or{' '}
-          <a href="mailto:anishasriwastav53@gmail.com">anishasriwastav53@gmail.com</a>, or use
+          <a href={`mailto:${LEGAL_EMAIL}`}>{LEGAL_EMAIL}</a> or{' '}
+          <a href={`mailto:${SUPPORT_EMAIL}`}>{SUPPORT_EMAIL}</a>, or use
           Contact support in the app.
         </p>
         <p>

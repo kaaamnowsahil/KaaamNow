@@ -1,3 +1,5 @@
+import { LEGAL_EMAIL, SUPPORT_EMAIL } from './contacts'
+
 export type TermsSection = {
   title: string
   body: string
@@ -50,7 +52,7 @@ export const COMMON_RULES: TermsSection[] = [
   },
   {
     title: 'Contact and grievances',
-    body: 'Questions or complaints: write to sumit.pandey@kaaamnow.in or anishasriwastav53@gmail.com, or use Contact support in the app. KAAAMNOW TECHNOLOGY LLP, 148, 1st Main, 1st Cross, Malleshpallya, 1st floor, Bengaluru, Karnataka 560075, India. We acknowledge complaints within 24 hours and aim to resolve them within 15 days.',
+    body: `Questions or complaints: write to ${LEGAL_EMAIL} or ${SUPPORT_EMAIL}, or use Contact support in the app. KAAAMNOW TECHNOLOGY LLP, 148, 1st Main, 1st Cross, Malleshpallya, 1st floor, Bengaluru, Karnataka 560075, India. We acknowledge complaints within 24 hours and aim to resolve them within 15 days.`,
   },
 ]
 
