@@ -7,6 +7,7 @@ interface Founder {
   id: string
   name: string
   role: string
+  email: string
   photo: string
   thought: string
 }
@@ -16,6 +17,7 @@ const FOUNDERS: Founder[] = [
     id: 'anisha',
     name: 'Anisha Shrivastava',
     role: 'Co-founder & CPO',
+    email: 'anisha.shrivastava@kaaamnow.in',
     photo: '/team/anisha-shrivastava.webp',
     thought:
       'Great products get out of the way. If posting a shift feels as easy as sending a message, we’ve done our job.',
@@ -24,6 +26,7 @@ const FOUNDERS: Founder[] = [
     id: 'sumit',
     name: 'Sumit Pandey',
     role: 'Co-founder & COO',
+    email: 'sumit.pandey@kaaamnow.in',
     photo: '/team/sumit-pandey.webp',
     thought:
       'Every shift is a promise — to the business and to the worker. Our job is to make sure it’s kept, every time.',
@@ -81,6 +84,9 @@ export function Team() {
                   <h3 id={`founder-${founder.id}`} className={styles.name}>
                     {founder.name}
                   </h3>
+                  <a className={styles.email} href={`mailto:${founder.email}`}>
+                    {founder.email}
+                  </a>
                   <blockquote className={styles.thought}>
                     <p>“{founder.thought}”</p>
                   </blockquote>

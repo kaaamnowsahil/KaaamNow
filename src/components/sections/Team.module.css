@@ -133,6 +133,18 @@
   letter-spacing: -0.02em;
 }
 
+.email {
+  width: fit-content;
+  color: var(--color-primary-soft);
+  font-size: var(--text-sm);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.email:hover {
+  color: var(--color-text);
+}
+
 .thought {
   padding-left: 16px;
   border-left: 2px solid var(--color-primary);
