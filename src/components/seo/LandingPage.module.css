@@ -67,7 +67,7 @@
 
 .primary {
   background: var(--gradient-primary);
-  color: var(--color-text);
+  color: var(--color-on-primary);
 }
 
 .secondary {

@@ -7,24 +7,16 @@ import {
   Package,
   ShoppingBag,
   Wallet,
-  type LucideIcon,
 } from 'lucide-react'
 import type { ReactNode } from 'react'
 import { easeOut } from '../../lib/motion'
+import { useLocale } from '../../i18n/locale'
 import styles from './HeroVisual.module.css'
 
-interface SampleShift {
-  icon: LucideIcon
-  role: string
-  place: string
-  time: string
-  pay: string
-}
-
-const SAMPLE_SHIFTS: SampleShift[] = [
-  { icon: Package, role: 'Warehouse Associate', place: 'Fulfilment centre', time: '6:00 AM – 2:00 PM', pay: '₹180/hr' },
-  { icon: ChefHat, role: 'Kitchen Helper', place: 'Neighbourhood café', time: '11:00 AM – 4:00 PM', pay: '₹160/hr' },
-  { icon: ShoppingBag, role: 'Retail Floor Staff', place: 'Lifestyle store', time: '2:00 PM – 9:00 PM', pay: '₹170/hr' },
+const SHIFT_META = [
+  { icon: Package, time: '6:00 AM – 2:00 PM', pay: '₹180/hr' },
+  { icon: ChefHat, time: '11:00 AM – 4:00 PM', pay: '₹160/hr' },
+  { icon: ShoppingBag, time: '2:00 PM – 9:00 PM', pay: '₹170/hr' },
 ]
 
 interface FloatingProps {
@@ -56,8 +48,10 @@ function Floating({ children, className, delay, duration, distance = 10 }: Float
 }
 
 export function HeroVisual() {
+  const { copy } = useLocale()
+  const hero = copy.hero
   return (
-    <div className={styles.visual} role="img" aria-label="Illustration of the KaaamNow app showing open shifts, an available worker, and a confirmed booking">
+    <div className={styles.visual} role="img" aria-label={hero.visualAria}>
       <div className={styles.orbit} aria-hidden="true" />
 
       <motion.div
@@ -69,19 +63,19 @@ export function HeroVisual() {
       >
         <div className={styles.boardHeader}>
           <div>
-            <p className={styles.boardEyebrow}>Open shifts</p>
-            <p className={styles.boardTitle}>Near you today</p>
+            <p className={styles.boardEyebrow}>{hero.openShifts}</p>
+            <p className={styles.boardTitle}>{hero.nearYou}</p>
           </div>
           <span className={styles.liveChip}>
             <span className={styles.liveDot} />
-            Live
+            {hero.live}
           </span>
         </div>
 
         <ul className={styles.shiftList}>
-          {SAMPLE_SHIFTS.map(({ icon: Icon, role, place, time, pay }, index) => (
+          {SHIFT_META.map(({ icon: Icon, time, pay }, index) => (
             <motion.li
-              key={role}
+              key={hero.shifts[index].role}
               className={styles.shift}
               initial={false}
               animate={{ opacity: 1, x: 0 }}
@@ -91,10 +85,10 @@ export function HeroVisual() {
                 <Icon size={20} strokeWidth={1.75} />
               </span>
               <span className={styles.shiftBody}>
-                <span className={styles.shiftRole}>{role}</span>
+                <span className={styles.shiftRole}>{hero.shifts[index].role}</span>
                 <span className={styles.shiftMeta}>
                   <MapPin size={12} strokeWidth={2} />
-                  <span>{place}</span>
+                  <span>{hero.shifts[index].place}</span>
                   <span className={styles.metaDivider} />
                   <span className={styles.metaTime}>
                     <Clock size={12} strokeWidth={2} />
@@ -108,8 +102,8 @@ export function HeroVisual() {
         </ul>
 
         <div className={styles.boardFooter}>
-          <span>Sample listings</span>
-          <span className={styles.boardAction}>View all shifts</span>
+          <span>{hero.sampleListings}</span>
+          <span className={styles.boardAction}>{hero.viewAll}</span>
         </div>
       </motion.div>
 
@@ -118,12 +112,12 @@ export function HeroVisual() {
           <span className={styles.avatar}>PS</span>
           <span>
             <span className={styles.cardTitle}>Priya S.</span>
-            <span className={styles.cardMeta}>Barista · Server</span>
+            <span className={styles.cardMeta}>{hero.workerRole}</span>
           </span>
         </div>
         <span className={styles.availability} aria-hidden="true">
           <span className={styles.liveDot} />
-          Available now
+          {hero.availableNow}
         </span>
       </Floating>
 
@@ -132,8 +126,8 @@ export function HeroVisual() {
           <CalendarCheck size={20} strokeWidth={1.75} />
         </span>
         <span aria-hidden="true">
-          <span className={styles.cardTitle}>Shift confirmed</span>
-          <span className={styles.cardMeta}>Sat · 9:00 AM – 5:00 PM</span>
+          <span className={styles.cardTitle}>{hero.shiftConfirmed}</span>
+          <span className={styles.cardMeta}>{hero.shiftWhen}</span>
         </span>
       </Floating>
 
@@ -142,8 +136,8 @@ export function HeroVisual() {
           <Wallet size={20} strokeWidth={1.75} />
         </span>
         <span aria-hidden="true">
-          <span className={styles.cardMeta}>Pay rate</span>
-          <span className={styles.cardTitle}>Shown upfront</span>
+          <span className={styles.cardMeta}>{hero.payRate}</span>
+          <span className={styles.cardTitle}>{hero.shownUpfront}</span>
         </span>
       </Floating>
     </div>

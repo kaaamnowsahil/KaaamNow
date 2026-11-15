@@ -18,6 +18,7 @@ export const APP_ORIGIN = 'https://www.kaaamnow.in'
 export const APP_LINKS = {
   findWork: `${APP_ORIGIN}/worker/home`,
   hireWorkers: `${APP_ORIGIN}/business/home`,
+  login: `${APP_ORIGIN}/welcome`,
   faq: `${APP_ORIGIN}/faq`,
 } as const
 

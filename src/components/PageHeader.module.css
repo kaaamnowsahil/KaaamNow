@@ -33,6 +33,10 @@
   color: var(--color-primary-soft);
 }
 
+.tools {
+  margin-left: auto;
+}
+
 @media (max-width: 600px) {
   .header {
     min-height: 64px;

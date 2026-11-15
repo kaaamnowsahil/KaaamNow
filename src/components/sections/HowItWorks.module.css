@@ -28,9 +28,13 @@
   }
 }
 
-.tab:hover,
-.tabActive {
+.tab:hover {
   color: var(--color-text);
+}
+
+.tabActive,
+.tabActive:hover {
+  color: var(--color-on-primary);
 }
 
 .tab:focus-visible {
@@ -85,7 +89,7 @@
   width: 52px;
   height: 52px;
   border-radius: var(--radius-lg);
-  color: var(--color-text);
+  color: var(--color-on-primary);
   background: var(--gradient-primary);
   box-shadow: var(--shadow-glow);
 }

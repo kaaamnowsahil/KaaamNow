@@ -107,9 +107,13 @@
   transition: color var(--duration-fast) var(--ease-out);
 }
 
-.viewTab:hover,
-.viewTabActive {
+.viewTab:hover {
   color: var(--color-text);
+}
+
+.viewTabActive,
+.viewTabActive:hover {
+  color: var(--color-on-primary);
 }
 
 .viewTab:focus-visible {

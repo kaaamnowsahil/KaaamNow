@@ -1,4 +1,6 @@
 import { Quote } from 'lucide-react'
+import { fill } from '../../i18n/siteCopy'
+import { useLocale } from '../../i18n/locale'
 import { Reveal, RevealGroup, RevealItem } from '../ui/Reveal'
 import { SectionHeader } from '../ui/SectionHeader'
 import styles from './Team.module.css'
@@ -34,18 +36,20 @@ const FOUNDERS: Founder[] = [
 ]
 
 export function Team() {
+  const { copy } = useLocale()
+  const team = copy.team
   return (
     <section id="team" className="section section--alt" aria-labelledby="team-title">
       <div className="container">
         <SectionHeader
           id="team-title"
-          eyebrow="The founders"
+          eyebrow={team.eyebrow}
           title={
             <>
-              Built by people who <span className="gradient-text">believe in work.</span>
+              {team.title} <span className="gradient-text">{team.accent}</span>
             </>
           }
-          description="KaaamNow is built by a small team that wants flexible work to feel fair, fast, and dependable for everyone involved."
+          description={team.description}
         />
 
         <Reveal>
@@ -55,29 +59,28 @@ export function Team() {
             </span>
             <blockquote className={styles.missionQuote}>
               <p>
-                Work shouldn’t wait. Every open shift is a business that needs a hand and someone
-                ready to earn — <span className="gradient-text">KaaamNow exists to bring them together, right when it matters.</span>
+                {team.quote} <span className="gradient-text">{team.quoteAccent}</span>
               </p>
             </blockquote>
-            <figcaption className={styles.missionCaption}>The KaaamNow founding team</figcaption>
+            <figcaption className={styles.missionCaption}>{team.caption}</figcaption>
           </figure>
         </Reveal>
 
         <RevealGroup as="ul" className={styles.grid} staggerBy={0.12}>
-          {FOUNDERS.map((founder) => (
+          {FOUNDERS.map((founder, index) => (
             <RevealItem as="li" key={founder.id} className={styles.item}>
               <article className={styles.card} aria-labelledby={`founder-${founder.id}`}>
                 <div className={styles.photoWrap}>
                   <img
                     className={styles.photo}
                     src={founder.photo}
-                    alt={`Portrait of ${founder.name}`}
+                    alt={fill(team.portrait, { name: founder.name })}
                     width={640}
                     height={800}
                     loading="lazy"
                     decoding="async"
                   />
-                  <span className={styles.role}>{founder.role}</span>
+                  <span className={styles.role}>{team.roles[index]}</span>
                 </div>
 
                 <div className={styles.body}>
@@ -88,7 +91,7 @@ export function Team() {
                     {founder.email}
                   </a>
                   <blockquote className={styles.thought}>
-                    <p>“{founder.thought}”</p>
+                    <p>“{team.thoughts[index]}”</p>
                   </blockquote>
                 </div>
               </article>

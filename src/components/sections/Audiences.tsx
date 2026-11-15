@@ -1,80 +1,43 @@
 import { ArrowRight, Building2, Check, UserRound, type LucideIcon } from 'lucide-react'
 import { APP_LINKS } from '../../data/appLinks'
+import { useLocale } from '../../i18n/locale'
 import { Button } from '../ui/Button'
 import { RevealGroup, RevealItem } from '../ui/Reveal'
 import { SectionHeader } from '../ui/SectionHeader'
 import styles from './Audiences.module.css'
 
-interface AudienceCard {
-  id: string
-  icon: LucideIcon
-  eyebrow: string
-  title: string
-  text: string
-  points: string[]
-  cta: string
-  href: string
-  featured?: boolean
-}
-
-const AUDIENCES: AudienceCard[] = [
-  {
-    id: 'businesses',
-    icon: Building2,
-    eyebrow: 'For businesses',
-    title: 'Staff up without the scramble',
-    text: 'Cover busy weekends, last-minute absences, seasonal peaks, and one-off events with people who are ready to work.',
-    points: [
-      'Post hourly, multi-day, or fixed-price task openings',
-      'Live Work: nearby workers in that category are alerted instantly',
-      'Get notified the moment a worker accepts or a shift is full',
-      'Arrival and completion codes confirm the work was done',
-    ],
-    cta: 'Post your first shift',
-    href: APP_LINKS.businessHome,
-    featured: true,
-  },
-  {
-    id: 'workers',
-    icon: UserRound,
-    eyebrow: 'For workers',
-    title: 'Pick up work on your terms',
-    text: 'Find shifts that match your skills and schedule — whether you want a few extra hours or a full week of work.',
-    points: [
-      'See only jobs in the work categories you choose',
-      'Get alerts for nearby shifts and Live Work requests',
-      'Know the pay rate before you take a job',
-      'Show up reliably and keep getting more shifts',
-    ],
-    cta: 'Join as a worker',
-    href: APP_LINKS.workerHome,
-  },
+const AUDIENCE_META: { id: string; icon: LucideIcon; href: string; featured?: boolean }[] = [
+  { id: 'businesses', icon: Building2, href: APP_LINKS.businessHome, featured: true },
+  { id: 'workers', icon: UserRound, href: APP_LINKS.workerHome },
 ]
 
 export function Audiences() {
+  const { copy } = useLocale()
+  const audiences = copy.audiences
   return (
     <section className="section" aria-labelledby="audiences-title">
       <div className="container">
         <SectionHeader
           id="audiences-title"
-          eyebrow="Built for both sides"
+          eyebrow={audiences.eyebrow}
           title={
             <>
-              One marketplace. <span className="gradient-text">Two great fits.</span>
+              {audiences.title} <span className="gradient-text">{audiences.accent}</span>
             </>
           }
-          description="KaaamNow is designed around the needs of the businesses that hire and the people who work."
+          description={audiences.description}
         />
 
         <RevealGroup className={styles.grid} staggerBy={0.15}>
-          {AUDIENCES.map((audience) => {
-            const Icon = audience.icon
+          {AUDIENCE_META.map((meta, index) => {
+            const audience = audiences.cards[index]
+            const Icon = meta.icon
             return (
-              <RevealItem key={audience.id}>
+              <RevealItem key={meta.id}>
                 <article
-                  id={audience.id}
-                  className={`${styles.card} ${audience.featured ? styles.featured : ''}`}
-                  aria-labelledby={`${audience.id}-title`}
+                  id={meta.id}
+                  className={`${styles.card} ${meta.featured ? styles.featured : ''}`}
+                  aria-labelledby={`${meta.id}-title`}
                 >
                   <div className={styles.head}>
                     <span className={styles.icon} aria-hidden="true">
@@ -83,7 +46,7 @@ export function Audiences() {
                     <span className={styles.eyebrow}>{audience.eyebrow}</span>
                   </div>
 
-                  <h3 id={`${audience.id}-title`} className={styles.title}>
+                  <h3 id={`${meta.id}-title`} className={styles.title}>
                     {audience.title}
                   </h3>
                   <p className={styles.text}>{audience.text}</p>
@@ -101,9 +64,9 @@ export function Audiences() {
 
                   <div className={styles.cta}>
                     <Button
-                      variant={audience.featured ? 'primary' : 'secondary'}
+                      variant={meta.featured ? 'primary' : 'secondary'}
                       icon={<ArrowRight size={18} strokeWidth={2} />}
-                      href={audience.href}
+                      href={meta.href}
                     >
                       {audience.cta}
                     </Button>

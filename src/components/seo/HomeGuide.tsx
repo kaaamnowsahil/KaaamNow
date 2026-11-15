@@ -1,95 +1,110 @@
-import { APP_LINKS, CATEGORIES, CITIES, HOME_FAQS, cityJobsPath } from '../../data/site'
+import { Building2, UserRound } from 'lucide-react'
+import { APP_LINKS, CATEGORIES, CITIES, cityJobsPath } from '../../data/site'
+import { useWorkCategories } from '../../data/useWorkCategories'
+import { fill } from '../../i18n/siteCopy'
+import { useLocale } from '../../i18n/locale'
+import { Button } from '../ui/Button'
+import card from '../ui/Card.module.css'
 import styles from './HomeGuide.module.css'
 
 export function HomeGuide() {
+  const { copy } = useLocale()
+  const guide = copy.guide
+  const jobTypes = useWorkCategories()
+
   return (
-    <section className={`section ${styles.guide}`} aria-labelledby="guide-title">
+    <section className={`section section--alt ${styles.guide}`} aria-labelledby="guide-title">
       <div className="container">
-        <h2 id="guide-title">Workers ke liye</h2>
-        <p>
-          Apne shehar ki open shifts dekho. Har card pe area, time aur pay pehle se likha hota hai,
-          isliye aap accept karne se pehle amount jaan lete ho. Daily wage, hourly aur part-time
-          alag-alag posts hain. Aap wahi lo jo aaj ke schedule mein fit ho.
-        </p>
-        <p>
-          Helper, delivery, security, waiter ya kitchen support, packing, loading, warehouse aur
-          event staff, yeh categories isliye bani hain taaki aapko har job na dikhe. Phone se
-          account banta hai. Apply karna free hai. Ek time pe ek shift, taaki do jagah ka promise
-          ek saath na ho.
-        </p>
-        <p>
-          <a href={APP_LINKS.findWork}>Kaam dhoondo</a>
-        </p>
+        <div className={styles.split}>
+          <article className={card.card}>
+            <span className={card.iconBox} aria-hidden="true">
+              <UserRound size={24} strokeWidth={1.75} />
+            </span>
+            <h2 id="guide-title" className={card.title}>
+              {guide.workersTitle}
+            </h2>
+            {guide.workers.map((paragraph) => (
+              <p key={paragraph.slice(0, 24)} className={`${card.text} ${styles.body}`}>
+                {paragraph}
+              </p>
+            ))}
+            <div className={styles.action}>
+              <Button href={APP_LINKS.findWork}>{guide.findWork}</Button>
+            </div>
+          </article>
 
-        <h2>Businesses ke liye</h2>
-        <p>
-          Jab aapko poori payroll team nahi, sirf ek shift chahiye, tab job post karo. Category,
-          area, hours aur pay aap likhte ho. Workers ko wahi dikhta hai. Restaurants, shops,
-          warehouses, events aur factories isi flow se daily shift, hourly cover ya temporary
-          staffing le sakte hain.
-        </p>
-        <p>
-          Applicants usi posting se aate hain. Seats bhar jayein to listing band karo. Arrival aur
-          completion app ke andar record hote hain. Platform fee tab dikhti hai jab aap booking
-          confirm karte ho. Is site pe koi flat “itne rupaye mein staff” wala package nahi hai.
-        </p>
-        <p>
-          <a href={APP_LINKS.hireWorkers}>Workers hire karo</a>
-        </p>
+          <article className={card.card}>
+            <span className={card.iconBox} aria-hidden="true">
+              <Building2 size={24} strokeWidth={1.75} />
+            </span>
+            <h2 className={card.title}>{guide.businessTitle}</h2>
+            {guide.business.map((paragraph) => (
+              <p key={paragraph.slice(0, 24)} className={`${card.text} ${styles.body}`}>
+                {paragraph}
+              </p>
+            ))}
+            <div className={styles.action}>
+              <Button href={APP_LINKS.hireWorkers} variant="secondary">
+                {guide.hire}
+              </Button>
+            </div>
+          </article>
+        </div>
 
-        <h2>Kaise kaam karta hai</h2>
-        <ol className={styles.steps}>
-          <li>
-            <h3>Account banao</h3>
-            <p>Worker ho ya business, phone number se sign up karo. Shehar aur role usi waqt set hota hai.</p>
-          </li>
-          <li>
-            <h3>Job post karo ya dhoondo</h3>
-            <p>
-              Business shift likhta hai, pay ke saath. Worker apni category ki list padhta hai aur
-              jo time theek lage use choose karta hai.
-            </p>
-          </li>
-          <li>
-            <h3>Kaam karo ya staff paao</h3>
-            <p>
-              Shift ke din dono taraf app se confirm karte hain. Kaam khatam hote hi woh booking
-              close hoti hai. Agli shift ke liye nayi post ya nayi list.
-            </p>
-          </li>
-        </ol>
+        <div className={styles.block}>
+          <h2 className={styles.heading}>{guide.howTitle}</h2>
+          <ol className={styles.steps}>
+            {guide.steps.map((step, index) => (
+              <li key={step.title} className={card.card}>
+                <span className={styles.index}>{index + 1}</span>
+                <h3 className={card.title}>{step.title}</h3>
+                <p className={card.text}>{step.text}</p>
+              </li>
+            ))}
+          </ol>
+        </div>
 
-        <h2>Popular job categories</h2>
-        <ul className={styles.links}>
-          {CATEGORIES.map((category) => (
-            <li key={category.path}>
-              <a href={category.path}>{category.label}</a>
-            </li>
-          ))}
-        </ul>
+        <div className={styles.browse}>
+          <div className={styles.panel}>
+            <h2 className={styles.heading}>{guide.categoriesTitle}</h2>
+            <ul className={styles.links}>
+              {(jobTypes.length > 0
+                ? jobTypes.map((job) => ({ slug: job.slug, label: job.label, href: APP_LINKS.findWork }))
+                : CATEGORIES.map((category, index) => ({
+                    slug: category.path,
+                    label: copy.landing.categories[index].label,
+                    href: category.path,
+                  }))
+              ).map((category) => (
+                <li key={category.slug}>
+                  <a href={category.href}>{category.label}</a>
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div className={styles.panel}>
+            <h2 className={styles.heading}>{guide.indiaTitle}</h2>
+            <p className={styles.lead}>{guide.india}</p>
+            <ul className={styles.links}>
+              {CITIES.map((city) => (
+                <li key={city.slug}>
+                  <a href={cityJobsPath(city.slug)}>{fill(guide.cityLink, { city: city.name })}</a>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
 
-        <h2>Poora India</h2>
-        <p>
-          KaaamNow Ludhiana ya kisi ek shehar tak limited nahi hai. Poore India mein worker apna
-          shehar set karta hai, aur business apna area khud post karta hai. Neeche bade shehron ke
-          pages hain. Aapka shehar list mein na ho, tab bhi app mein wahi area choose kar sakte ho.
-        </p>
-        <ul className={styles.links}>
-          {CITIES.map((city) => (
-            <li key={city.slug}>
-              <a href={cityJobsPath(city.slug)}>Daily wage jobs in {city.name}</a>
-            </li>
-          ))}
-        </ul>
-
-        <h2>FAQs</h2>
-        <div className={styles.faqs}>
-          {HOME_FAQS.map((faq) => (
-            <details key={faq.question} open>
-              <summary>{faq.question}</summary>
-              <p>{faq.answer}</p>
-            </details>
-          ))}
+        <div className={styles.block}>
+          <h2 className={styles.heading}>{guide.faqsTitle}</h2>
+          <div className={styles.faqs}>
+            {guide.faqs.map((faq) => (
+              <details key={faq.question}>
+                <summary>{faq.question}</summary>
+                <p>{faq.answer}</p>
+              </details>
+            ))}
+          </div>
         </div>
       </div>
     </section>

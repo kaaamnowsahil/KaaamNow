@@ -51,7 +51,7 @@
 }
 
 .interactive:hover .iconBox {
-  color: var(--color-text);
+  color: var(--color-on-primary);
   background: var(--gradient-primary);
 }
 

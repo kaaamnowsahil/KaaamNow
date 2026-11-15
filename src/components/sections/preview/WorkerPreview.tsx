@@ -16,6 +16,8 @@ import {
 import { useState } from 'react'
 import { useComingSoon } from '../../../context/comingSoonContext'
 import { APP_LINKS } from '../../../data/appLinks'
+import { fill } from '../../../i18n/siteCopy'
+import { useLocale } from '../../../i18n/locale'
 import { easeOut } from '../../../lib/motion'
 import styles from './AppPreview.module.css'
 
@@ -34,10 +36,7 @@ interface Listing {
   estimate: string
 }
 
-const SEGMENTS: { id: Segment; label: string }[] = [
-  { id: 'live', label: 'Live Now' },
-  { id: 'scheduled', label: 'Scheduled' },
-]
+const SEGMENTS: { id: Segment }[] = [{ id: 'live' }, { id: 'scheduled' }]
 
 const LISTINGS: Listing[] = [
   {
@@ -90,25 +89,30 @@ const LISTINGS: Listing[] = [
   },
 ]
 
-const NAV: { icon: LucideIcon; label: string; active?: boolean }[] = [
-  { icon: House, label: 'Discover', active: true },
-  { icon: CalendarDays, label: 'My shifts' },
-  { icon: Wallet, label: 'Earnings' },
-  { icon: UserRound, label: 'Profile' },
+const NAV: { icon: LucideIcon; active?: boolean }[] = [
+  { icon: House, active: true },
+  { icon: CalendarDays },
+  { icon: Wallet },
+  { icon: UserRound },
 ]
 
 export function WorkerPreview() {
   const [segment, setSegment] = useState<Segment>('live')
   const { open } = useComingSoon()
+  const { copy } = useLocale()
+  const preview = copy.preview
   const visible = LISTINGS.filter((listing) => listing.segment === segment)
 
-  const openListing = (listing: Listing) =>
+  const openListing = (listing: Listing) => {
+    const index = LISTINGS.findIndex((item) => item.id === listing.id)
+    const role = preview.workerRoles[index]
     open({
-      eyebrow: 'Sample preview',
-      title: segment === 'live' ? 'Accept real requests in the app' : 'Apply to real shifts in the app',
-      description: `This ${listing.role.toLowerCase()} listing is a sample. Open KaaamNow to see real shifts near you in your work categories and take one in a tap.`,
-      action: { label: 'Find work on KaaamNow', href: APP_LINKS.workerHome },
+      eyebrow: preview.sampleEyebrow,
+      title: segment === 'live' ? preview.acceptLive : preview.applyScheduled,
+      description: fill(preview.sampleWorker, { role: role.toLowerCase() }),
+      action: { label: preview.findWork, href: APP_LINKS.workerHome },
     })
+  }
 
   return (
     <div className={styles.app}>
@@ -121,10 +125,10 @@ export function WorkerPreview() {
           </div>
         </div>
         <ul className={styles.nav}>
-          {NAV.map(({ icon: Icon, label, active }) => (
-            <li key={label} className={active ? styles.navActive : undefined}>
+          {NAV.map(({ icon: Icon, active }, index) => (
+            <li key={preview.workerNav[index]} className={active ? styles.navActive : undefined}>
               <Icon size={16} strokeWidth={1.75} />
-              {label}
+              {preview.workerNav[index]}
             </li>
           ))}
         </ul>
@@ -133,7 +137,7 @@ export function WorkerPreview() {
 
       <div className={styles.main}>
         <div className={styles.header}>
-          <span className={styles.headerTitle}>Discover</span>
+          <span className={styles.headerTitle}>{preview.discover}</span>
           <span className={styles.bell} aria-hidden="true">
             <Bell size={16} strokeWidth={1.75} />
           </span>
@@ -143,7 +147,7 @@ export function WorkerPreview() {
           <div className={styles.content}>
             <div className={`${styles.card} ${styles.availability}`} aria-hidden="true">
               <div>
-                <p className={styles.availabilityTitle}>Availability</p>
+                <p className={styles.availabilityTitle}>{preview.availability}</p>
                 <p className={styles.availabilityState}>LIVE</p>
               </div>
               <span className={styles.toggle} />
@@ -157,12 +161,12 @@ export function WorkerPreview() {
 
             <div className={styles.search} aria-hidden="true">
               <Search size={16} strokeWidth={1.75} />
-              <span>Search shifts...</span>
+              <span>{preview.search}</span>
               <SlidersHorizontal size={16} strokeWidth={1.75} />
             </div>
 
-            <div className={styles.segments} role="group" aria-label="Work schedule">
-              {SEGMENTS.map(({ id, label }) => (
+            <div className={styles.segments} role="group" aria-label={preview.schedule}>
+              {SEGMENTS.map(({ id }) => (
                 <button
                   key={id}
                   type="button"
@@ -170,7 +174,7 @@ export function WorkerPreview() {
                   aria-pressed={segment === id}
                   onClick={() => setSegment(id)}
                 >
-                  {label}
+                  {id === 'live' ? preview.liveNow : preview.scheduled}
                 </button>
               ))}
             </div>
@@ -193,21 +197,21 @@ export function WorkerPreview() {
                   >
                     <span className={styles.shiftTop}>
                       <strong className={listing.segment === 'live' ? styles.live : undefined}>
-                        {listing.segment === 'live' ? 'Live Now' : 'Scheduled'}
+                        {listing.segment === 'live' ? preview.liveNow : preview.scheduled}
                       </strong>
-                      <span>{listing.distance}</span>
+                      <span>{preview.workerMeta[LISTINGS.findIndex((item) => item.id === listing.id)]}</span>
                     </span>
-                    <h4>{listing.role}</h4>
+                    <h4>{preview.workerRoles[LISTINGS.findIndex((item) => item.id === listing.id)]}</h4>
                     <span className={styles.business}>
                       {listing.verified && <BadgeCheck size={14} strokeWidth={2} aria-hidden="true" />}
-                      {listing.business}
-                      {listing.verified && ' · Verified'}
+                      {preview.workerBusinesses[LISTINGS.findIndex((item) => item.id === listing.id)]}
+                      {listing.verified && ` · ${preview.verified}`}
                     </span>
                     <span>{listing.time}</span>
                     <span>{listing.place}</span>
                     <span className={styles.shiftFoot}>
                       <span>
-                        <strong>{listing.rate}</strong> per hour
+                        <strong>{listing.rate}</strong> {preview.perHour}
                         <small>{listing.estimate}</small>
                       </span>
                       <ArrowRight size={16} strokeWidth={2} aria-hidden="true" />

@@ -77,7 +77,7 @@
   height: 24px;
   border-radius: var(--radius-pill);
   background: var(--gradient-primary);
-  color: var(--color-text);
+  color: var(--color-on-primary);
 }
 
 .title {

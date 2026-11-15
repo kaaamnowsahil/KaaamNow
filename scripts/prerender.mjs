@@ -5,9 +5,11 @@ import { createServer } from 'vite'
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..')
 const dist = path.join(root, 'dist')
+const mode = process.argv[2] === 'dev' ? 'dev' : 'prod'
 
 const vite = await createServer({
   root,
+  mode,
   server: { middlewareMode: true },
   appType: 'custom',
   logLevel: 'error',

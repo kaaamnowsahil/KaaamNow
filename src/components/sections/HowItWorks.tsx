@@ -15,80 +15,29 @@ import {
 } from 'lucide-react'
 import { useRef, useState, type KeyboardEvent } from 'react'
 import { easeOut } from '../../lib/motion'
+import { useLocale } from '../../i18n/locale'
 import { Reveal } from '../ui/Reveal'
 import { SectionHeader } from '../ui/SectionHeader'
 import styles from './HowItWorks.module.css'
 
 type Audience = 'business' | 'live' | 'worker'
 
-interface Step {
-  icon: LucideIcon
-  title: string
-  text: string
-}
-
-const TABS: { id: Audience; label: string; icon: LucideIcon }[] = [
-  { id: 'business', label: 'For businesses', icon: Building2 },
-  { id: 'live', label: 'Live Work', icon: Zap },
-  { id: 'worker', label: 'For workers', icon: UserRound },
+const TAB_META: { id: Audience; icon: LucideIcon }[] = [
+  { id: 'business', icon: Building2 },
+  { id: 'live', icon: Zap },
+  { id: 'worker', icon: UserRound },
 ]
 
-const STEPS: Record<Audience, Step[]> = {
-  business: [
-    {
-      icon: ClipboardList,
-      title: 'Post a shift',
-      text: 'Describe the role, location, and timing, then pay by the hour or set one fixed price. Nearby workers in that category get an alert.',
-    },
-    {
-      icon: Users,
-      title: 'Review available workers',
-      text: 'See people who are free when you need them, with their skills and experience at a glance.',
-    },
-    {
-      icon: BadgeCheck,
-      title: 'Confirm and get to work',
-      text: 'Lock in your team, get notified as workers confirm, track who’s arriving, and share the completion code when the work is done.',
-    },
-  ],
-  live: [
-    {
-      icon: Zap,
-      title: 'Post a live request',
-      text: 'Set the role and place, then choose hours or one fixed task price. Pay upfront and nearby workers in that category are alerted instantly.',
-    },
-    {
-      icon: MapPinned,
-      title: 'Track them on the map',
-      text: 'You’re notified the moment a worker accepts, then see them on the map, live. No one yet? Raise the pay and search again, or take a full refund.',
-    },
-    {
-      icon: KeyRound,
-      title: 'Share the arrival code',
-      text: 'Share the arrival code when they reach, and the completion code once the work is done.',
-    },
-  ],
-  worker: [
-    {
-      icon: UserRoundCheck,
-      title: 'Create your profile',
-      text: 'Add your skills, pick your work categories, and set the days and hours you’re available to work.',
-    },
-    {
-      icon: Search,
-      title: 'Browse nearby shifts',
-      text: 'Get alerts for nearby jobs in your categories, filter by distance, timing, and pay, then take one in a tap.',
-    },
-    {
-      icon: Wallet,
-      title: 'Work and get paid',
-      text: 'Finish the work, enter the completion code from the business, and see exactly what you’ve earned.',
-    },
-  ],
-}
+const STEP_ICONS: LucideIcon[][] = [
+  [ClipboardList, Users, BadgeCheck],
+  [Zap, MapPinned, KeyRound],
+  [UserRoundCheck, Search, Wallet],
+]
 
 export function HowItWorks() {
   const [audience, setAudience] = useState<Audience>('business')
+  const { copy } = useLocale()
+  const how = copy.how
   const tabRefs = useRef<Record<Audience, HTMLButtonElement | null>>({
     business: null,
     live: null,
@@ -98,13 +47,13 @@ export function HowItWorks() {
   const onTabKeyDown = (event: KeyboardEvent<HTMLButtonElement>) => {
     if (!['ArrowLeft', 'ArrowRight', 'Home', 'End'].includes(event.key)) return
     event.preventDefault()
-    const index = TABS.findIndex((tab) => tab.id === audience)
+    const index = TAB_META.findIndex((tab) => tab.id === audience)
     let nextIndex = index
-    if (event.key === 'ArrowRight') nextIndex = (index + 1) % TABS.length
-    if (event.key === 'ArrowLeft') nextIndex = (index - 1 + TABS.length) % TABS.length
+    if (event.key === 'ArrowRight') nextIndex = (index + 1) % TAB_META.length
+    if (event.key === 'ArrowLeft') nextIndex = (index - 1 + TAB_META.length) % TAB_META.length
     if (event.key === 'Home') nextIndex = 0
-    if (event.key === 'End') nextIndex = TABS.length - 1
-    const next = TABS[nextIndex].id
+    if (event.key === 'End') nextIndex = TAB_META.length - 1
+    const next = TAB_META[nextIndex].id
     setAudience(next)
     tabRefs.current[next]?.focus()
   }
@@ -114,14 +63,14 @@ export function HowItWorks() {
       <div className="container">
         <SectionHeader
           id="how-title"
-          eyebrow="How it works"
-          title="Three steps from opening to shift"
-          description="Whether you’re filling a shift or looking for one, getting started on KaaamNow is straightforward."
+          eyebrow={how.eyebrow}
+          title={how.title}
+          description={how.description}
         />
 
         <Reveal className={styles.tabsWrap}>
-          <div className={styles.tabs} role="tablist" aria-label="Choose your audience">
-            {TABS.map(({ id, label, icon: Icon }) => {
+          <div className={styles.tabs} role="tablist" aria-label={how.audience}>
+            {TAB_META.map(({ id, icon: Icon }, index) => {
               const selected = audience === id
               return (
                 <button
@@ -148,7 +97,7 @@ export function HowItWorks() {
                   )}
                   <span className={styles.tabLabel}>
                     <Icon size={16} strokeWidth={1.75} aria-hidden="true" />
-                    {label}
+                    {how.tabs[index]}
                   </span>
                 </button>
               )
@@ -175,7 +124,9 @@ export function HowItWorks() {
                 exit: { opacity: 0, transition: { duration: 0.15 } },
               }}
             >
-              {STEPS[audience].map(({ icon: Icon, title, text }, index) => (
+              {how.steps[TAB_META.findIndex((tab) => tab.id === audience)].map(({ title, text }, index) => {
+                const Icon = STEP_ICONS[TAB_META.findIndex((tab) => tab.id === audience)][index]
+                return (
                 <motion.li
                   key={title}
                   className={styles.step}
@@ -198,7 +149,8 @@ export function HowItWorks() {
                   </h3>
                   <p className={styles.stepText}>{text}</p>
                 </motion.li>
-              ))}
+                )
+              })}
             </motion.ol>
           </AnimatePresence>
         </div>

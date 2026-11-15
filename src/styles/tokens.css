@@ -13,6 +13,7 @@
   --color-text: #f8fafc;
   --color-text-muted: #a7b0c4;
   --color-border: #29334b;
+  --color-on-primary: #ffffff;
 
   /* Alpha variants (derived from the core palette) */
   --color-primary-a06: rgb(139 92 246 / 0.06);
@@ -91,4 +92,29 @@
   --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
   --duration-fast: 160ms;
   --duration-base: 260ms;
+}
+
+:root[data-theme='light'] {
+  --color-bg: #f6f4fb;
+  --color-bg-secondary: #ffffff;
+  --color-card: #ffffff;
+  --color-primary: #7c3aed;
+  --color-primary-hover: #6d28d9;
+  --color-primary-soft: #6d28d9;
+  --color-text: #16141f;
+  --color-text-muted: #5c5670;
+  --color-border: #e3dced;
+  --color-on-primary: #ffffff;
+  --color-primary-a06: rgb(124 58 237 / 0.06);
+  --color-primary-a12: rgb(124 58 237 / 0.12);
+  --color-primary-a20: rgb(124 58 237 / 0.2);
+  --color-primary-a35: rgb(124 58 237 / 0.35);
+  --color-primary-a50: rgb(124 58 237 / 0.5);
+  --color-text-a04: rgb(22 20 31 / 0.04);
+  --color-text-a08: rgb(22 20 31 / 0.08);
+  --color-bg-a70: rgb(246 244 251 / 0.7);
+  --color-bg-a85: rgb(246 244 251 / 0.92);
+  --color-card-a80: rgb(255 255 255 / 0.88);
+  --shadow-card: 0 1px 0 rgb(255 255 255 / 0.8) inset, 0 18px 36px -24px rgb(22 20 31 / 0.28);
+  --shadow-float: 0 1px 0 rgb(255 255 255 / 0.8) inset, 0 22px 40px -18px rgb(22 20 31 / 0.22);
 }

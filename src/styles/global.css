@@ -16,6 +16,10 @@ html {
   color-scheme: dark;
 }
 
+html[data-theme='light'] {
+  color-scheme: light;
+}
+
 @media (prefers-reduced-motion: no-preference) {
   html {
     scroll-behavior: smooth;
@@ -160,7 +164,7 @@ section[id] {
   padding: 10px 16px;
   border-radius: var(--radius-md);
   background: var(--color-primary);
-  color: var(--color-text);
+  color: var(--color-on-primary);
   font-weight: 600;
   transition: top var(--duration-fast) var(--ease-out);
 }

@@ -4,6 +4,7 @@ import { useEffect, useId, useRef } from 'react'
 import type { ComingSoonOptions } from '../../context/comingSoonContext'
 import { useScrollLock } from '../../hooks/useScrollLock'
 import { easeOut } from '../../lib/motion'
+import { useLocale } from '../../i18n/locale'
 import { Button } from './Button'
 import styles from './ComingSoonModal.module.css'
 
@@ -20,6 +21,7 @@ export function ComingSoonModal({ options, onClose }: ComingSoonModalProps) {
   const descId = useId()
   const dialogRef = useRef<HTMLDivElement>(null)
   const returnFocusRef = useRef<HTMLElement | null>(null)
+  const { copy } = useLocale()
 
   useScrollLock(isOpen)
 
@@ -85,7 +87,7 @@ export function ComingSoonModal({ options, onClose }: ComingSoonModalProps) {
             transition={{ duration: 0.3, ease: easeOut }}
             onClick={(event) => event.stopPropagation()}
           >
-            <button type="button" className={styles.close} onClick={onClose} aria-label="Close dialog">
+            <button type="button" className={styles.close} onClick={onClose} aria-label={copy.soon.close}>
               <X size={20} strokeWidth={1.75} aria-hidden="true" />
             </button>
 
@@ -93,13 +95,12 @@ export function ComingSoonModal({ options, onClose }: ComingSoonModalProps) {
               <Sparkles size={24} strokeWidth={1.75} />
             </div>
 
-            <p className={styles.eyebrow}>{options.eyebrow ?? 'Coming soon'}</p>
+            <p className={styles.eyebrow}>{options.eyebrow ?? copy.soon.eyebrow}</p>
             <h2 id={titleId} className={styles.title}>
               {options.title}
             </h2>
             <p id={descId} className={styles.description}>
-              {options.description ??
-                'We’re putting the finishing touches on KaaamNow. This part of the experience isn’t live yet — check back soon.'}
+              {options.description ?? copy.soon.body}
             </p>
 
             <div className={styles.actions}>
@@ -109,7 +110,7 @@ export function ComingSoonModal({ options, onClose }: ComingSoonModalProps) {
                 </Button>
               )}
               <Button variant={options.action ? 'secondary' : 'primary'} onClick={onClose} fullWidth>
-                {options.action ? 'Keep exploring' : 'Got it'}
+                {options.action ? copy.soon.keep : copy.soon.gotIt}
               </Button>
             </div>
           </motion.div>

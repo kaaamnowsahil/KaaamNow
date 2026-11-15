@@ -14,6 +14,8 @@ import {
 import { useState } from 'react'
 import { useComingSoon } from '../../../context/comingSoonContext'
 import { APP_LINKS } from '../../../data/appLinks'
+import { fill } from '../../../i18n/siteCopy'
+import { useLocale } from '../../../i18n/locale'
 import { easeOut } from '../../../lib/motion'
 import styles from './AppPreview.module.css'
 
@@ -31,10 +33,7 @@ interface PostedShift {
   rate: string
 }
 
-const SEGMENTS: { id: Segment; label: string }[] = [
-  { id: 'live', label: 'Live Now' },
-  { id: 'scheduled', label: 'Scheduled' },
-]
+const SEGMENTS: { id: Segment }[] = [{ id: 'live' }, { id: 'scheduled' }]
 
 const SHIFTS: PostedShift[] = [
   {
@@ -83,16 +82,18 @@ const SHIFTS: PostedShift[] = [
   },
 ]
 
-const NAV: { icon: LucideIcon; label: string; active?: boolean }[] = [
-  { icon: House, label: 'Dashboard', active: true },
-  { icon: CalendarDays, label: 'Shifts' },
-  { icon: UsersRound, label: 'Applicants' },
-  { icon: Building2, label: 'Profile' },
+const NAV: { icon: LucideIcon; active?: boolean }[] = [
+  { icon: House, active: true },
+  { icon: CalendarDays },
+  { icon: UsersRound },
+  { icon: Building2 },
 ]
 
 export function BusinessPreview() {
   const [segment, setSegment] = useState<Segment>('live')
   const { open } = useComingSoon()
+  const { copy } = useLocale()
+  const preview = copy.preview
   const visible = SHIFTS.filter((shift) => shift.segment === segment)
   const isLive = segment === 'live'
   const confirmed = visible.reduce((sum, shift) => sum + shift.confirmed, 0)
@@ -101,10 +102,10 @@ export function BusinessPreview() {
 
   const sample = (title: string, description: string) =>
     open({
-      eyebrow: 'Sample preview',
+      eyebrow: preview.sampleEyebrow,
       title,
       description,
-      action: { label: 'Find workers on KaaamNow', href: APP_LINKS.businessHome },
+      action: { label: preview.findWorkers, href: APP_LINKS.businessHome },
     })
 
   return (
@@ -118,10 +119,10 @@ export function BusinessPreview() {
           </div>
         </div>
         <ul className={styles.nav}>
-          {NAV.map(({ icon: Icon, label, active }) => (
-            <li key={label} className={active ? styles.navActive : undefined}>
+          {NAV.map(({ icon: Icon, active }, index) => (
+            <li key={preview.businessNav[index]} className={active ? styles.navActive : undefined}>
               <Icon size={16} strokeWidth={1.75} />
-              {label}
+              {preview.businessNav[index]}
             </li>
           ))}
         </ul>
@@ -130,7 +131,7 @@ export function BusinessPreview() {
 
       <div className={styles.main}>
         <div className={styles.header}>
-          <span className={styles.headerTitle}>Dashboard</span>
+          <span className={styles.headerTitle}>{preview.dashboard}</span>
           <span className={styles.bell} aria-hidden="true">
             <Bell size={16} strokeWidth={1.75} />
           </span>
@@ -139,7 +140,7 @@ export function BusinessPreview() {
         <div className={styles.scroll}>
           <div className={styles.content}>
             <div className={styles.intro}>
-              <h3>Your team, at a glance</h3>
+              <h3>{preview.glance}</h3>
               <p className={styles.identity}>
                 Sample Café
                 <BadgeCheck size={14} strokeWidth={2} aria-hidden="true" />
@@ -152,8 +153,8 @@ export function BusinessPreview() {
               <ChevronDown size={16} strokeWidth={1.75} />
             </div>
 
-            <div className={styles.segments} role="group" aria-label="Shift type">
-              {SEGMENTS.map(({ id, label }) => (
+            <div className={styles.segments} role="group" aria-label={preview.shiftType}>
+              {SEGMENTS.map(({ id }) => (
                 <button
                   key={id}
                   type="button"
@@ -161,7 +162,7 @@ export function BusinessPreview() {
                   aria-pressed={segment === id}
                   onClick={() => setSegment(id)}
                 >
-                  {label}
+                  {id === 'live' ? preview.liveNow : preview.scheduled}
                 </button>
               ))}
             </div>
@@ -180,20 +181,20 @@ export function BusinessPreview() {
                     <strong>
                       {confirmed}/{needed}
                     </strong>
-                    <p>Workers confirmed</p>
+                    <p>{preview.confirmed}</p>
                   </div>
                   <div className={styles.metric}>
                     <strong>{applicants}</strong>
-                    <p>New applicants</p>
+                    <p>{preview.applicantsLabel}</p>
                   </div>
                 </div>
 
                 <p className={styles.sectionHeading}>
                   <span>
                     {isLive && <span className={styles.liveDot} aria-hidden="true" />}
-                    {isLive ? 'Today’s live shifts' : 'Upcoming shifts'}
+                    {isLive ? preview.todayLive : preview.upcoming}
                   </span>
-                  <span className={styles.viewAll}>View all</span>
+                  <span className={styles.viewAll}>{preview.viewAll}</span>
                 </p>
 
                 {visible.map((shift) => (
@@ -203,27 +204,27 @@ export function BusinessPreview() {
                     className={styles.shift}
                     onClick={() =>
                       sample(
-                        'Manage real shifts in the app',
-                        `${shift.role} is a sample shift. On KaaamNow you see who applied, confirm workers in a tap, and track arrivals with arrival codes.`,
+                        preview.manageTitle,
+                        fill(preview.manageBody, { role: preview.businessRoles[SHIFTS.findIndex((item) => item.id === shift.id)] }),
                       )
                     }
                   >
                     <span className={styles.shiftTop}>
                       <strong className={shift.segment === 'live' ? styles.live : undefined}>
-                        {shift.status}
+                        {preview.businessStatus[SHIFTS.findIndex((item) => item.id === shift.id)]}
                       </strong>
                       <span>{shift.rate}</span>
                     </span>
-                    <h4>{shift.role}</h4>
-                    <span>{shift.time}</span>
+                    <h4>{preview.businessRoles[SHIFTS.findIndex((item) => item.id === shift.id)]}</h4>
+                    <span>{preview.businessTimes[SHIFTS.findIndex((item) => item.id === shift.id)]}</span>
                     <span className={styles.shiftFoot}>
                       <span>
                         <strong>
                           {shift.confirmed} / {shift.needed}
                         </strong>{' '}
-                        confirmed
+                        {preview.confirmedWord}
                         <small>
-                          {shift.applicants} {shift.applicants === 1 ? 'applicant' : 'applicants'}
+                          {shift.applicants} {shift.applicants === 1 ? preview.applicant : preview.applicants}
                         </small>
                       </span>
                       <ArrowRight size={16} strokeWidth={2} aria-hidden="true" />
@@ -241,17 +242,11 @@ export function BusinessPreview() {
             className={styles.primaryButton}
             onClick={() =>
               isLive
-                ? sample(
-                    'Post a real live request in the app',
-                    'This dashboard is a sample. On KaaamNow you post a live request and workers within 30 km in that category are notified instantly.',
-                  )
-                : sample(
-                    'Create a real shift in the app',
-                    'This dashboard is a sample. On KaaamNow you create a shift in minutes — set the role, timing, and pay — and nearby workers in that category get an alert.',
-                  )
+                ? sample(preview.postLive, preview.postLiveBody)
+                : sample(preview.createShift, preview.createShiftBody)
             }
           >
-            {isLive ? '+ Post live request' : '+ Create shift'}
+            {isLive ? preview.postLiveButton : preview.createShiftButton}
           </button>
         </div>
       </div>

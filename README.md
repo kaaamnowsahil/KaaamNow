@@ -10,10 +10,18 @@ Install dependencies:
 npm install
 ```
 
-Start the development server:
+There are two env files, both git-ignored. `.env.dev` points at the local backend and is used by `npm run dev` and `npm run build:dev`. `.env.prod` points at the deployed backend and is used by `npm run dev:prod` and `npm run build`.
+
+Start the development server against the local API:
 
 ```sh
 npm run dev
+```
+
+Start it against the production API:
+
+```sh
+npm run dev:prod
 ```
 
 Build for production:

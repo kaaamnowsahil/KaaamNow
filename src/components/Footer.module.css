@@ -6,7 +6,7 @@
 .top {
   display: grid;
   gap: 40px 48px;
-  padding-block: 64px 48px;
+  padding-block: 56px 28px;
 }
 
 .brand {
@@ -21,9 +21,46 @@
 
 .columns {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-  gap: 24px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px 32px;
   align-content: start;
+}
+
+.directory {
+  display: grid;
+  gap: 22px;
+  padding-bottom: 36px;
+}
+
+.pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 12px;
+  padding: 0;
+  list-style: none;
+}
+
+.pill {
+  display: inline-flex;
+  padding: 6px 12px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-pill);
+  background: var(--color-card);
+  color: var(--color-text-muted);
+  font-size: var(--text-sm);
+  transition:
+    color var(--duration-fast) var(--ease-out),
+    border-color var(--duration-fast) var(--ease-out);
+}
+
+.pill:hover {
+  border-color: var(--color-primary-a50);
+  color: var(--color-primary-soft);
+}
+
+.contactWrap {
+  padding-bottom: 8px;
 }
 
 .columnTitle {
@@ -109,11 +146,12 @@
 
 @media (min-width: 960px) {
   .top {
-    grid-template-columns: 0.8fr 1.2fr;
+    grid-template-columns: minmax(240px, 320px) 1fr;
+    align-items: start;
   }
 
-  .contact {
-    grid-column: 2;
+  .contactGrid {
+    grid-template-columns: 1.5fr 1fr 0.7fr 1.4fr;
   }
 }
 

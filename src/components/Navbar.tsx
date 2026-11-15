@@ -1,11 +1,14 @@
 import { AnimatePresence, motion } from 'framer-motion'
 import { ArrowRight, Menu, X } from 'lucide-react'
 import { useEffect, useState } from 'react'
+import { APP_LINKS } from '../data/appLinks'
 import { NAV_LINKS } from '../data/navigation'
 import { useActiveSection } from '../hooks/useActiveSection'
 import { useScrollLock } from '../hooks/useScrollLock'
 import { easeOut, stagger } from '../lib/motion'
+import { useLocale } from '../i18n/locale'
 import { Logo } from './Logo'
+import { SiteControls } from './SiteControls'
 import { Button } from './ui/Button'
 import styles from './Navbar.module.css'
 
@@ -18,6 +21,8 @@ export function Navbar() {
   const [scrolled, setScrolled] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
   const active = useActiveSection(SECTION_IDS)
+  const { copy } = useLocale()
+  const nav = copy.nav
 
   useScrollLock(menuOpen)
 
@@ -49,7 +54,7 @@ export function Navbar() {
 
   return (
     <header className={`${styles.header} ${scrolled || menuOpen ? styles.scrolled : ''}`}>
-      <nav className={`container ${styles.nav}`} aria-label="Primary">
+      <nav className={`container ${styles.nav}`} aria-label={nav.primary}>
         <Logo />
 
         <ul className={styles.links}>
@@ -69,27 +74,28 @@ export function Navbar() {
                       transition={{ type: 'spring', stiffness: 380, damping: 32 }}
                     />
                   )}
-                  <span className={styles.linkLabel}>{link.label}</span>
+                  <span className={styles.linkLabel}>{nav[link.key]}</span>
                 </a>
               </li>
             )
           })}
         </ul>
 
-        <div className={styles.actions}>
-          <Button size="sm" href="#get-started" icon={<ArrowRight size={16} strokeWidth={2} />}>
-            Get Started
-          </Button>
-        </div>
-
-        <button
-          type="button"
-          className={styles.menuToggle}
-          aria-expanded={menuOpen}
-          aria-controls={MOBILE_MENU_ID}
-          aria-label={menuOpen ? 'Close menu' : 'Open menu'}
-          onClick={() => setMenuOpen((value) => !value)}
-        >
+        <div className={styles.end}>
+          <SiteControls />
+          <div className={styles.actions}>
+            <Button size="sm" href={APP_LINKS.login} icon={<ArrowRight size={16} strokeWidth={2} />}>
+              {nav.start}
+            </Button>
+          </div>
+          <button
+            type="button"
+            className={styles.menuToggle}
+            aria-expanded={menuOpen}
+            aria-controls={MOBILE_MENU_ID}
+            aria-label={menuOpen ? nav.menuClose : nav.menuOpen}
+            onClick={() => setMenuOpen((value) => !value)}
+          >
           <AnimatePresence mode="wait" initial={false}>
             <motion.span
               key={menuOpen ? 'close' : 'open'}
@@ -107,6 +113,7 @@ export function Navbar() {
             </motion.span>
           </AnimatePresence>
         </button>
+        </div>
       </nav>
 
       <AnimatePresence>
@@ -135,7 +142,7 @@ export function Navbar() {
                     className={`${styles.mobileLink} ${active === link.href.slice(1) ? styles.mobileLinkActive : ''}`}
                     onClick={closeMenu}
                   >
-                    {link.label}
+                    {nav[link.key]}
                     <ArrowRight size={16} strokeWidth={1.75} aria-hidden="true" />
                   </a>
                 </motion.li>
@@ -144,8 +151,8 @@ export function Navbar() {
                 className={styles.mobileActions}
                 variants={{ hidden: { opacity: 0, y: 8 }, visible: { opacity: 1, y: 0 } }}
               >
-                <Button href="#get-started" onClick={closeMenu} fullWidth>
-                  Get Started
+                <Button href={APP_LINKS.login} onClick={closeMenu} fullWidth>
+                  {nav.start}
                 </Button>
               </motion.li>
             </motion.ul>

@@ -53,7 +53,7 @@
 }
 
 .primary {
-  color: var(--color-text);
+  color: var(--color-on-primary);
   background-color: var(--color-primary);
   box-shadow:
     0 1px 0 var(--color-text-a08) inset,

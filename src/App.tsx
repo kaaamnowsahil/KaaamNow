@@ -15,6 +15,8 @@ import { FinalCta } from './components/sections/FinalCta'
 import { HowItWorks } from './components/sections/HowItWorks'
 import { ProductPreview } from './components/sections/preview/ProductPreview'
 import { ComingSoonProvider } from './context/ComingSoonProvider'
+import { LocaleProvider, useLocale } from './i18n/locale'
+import { localizedPage } from './i18n/localize'
 import { pageForPath } from './data/site'
 import { AccountDeletionPortal } from './pages/AccountDeletionPortal'
 import { PrivacyPolicy } from './pages/PrivacyPolicy'
@@ -37,14 +39,41 @@ function browserPath() {
 }
 
 export default function App({ path: pathProp }: { path?: string }) {
+  return (
+    <LocaleProvider>
+      <AppContent path={pathProp} />
+    </LocaleProvider>
+  )
+}
+
+function AppContent({ path: pathProp }: { path?: string }) {
   const path = normalizePath(pathProp ?? browserPath())
+  const { language, copy } = useLocale()
 
   useEffect(() => {
     if (path === '/team' && window.location.pathname !== '/team') {
       window.history.replaceState(null, '', '/team')
     }
-    applyPageMeta(metaForPath(path))
-  }, [path])
+    const meta = metaForPath(path)
+    if (language !== 'en') {
+      const landing = pageForPath(path)
+      if (landing) {
+        const view = localizedPage(landing, language, copy)
+        meta.title = view.title
+        meta.description = view.description
+      } else if (path === '/') {
+        meta.title = `KaaamNow – ${copy.hero.line1.replace(/,\s*$/, '')}`
+        meta.description = copy.hero.lead
+      } else if (path === '/team') {
+        meta.title = `${copy.team.eyebrow} — KaaamNow`
+        meta.description = copy.team.description
+      } else if (path === '/404' || path.startsWith('/jobs/') || path.startsWith('/hire-workers/')) {
+        meta.title = `${copy.notFound.title} — KaaamNow`
+        meta.description = copy.notFound.body
+      }
+    }
+    applyPageMeta(meta)
+  }, [path, language, copy])
 
   const landing = pageForPath(path)
   if (landing) return <LandingView page={landing} />
@@ -64,7 +93,7 @@ export default function App({ path: pathProp }: { path?: string }) {
       <ComingSoonProvider>
         <JsonLd path="/" />
         <a href="#main" className="skip-link">
-          Skip to content
+          {copy.nav.skip}
         </a>
         <Navbar />
         <main id="main" tabIndex={-1}>
