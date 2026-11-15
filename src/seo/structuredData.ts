@@ -1,5 +1,4 @@
 import {
-  CITIES,
   COMPANY,
   CONTACT,
   HOME_FAQS,
@@ -43,7 +42,7 @@ function organization(): Json {
       postalCode: COMPANY.postalCode,
       addressCountry: COMPANY.country,
     },
-    areaServed: CITIES.map((city) => ({ '@type': 'City', name: city.name })),
+    areaServed: { '@type': 'Country', name: 'India' },
     sameAs: socialProfiles(),
   }
 }

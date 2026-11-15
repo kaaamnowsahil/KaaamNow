@@ -68,10 +68,11 @@ export function HomeGuide() {
           ))}
         </ul>
 
-        <h2>Cities jahan hum hain</h2>
+        <h2>Poora India</h2>
         <p>
-          Abhi yeh pages Ludhiana, Delhi, Chandigarh aur Jaipur ke liye hain. Har shehar ki jobs
-          alag hain, kyunki businesses apna area khud choose karte hain.
+          KaaamNow Ludhiana ya kisi ek shehar tak limited nahi hai. Poore India mein worker apna
+          shehar set karta hai, aur business apna area khud post karta hai. Neeche bade shehron ke
+          pages hain. Aapka shehar list mein na ho, tab bhi app mein wahi area choose kar sakte ho.
         </p>
         <ul className={styles.links}>
           {CITIES.map((city) => (

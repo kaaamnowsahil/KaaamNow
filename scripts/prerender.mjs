@@ -35,10 +35,9 @@ try {
         `  <url><loc>${SITE_URL}${route === '/' ? '/' : route}</loc><lastmod>${lastmod}</lastmod></url>`,
     )
     .join('\n')
-  await writeFile(
-    path.join(dist, 'sitemap.xml'),
-    `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls}\n</urlset>\n`,
-  )
+  const sitemap = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls}\n</urlset>\n`
+  await writeFile(path.join(dist, 'sitemap.xml'), sitemap)
+  await writeFile(path.join(root, 'public', 'sitemap.xml'), sitemap)
 } finally {
   await vite.close()
 }

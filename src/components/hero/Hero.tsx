@@ -73,9 +73,9 @@ export function Hero() {
           </motion.h1>
 
           <motion.p className={styles.lead} variants={fadeUp}>
-            KaaamNow India ka flexible work platform hai. Workers ko apne paas daily shift, hourly
-            aur part-time kaam milta hai, aur businesses ko kam time mein bharosemand staff. Har job
-            pe pay pehle se dikhta hai, koi surprise nahi.
+            KaaamNow poore India ka flexible work platform hai. Workers ko apne shehar mein daily
+            shift, hourly aur part-time kaam milta hai, aur businesses ko kam time mein staff. Har
+            job pe pay pehle se dikhta hai, koi surprise nahi.
           </motion.p>
 
           <motion.div variants={fadeUp}>
