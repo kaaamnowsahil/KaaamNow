@@ -8,8 +8,8 @@ import { HeroVisual } from './HeroVisual'
 import styles from './Hero.module.css'
 
 const LINES = [
-  { text: 'The right people.', accent: false },
-  { text: 'Right when you need them.', accent: true },
+  { text: 'Daily Wage Jobs aur Workers,', accent: false },
+  { text: 'Ek Hi Jagah', accent: true },
 ]
 
 const HIGHLIGHTS = [
@@ -45,7 +45,7 @@ export function Hero() {
       </div>
 
       <div className={`container ${styles.inner}`}>
-        <motion.div className={styles.copy} initial="hidden" animate="visible" variants={stagger(0.12)}>
+        <motion.div className={styles.copy} initial={false} animate="visible" variants={stagger(0.12)}>
           <motion.p className={styles.badge} variants={fadeUp}>
             <span className={styles.badgeIcon} aria-hidden="true">
               <Sparkles size={14} strokeWidth={2} />
@@ -53,13 +53,14 @@ export function Hero() {
             The on-demand marketplace for blue-collar jobs
           </motion.p>
 
-          <motion.h1 id="hero-title" className={styles.title} variants={stagger(0.06)}>
+          <motion.h1 id="hero-title" className={styles.title} initial={false} variants={stagger(0.06)}>
             {LINES.map((line) => (
               <span key={line.text} className={styles.line}>
                 {line.text.split(' ').map((w, i, words) => (
                   <Fragment key={`${w}-${i}`}>
                     <motion.span
                       className={`${styles.word} ${line.accent ? styles.accent : ''}`}
+                      initial={false}
                       variants={word}
                     >
                       {w}
@@ -72,9 +73,9 @@ export function Hero() {
           </motion.h1>
 
           <motion.p className={styles.lead} variants={fadeUp}>
-            KaaamNow connects businesses with dependable blue-collar workers for hourly shifts, daily
-            wage jobs, and flexible assignments. Need someone right now? Post a Live Work request and a nearby worker
-            is on the way in minutes. Workers pick the hours that fit their life.
+            KaaamNow India ka flexible work platform hai. Workers ko apne paas daily shift, hourly
+            aur part-time kaam milta hai, aur businesses ko kam time mein bharosemand staff. Har job
+            pe pay pehle se dikhta hai, koi surprise nahi.
           </motion.p>
 
           <motion.div variants={fadeUp}>

@@ -1,8 +1,9 @@
-const APP_ORIGIN = 'https://www.kaaamnow.in'
+import { APP_LINKS as SITE_LINKS } from './site'
 
+/** Signed-in app routes. Marketing pages stay on https://kaaamnow.in. */
 export const APP_LINKS = {
-  businessHome: `${APP_ORIGIN}/business/home`,
-  workerHome: `${APP_ORIGIN}/worker/home`,
-  terms: `${APP_ORIGIN}/terms`,
-  faq: `${APP_ORIGIN}/faq`,
+  businessHome: SITE_LINKS.hireWorkers,
+  workerHome: SITE_LINKS.findWork,
+  terms: 'https://www.kaaamnow.in/terms',
+  faq: SITE_LINKS.faq,
 } as const

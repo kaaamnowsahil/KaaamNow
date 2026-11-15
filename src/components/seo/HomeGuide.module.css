@@ -1,0 +1,56 @@
+.steps {
+  display: grid;
+  gap: 16px;
+  margin-top: 16px;
+  padding: 0;
+  list-style: none;
+}
+
+.steps h3 {
+  font-size: 1.15rem;
+}
+
+.guide p,
+.steps p,
+.faqs p {
+  margin-top: 12px;
+  max-width: 68ch;
+  color: var(--color-text-muted);
+  line-height: 1.7;
+}
+
+.links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 16px;
+  padding: 0;
+  list-style: none;
+}
+
+.links a {
+  display: inline-flex;
+  padding: 8px 12px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-pill);
+  color: var(--color-text);
+}
+
+.faqs {
+  display: grid;
+  gap: 12px;
+  max-width: 68ch;
+  margin-top: 16px;
+}
+
+.faqs details {
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: 12px 16px;
+  background: var(--color-card);
+}
+
+.faqs summary {
+  cursor: pointer;
+  font-weight: 700;
+}

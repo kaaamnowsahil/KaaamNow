@@ -40,7 +40,7 @@ function Floating({ children, className, delay, duration, distance = 10 }: Float
   return (
     <motion.div
       className={`${styles.floating} ${className}`}
-      initial={{ opacity: 0, scale: 0.92 }}
+      initial={false}
       animate={{ opacity: 1, scale: 1 }}
       transition={{ duration: 0.7, delay, ease: easeOut }}
     >
@@ -62,7 +62,7 @@ export function HeroVisual() {
 
       <motion.div
         className={styles.board}
-        initial={{ opacity: 0, y: 32 }}
+        initial={false}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.9, delay: 0.3, ease: easeOut }}
         aria-hidden="true"
@@ -83,7 +83,7 @@ export function HeroVisual() {
             <motion.li
               key={role}
               className={styles.shift}
-              initial={{ opacity: 0, x: 16 }}
+              initial={false}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6, delay: 0.6 + index * 0.12, ease: easeOut }}
             >

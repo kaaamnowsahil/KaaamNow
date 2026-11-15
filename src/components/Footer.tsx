@@ -1,5 +1,6 @@
 import { ArrowUp } from 'lucide-react'
 import { APP_LINKS } from '../data/appLinks'
+import { CATEGORIES, CITIES, cityHirePath, cityJobsPath } from '../data/site'
 import { COMPANY_ADDRESS, COMPANY_MAPS_URL } from '../data/company'
 import { CONTACT_EMAILS } from '../data/contacts'
 import { Logo } from './Logo'
@@ -7,26 +8,26 @@ import styles from './Footer.module.css'
 
 type FooterItem = {
   label: string
-  href: `#${string}` | '/account-deletion' | '/privacy' | '/team' | '/terms' | `https://${string}`
+  href: string
 }
 
 const COLUMNS: { title: string; items: FooterItem[] }[] = [
   {
     title: 'Product',
     items: [
-      { label: 'Benefits', href: '#benefits' },
-      { label: 'How it works', href: '#how-it-works' },
-      { label: 'Work categories', href: '#categories' },
-      { label: 'Business categories', href: '#industries' },
-      { label: 'Preview', href: '#preview' },
+      { label: 'Benefits', href: '/#benefits' },
+      { label: 'How it works', href: '/#how-it-works' },
+      { label: 'Work categories', href: '/#categories' },
+      { label: 'Business categories', href: '/#industries' },
+      { label: 'Preview', href: '/#preview' },
     ],
   },
   {
     title: 'Get started',
     items: [
-      { label: 'For businesses', href: '#businesses' },
-      { label: 'For workers', href: '#workers' },
-      { label: 'Join KaaamNow', href: '#get-started' },
+      { label: 'For businesses', href: '/#businesses' },
+      { label: 'For workers', href: '/#workers' },
+      { label: 'Join KaaamNow', href: '/#get-started' },
       { label: 'FAQ', href: APP_LINKS.faq },
     ],
   },
@@ -38,6 +39,27 @@ const COLUMNS: { title: string; items: FooterItem[] }[] = [
       { label: 'Terms', href: '/terms' },
       { label: 'Account deletion', href: '/account-deletion' },
     ],
+  },
+  {
+    title: 'Jobs by city',
+    items: CITIES.map((city) => ({
+      label: `Jobs in ${city.name}`,
+      href: cityJobsPath(city.slug),
+    })),
+  },
+  {
+    title: 'Hire by city',
+    items: CITIES.map((city) => ({
+      label: `Hire in ${city.name}`,
+      href: cityHirePath(city.slug),
+    })),
+  },
+  {
+    title: 'Work types',
+    items: CATEGORIES.map((category) => ({
+      label: category.label,
+      href: category.path,
+    })),
   },
 ]
 

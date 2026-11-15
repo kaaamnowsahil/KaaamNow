@@ -1,9 +1,11 @@
 {
   "trailingSlash": false,
+  "redirects": [
+    { "source": "/index.html", "destination": "/", "permanent": true }
+  ],
   "rewrites": [
     { "source": "/admin", "destination": "https://kaaamnow-admin.vercel.app/admin/" },
-    { "source": "/admin/:path*", "destination": "https://kaaamnow-admin.vercel.app/admin/:path*" },
-    { "source": "/(.*)", "destination": "/index.html" }
+    { "source": "/admin/:path*", "destination": "https://kaaamnow-admin.vercel.app/admin/:path*" }
   ],
   "headers": [
     {
@@ -30,6 +32,14 @@
     {
       "source": "/terms/:path*",
       "headers": [{ "key": "X-Robots-Tag", "value": "noindex, follow" }]
+    },
+    {
+      "source": "/account-deletion",
+      "headers": [{ "key": "X-Robots-Tag", "value": "noindex, nofollow" }]
+    },
+    {
+      "source": "/404",
+      "headers": [{ "key": "X-Robots-Tag", "value": "noindex, nofollow" }]
     }
   ]
 }

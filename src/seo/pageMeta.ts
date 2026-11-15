@@ -1,21 +1,25 @@
-const ORIGIN = 'https://kaaamnow.in'
+import { SITE_URL, pageForPath } from '../data/site'
 
 export type PageMeta = {
   title: string
   description: string
   path: string
   robots: string
+  canonical: string
 }
 
 const INDEX = 'index, follow, max-image-preview:large'
 const NOINDEX = 'noindex, follow'
 const HIDDEN = 'noindex, nofollow'
 
-const PAGES: Record<string, PageMeta> = {
+const HOME_TITLE = 'KaaamNow – Daily Wage Jobs & Hire Workers in India'
+const HOME_DESCRIPTION =
+  'Kaam chahiye ya workers? KaaamNow pe daily shift, hourly aur part-time jobs dhoondo ya staff hire karo. Pay pehle se dikhta hai.'
+
+const PAGES: Record<string, Omit<PageMeta, 'canonical'>> = {
   '/': {
-    title: 'KaaamNow – Hire Workers & Find Flexible Jobs in India',
-    description:
-      'Hire workers for daily shifts, hourly jobs and temporary staffing. Find flexible work across India.',
+    title: HOME_TITLE,
+    description: HOME_DESCRIPTION,
     path: '/',
     robots: INDEX,
   },
@@ -42,8 +46,7 @@ const PAGES: Record<string, PageMeta> = {
   },
   '/terms/workers': {
     title: 'Worker Terms — KaaamNow',
-    description:
-      'Terms for workers who take hourly shifts, daily jobs, and Live Work through KaaamNow.',
+    description: 'Terms for workers who take hourly shifts, daily jobs, and Live Work through KaaamNow.',
     path: '/terms/workers',
     robots: NOINDEX,
   },
@@ -60,19 +63,32 @@ const PAGES: Record<string, PageMeta> = {
     path: '/account-deletion',
     robots: HIDDEN,
   },
+  '/404': {
+    title: 'Page not found — KaaamNow',
+    description: 'This page is not on KaaamNow. Browse jobs and hiring pages from the homepage.',
+    path: '/404',
+    robots: HIDDEN,
+  },
 }
 
 export function metaForPath(pathname: string): PageMeta {
   const path = pathname.replace(/\/+$/, '') || '/'
   const normalized = path === '/index.html' ? '/' : path
-  return (
-    PAGES[normalized] ?? {
-      title: 'KaaamNow',
-      description: PAGES['/'].description,
-      path: normalized,
-      robots: HIDDEN,
-    }
-  )
+  const landing = pageForPath(normalized)
+  const base = landing
+    ? {
+        title: landing.title,
+        description: landing.description,
+        path: landing.path,
+        robots: INDEX,
+      }
+    : (PAGES[normalized] ?? {
+        title: 'Page not found — KaaamNow',
+        description: PAGES['/404'].description,
+        path: normalized,
+        robots: HIDDEN,
+      })
+  return { ...base, canonical: `${SITE_URL}${base.path === '/' ? '/' : base.path}` }
 }
 
 function upsertMeta(name: string, content: string, attribute: 'name' | 'property' = 'name') {
@@ -97,14 +113,16 @@ function upsertCanonical(href: string) {
 
 /** Sets the document head for the current public route. Unknown paths stay out of Google. */
 export function applyPageMeta(meta: PageMeta) {
-  const url = `${ORIGIN}${meta.path === '/' ? '/' : meta.path}`
   document.title = meta.title
   upsertMeta('description', meta.description)
   upsertMeta('robots', meta.robots)
   upsertMeta('og:title', meta.title, 'property')
   upsertMeta('og:description', meta.description, 'property')
-  upsertMeta('og:url', url, 'property')
+  upsertMeta('og:url', meta.canonical, 'property')
+  upsertMeta('og:image', `${SITE_URL}/og-image.png`, 'property')
+  upsertMeta('twitter:card', 'summary_large_image')
   upsertMeta('twitter:title', meta.title)
   upsertMeta('twitter:description', meta.description)
-  upsertCanonical(url)
+  upsertMeta('twitter:image', `${SITE_URL}/og-image.png`)
+  upsertCanonical(meta.canonical)
 }
