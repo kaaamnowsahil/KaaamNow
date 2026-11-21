@@ -56,23 +56,12 @@ export function ActivePresence() {
 
   return (
     <div className={styles.row} aria-live="polite">
-      {businessCount > 0 ? (
-        <p className={`${styles.stat} ${styles.business}`}>
-          <span className={styles.dot} aria-hidden="true" />
-          {businessLabel}
-        </p>
-      ) : null}
-      {businesses.length > 0 ? (
-        <ul className={styles.names}>
-          {businesses.map((name, index) => (
-            <li key={`${name}-${index}`} className={styles.name}>
-              {name}
-            </li>
-          ))}
-        </ul>
-      ) : null}
-      <p className={styles.stat}>
-        <span className={`${styles.dot} ${styles.workerDot}`} aria-hidden="true" />
+      <p className={`${styles.stat} ${styles.business}`}>
+        <span className={styles.dot} aria-hidden="true" />
+        {businessLabel}
+      </p>
+      <p className={`${styles.stat} ${styles.worker}`}>
+        <span className={styles.dot} aria-hidden="true" />
         {workerLabel}
       </p>
     </div>

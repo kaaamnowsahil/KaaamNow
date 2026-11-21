@@ -35,6 +35,7 @@ export const CONTACT = {
 export const SOCIAL = {
   instagram: 'https://www.instagram.com/kaaamnow',
   linkedin: 'https://www.linkedin.com/company/kaaamnow',
+  x: 'https://x.com/Kaaam_Now',
   facebook: 'TODO',
   youtube: 'TODO',
 } as const
@@ -76,27 +77,27 @@ export const CATEGORIES: Category[] = [
     path: '/daily-wage-jobs',
     title: 'Daily Wage Jobs in India | KaaamNow',
     description:
-      'Daily wage jobs dhoondo jahan shift, area aur pay pehle se dikhe. KaaamNow pe aaj ka kaam dekho ya ek din ki team hire karo.',
-    h1: 'Daily Wage Jobs, Shift aur Pay Upfront',
+      'Find daily wage jobs where the shift, the area, and the pay are shown first. See today’s work on KaaamNow, or hire a team for one day.',
+    h1: 'Daily wage jobs, with the shift and pay upfront',
     paragraphs: [
-      'Daily wage ka matlab yahan ek din ya ek shift ka kaam hai, koi open-ended naukri nahi. Business ko aaj extra haath chahiye, worker ko usi din ka clear slot. KaaamNow pe listing tabhi samajh aati hai jab area, start, end aur pay saath mein hon. Aap card padh kar decide karte ho, baad mein rate ka surprise nahi hota.',
-      'Is category mein helper, loading, packing, housekeeping cover aur ek-din ki shop support aa sakti hai, jab business ne daily wage chuna ho. Har shehar ki list alag hoti hai. Mumbai ki shop shift aur Chennai ki factory shift ek hi page pe mix nahi hoti. Apna shehar chuno, phir us din ki posts padho.',
-      'Workers ke liye apply free hai. Ek waqt pe ek shift. Businesses ke liye posting ka kaam utna hi hai: category daily wage rakho, seats likho, pay set karo. Platform tab numbers dikhata hai jab aap app mein booking complete karte ho. Yahan koi national daily rate announce nahi kiya gaya.',
-      'Agar aapko lagataar kai din kaam chahiye, har din ki post alag ho sakti hai ya aap dates ek hi temporary post mein likh sakte ho, jab tak app woh format deta hai. “Roz ka kaam” aur “hamesha ki naukri” ko ek mat samjho. Yeh page pehla wala hai.',
+      'A daily wage job here is one day or one shift, not an open-ended role. A business needs extra hands today, and a worker wants a clear slot that same day. A listing only makes sense when the area, the start, the end, and the pay are together. You read the card and decide. The rate is not a surprise later.',
+      'This category can include helper work, loading, packing, housekeeping cover, and one-day shop support, when the business chose daily wage. Every city has its own list. A shop shift in Mumbai and a factory shift in Chennai are not mixed on one page. Choose your city, then read that day’s posts.',
+      'Applying is free for workers. One shift at a time. For businesses, posting is the same short task: keep the category as daily wage, write the seats, and set the pay. The platform shows the numbers when you complete the booking in the app. This page does not announce a national daily rate.',
+      'If you need work on several days in a row, each day can be its own post, or you can write the dates on one temporary post when the app offers that format. Do not treat “work for the day” and “a permanent job” as the same thing. This page is the first one.',
     ],
     faqs: [
       {
-        question: 'Daily wage job aur part-time mein farak kya hai?',
+        question: 'How is a daily wage job different from part-time?',
         answer:
-          'Daily wage aksar ek din ya ek poori shift hoti hai. Part-time kam ghante ki ho sakti hai aur hafte mein sirf kuch din. Dono mein pay posting pe likha hota hai.',
+          'Daily wage is usually one day or one full shift. Part-time can be fewer hours, and only on some days of the week. Both show the pay on the posting.',
       },
       {
-        question: 'Kya daily wage jobs poore India mein hain?',
-        answer: 'Poora India. Worker app mein apna shehar set karta hai, aur wahi shifts dikhti hain jo us area ke businesses post karte hain. Neeche ke city pages kuch bade shehron ki searches ke liye hain, coverage un tak limited nahi hai.',
+        question: 'Are daily wage jobs available across India?',
+        answer: 'All of India. A worker sets their city in the app and sees the shifts businesses post in that area. The city pages below are for searches in some larger cities. Coverage is not limited to those cities.',
       },
       {
-        question: 'Kya main roz nayi job le sakta hoon?',
-        answer: 'Haan, jab tak shifts overlap na karein aur aap unhe accept kar chuke ho.',
+        question: 'Can I take a new job every day?',
+        answer: 'Yes, as long as the shifts do not overlap and you have already accepted them.',
       },
     ],
   },
@@ -105,26 +106,26 @@ export const CATEGORIES: Category[] = [
     path: '/part-time-jobs',
     title: 'Part-Time Jobs in India | KaaamNow',
     description:
-      'Part-time jobs near you: kam ghante ki shifts, pay upfront. KaaamNow pe kaam dhoondo ya short-hour staff hire karo.',
-    h1: 'Part-Time Jobs, Kam Ghante, Clear Pay',
+      'Part-time jobs near you: shorter shifts, with the pay shown upfront. Find work on KaaamNow, or hire staff for a few hours.',
+    h1: 'Part-time jobs, fewer hours, clear pay',
     paragraphs: [
-      'Part-time yahan un shifts ke liye hai jo aapka poora din nahi le leti. Shaam ke chaar ghante ek counter pe, weekend ki kitchen help, ya hafte mein do dopahar ki packing. Log “part time jobs near me” isliye dhoondte hain kyunki unke paas college, dusri duty ya ghar ka time pehle se bhara hota hai.',
-      'KaaamNow pe part-time tab useful hai jab hours card pe hon. “Flexible” likh kar time chhupaana nahi hota. Worker dekhta hai ki shift uske route mein hai ya nahi, aur pay usi card pe hota hai. Business ko bhi fayda hai: aap sirf peak hours ke liye log bulwaate ho, poori salary bandhi nahi hoti.',
-      'Categories jaise retail, restaurant, delivery support ya event aksar part-time hoti hain, lekin har post ka label business chahta hai. Shehar pages poore India ke bade cities ke liye hain, isi tarah ki short shifts dikhane ke liye. Live list app mein hai.',
-      'Apply free hai. Agar aap shift lete ho to us window mein doosri part-time mat rakhna. Businesses ko chahiye ki woh end time clearly likhein, taaki “near me” ka matlab sirf area na ho, balki aaj ki availability bhi ho.',
+      'Part-time here means shifts that do not take your whole day. Four evening hours on a counter, weekend kitchen help, or two afternoons of packing in a week. People search for part-time work near them because college, another job, or home already fills the rest of the day.',
+      'A part-time shift on KaaamNow is useful when the hours are on the card. Writing “flexible” is not a way to hide the time. A worker can see whether the shift fits their route, and the pay is on the same card. A business also gains: you call people only for the peak hours, without a full salary attached.',
+      'Retail, restaurants, delivery support, and events are often part-time, but the business chooses the label on each post. City pages cover the larger cities across India so these short shifts can be found. The live list is in the app.',
+      'Applying is free. If you take a shift, do not keep another part-time job in that same window. Businesses should write a clear end time, so “near me” means today’s availability as well as the area.',
     ],
     faqs: [
       {
-        question: 'Part-time job kitne ghante ki hoti hai?',
-        answer: 'Jitne ghante us posting mein likhe hon. Koi ek fixed national duration nahi hai.',
+        question: 'How many hours is a part-time job?',
+        answer: 'As many hours as that posting writes. There is no single national duration.',
       },
       {
-        question: 'Kya students apply kar sakte hain?',
-        answer: 'Haan, agar aap 18 ya usse zyada ho aur us shift ke hours mein available ho. Site age policy app ke terms mein hai.',
+        question: 'Can students apply?',
+        answer: 'Yes, if you are 18 or older and free during those hours. The age policy is in the app terms.',
       },
       {
-        question: 'Near me kaise kaam karta hai?',
-        answer: 'Aap app mein apna area dete ho. Jo businesses us area mein post karte hain, wahi cards saamne aate hain.',
+        question: 'How does near me work?',
+        answer: 'You set your area in the app. You see posts from businesses in that area.',
       },
     ],
   },
@@ -134,26 +135,26 @@ export const CATEGORIES: Category[] = [
     title: 'Temporary Staffing for Short Cover | KaaamNow',
     description:
       'Temporary staffing for a few hours or a few days. Post a shift with pay upfront, or find short cover on KaaamNow.',
-    h1: 'Temporary Staffing, Kuch Ghante ya Kuch Din',
+    h1: 'Temporary staffing, a few hours or a few days',
     paragraphs: [
-      'Temporary staffing ka yahan matlab hai ek bounded cover: ek exhibition, ek leave, ek stock-take, ek wedding weekend. Yeh lambe agency contract ki jagah ek posting hai jismein dates, headcount aur pay likhe hote hain. Jab dates khatam, kaam khatam.',
-      'Businesses isliye use karte hain kyunki permanent hiring unke kal ke gap ko nahi bharti. Workers isliye lete hain kyunki unhe pata hota hai shift kab rukegi. KaaamNow beech mein listing, acceptance aur completion rakhta hai. Employer-employee ka daava is page pe nahi kiya ja raha. Kaam ka agreement posting ke terms ke mutabiq business aur worker ke beech hota hai.',
-      'Aap helper, warehouse, event, restaurant ya delivery support mein se jo cover chahiye woh category chuno. Shehar alag se set hota hai. Do alag shehar, chahe Mumbai ho ya Guwahati, ek hi temporary post se nahi chalte.',
-      'Fees aur cancellation rules app mein us waqt dikhte hain jab aap booking karte ho. Unhe yahan ek number mein summarize nahi kiya gaya, taaki galat figure na phail sake. Short cover chahiye ho to business app se post karo. Cover lena ho to worker app kholo.',
+      'Temporary staffing here means a bounded cover: an exhibition, a leave, a stock-take, or a wedding weekend. It is a posting with dates, a headcount, and pay, instead of a long agency contract. When the dates end, the work ends.',
+      'Businesses use it because a permanent hire does not fill tomorrow’s gap. Workers take it because they know when the shift stops. KaaamNow holds the listing, the acceptance, and the completion in between. This page does not claim an employer-employee relationship. The work is agreed between the business and the worker on the terms of the posting.',
+      'Choose the cover you need: helper, warehouse, event, restaurant, or delivery support. The city is set separately. Two different cities, Mumbai or Guwahati, do not share one temporary post.',
+      'Fees and cancellation rules appear in the app when you make the booking. They are not summarised as one number here, so a wrong figure does not spread. To ask for short cover, post from the business app. To take cover, open the worker app.',
     ],
     faqs: [
       {
-        question: 'Temporary staffing kitne din ki ho sakti hai?',
-        answer: 'Jitne din aap posting mein likho. Yeh page kisi ek package length ko fix nahi karta.',
+        question: 'How many days can temporary staffing run?',
+        answer: 'As many days as you write on the posting. This page does not fix one package length.',
       },
       {
-        question: 'Kya yeh manpower agency contract hai?',
+        question: 'Is this a manpower agency contract?',
         answer:
-          'Nahi. Aap ek shift post karte ho aur worker use accept karta hai. Lambi agency agreement is flow ka hissa nahi hai.',
+          'No. You post a shift and a worker accepts it. A long agency agreement is not part of this flow.',
       },
       {
-        question: 'Completion kaise confirm hoti hai?',
-        answer: 'App ke andar completion step se, taaki dono taraf ke paas us booking ka record rahe.',
+        question: 'How is completion confirmed?',
+        answer: 'With the completion step inside the app, so both sides have a record of that booking.',
       },
     ],
   },
@@ -163,20 +164,20 @@ export const CATEGORIES: Category[] = [
     title: 'Helper Jobs | KaaamNow',
     description:
       'Helper jobs for loading, shop support and daily cover. Pay upfront on every shift. Find work or hire helpers on KaaamNow.',
-    h1: 'Helper Jobs, Roz ka Clear Kaam',
+    h1: 'Helper jobs, a clear day’s work',
     paragraphs: [
-      'Helper jobs un shifts ko kehte hain jahan ek extra jodi haath chahiye: loading, unloading, counter ke peeche support, ya ek floor ko shift ke dauran sambhalna. Yeh skilled trade licence ka daava nahi hai. Phir bhi kaam real hai, isliye time aur pay card pe hone chahiye.',
-      'Delhi ke markets se lekar Chennai ke units, Kolkata ki shops aur Bengaluru ke godowns tak, koi bhi business helper cover post kar sakta hai. Worker ko category helper chun kar sirf wahi list dikhegi. “Helper chahiye” likhna kaafi nahi. Area aur hours likho.',
-      'Apply free hai. Business pay khud set karta hai. Is page pe koi helper wage chart nahi hai. Jo amount post pe hai wahi maanna. Agar kaam heavy lifting hai to posting mein wahi likho, taaki log prepared aayein.',
+      'Helper jobs are shifts that need an extra pair of hands: loading, unloading, support behind a counter, or covering a floor for one shift. This is not a claim of a skilled-trade licence. The work is still real, so the time and the pay belong on the card.',
+      'Any business can post helper cover, from markets in Delhi to units in Chennai, shops in Kolkata, and godowns in Bengaluru. A worker who chooses the helper category sees only that list. Writing “helper needed” is not enough. Write the area and the hours.',
+      'Applying is free. The business sets the pay. There is no helper wage chart on this page. The amount on the post is the amount. If the work is heavy lifting, write that on the posting so people arrive prepared.',
     ],
     faqs: [
       {
-        question: 'Helper job mein kya kaam hota hai?',
-        answer: 'Woh jo us posting mein likha ho: loading, shop support, ya general cover. Title padh lo, assume mat karo.',
+        question: 'What does a helper actually do?',
+        answer: 'Whatever that posting says: loading, shop support, or general cover. Read the title. Do not assume.',
       },
       {
-        question: 'Kya tools mere hone chahiye?',
-        answer: 'Sirf tab jab posting mein likha ho. Warna business ko site pe jo chahiye woh dena hota hai.',
+        question: 'Do I need my own tools?',
+        answer: 'Only if the posting says so. Otherwise the business provides what the site needs.',
       },
     ],
   },
@@ -186,20 +187,20 @@ export const CATEGORIES: Category[] = [
     title: 'Delivery Jobs | KaaamNow',
     description:
       'Delivery support shifts with area and pay shown first. Pick a job or post delivery cover on KaaamNow.',
-    h1: 'Delivery Jobs, Area aur Pay Pehle',
+    h1: 'Delivery jobs, area and pay first',
     paragraphs: [
-      'Delivery jobs is app mein tab aati hain jab koi business short cover maangta hai, na ki ek alag courier network ke tor pe. Ek shop ko shaam ki deliveries ke liye ek insaan chahiye, ya ek warehouse ko local drops. Route, area aur pay posting pe hona chahiye.',
-      'Aap category delivery choose karke cards padhte ho. Vehicle ki zaroorat tabhi hai jab post mein likhi ho. Bahut si support shifts sirf parcel counter ya short drops hoti hain. Assume karke bike mat le aana.',
-      'Businesses ko chahiye ki woh zone clearly likhein. “Poora shehar” ek route nahi hota. Worker usi zone ki shift leta hai jise woh cover kar sake. Pay upfront hai, per drop ka alag secret math yahan nahi chalaya jata jab tak posting mein wahi na ho.',
+      'Delivery jobs appear when a business asks for short cover, not as a separate courier network. A shop needs someone for the evening drops, or a warehouse needs local drops. The route, the area, and the pay should be on the posting.',
+      'You choose the delivery category and read the cards. A vehicle is required only when the post says so. Many support shifts are only a parcel counter or short drops. Do not bring a bike because you assumed one.',
+      'Businesses should write the zone clearly. “The whole city” is not a route. A worker takes a shift in a zone they can cover. Pay is upfront. There is no hidden per-drop calculation here unless the posting says so.',
     ],
     faqs: [
       {
-        question: 'Kya har delivery job ke liye bike chahiye?',
-        answer: 'Nahi. Sirf jab posting mein vehicle likha ho. Warna on-foot ya shop-support ho sakta hai.',
+        question: 'Does every delivery job need a bike?',
+        answer: 'No. Only when the posting asks for a vehicle. Otherwise it can be on foot or shop support.',
       },
       {
-        question: 'Zone kaun decide karta hai?',
-        answer: 'Business, posting mein. Aap card padh kar decide karte ho ki woh area aapke liye hai ya nahi.',
+        question: 'Who sets the zone?',
+        answer: 'The business, on the posting. You read the card and decide if that area works for you.',
       },
     ],
   },
@@ -209,20 +210,20 @@ export const CATEGORIES: Category[] = [
     title: 'Security Guard Jobs | KaaamNow',
     description:
       'Security cover shifts where the post says so. Read hours and pay first, then apply or hire on KaaamNow.',
-    h1: 'Security Guard Jobs, Shift Clear Rakho',
+    h1: 'Security guard jobs, keep the shift clear',
     paragraphs: [
-      'Security guard jobs tab list hoti hain jab business ne security support ki shift post ki ho. Yeh page kisi licence ko automatic approve nahi karta. Agar posting mein licence ya experience likha hai, wahi maano. General helper wali post ko security mat samjho.',
-      'Gate cover, event entry, ya ek site ki night shift, teeno ka time aur pay alag hota hai. Card pe dono honge. Aap sirf wahi lo jise aap poora kar sako. Chhod kar nikalna us booking ke rules ke under aata hai, jo app mein dikhte hain.',
-      'Hire karte waqt category security rakho, post aur instructions clearly likho, aur pay upfront set karo. Kisi bhi “guaranteed guard in 10 minutes” jaisa claim yahan nahi hai. Availability us waqt ke workers pe depend karti hai.',
+      'Security shifts are listed when a business posts security cover. This page does not approve a licence for you. If the posting asks for a licence or experience, that is the requirement. Do not treat a general helper post as security.',
+      'Gate cover, event entry, and a night shift on a site each have their own time and pay. Both will be on the card. Take only what you can finish. Leaving a booking follows the rules shown in the app.',
+      'When you hire, keep the category as security, write the post and the instructions clearly, and set the pay upfront. There is no promise of a guard in a fixed number of minutes. Availability depends on who is free at that time.',
     ],
     faqs: [
       {
-        question: 'Kya licence ke bina apply karun?',
-        answer: 'Agar post licence maangti hai to nahi. Agar nahi maangti, phir bhi duties padh lo aur jhooth mat likho.',
+        question: 'Can I apply without a licence?',
+        answer: 'Not if the post asks for one. If it does not, still read the duties and do not invent experience.',
       },
       {
-        question: 'Night shift alag se dikhegi?',
-        answer: 'Hours card pe hote hain. Night ho ya day, wahi time decide karta hai.',
+        question: 'Will a night shift look different?',
+        answer: 'The hours are on the card. Night or day, those hours decide it.',
       },
     ],
   },
@@ -232,20 +233,20 @@ export const CATEGORIES: Category[] = [
     title: 'Warehouse Jobs | KaaamNow',
     description:
       'Warehouse shifts for picking, packing and loading. Pay and hours are on the job. Find work or hire floor cover.',
-    h1: 'Warehouse Jobs, Pick, Pack aur Load',
+    h1: 'Warehouse jobs, pick, pack, and load',
     paragraphs: [
-      'Warehouse jobs mein picking, packing, sorting aur loading aata hai, jab business ne woh shift post ki ho. Ek din ka inbound spike ya ek hafte ki counting, dono temporary ho sakte hain. Permanent storekeeper role is page ka promise nahi hai.',
-      'Area card pe hoga, chahe woh Delhi ka godown ho, Pune ki industrial belt, ya aapka apna shehar. Phir app mein live shifts dekho. Safety shoes ya ID ki zaroorat tabhi hai jab post mein likhi ho.',
-      'Businesses ko floor ka kaam ek line mein likhna chahiye: kitne cases, kitni der, kitne log. Pay upfront rakho. Galat category, jaise restaurant, se warehouse crew nahi milta.',
+      'Warehouse jobs cover picking, packing, sorting, and loading when a business posts that shift. A one-day inbound spike or a week of counting can both be temporary. A permanent storekeeper role is not the promise of this page.',
+      'The area is on the card, whether it is a godown in Delhi, an industrial belt in Pune, or your own city. Then see the live shifts in the app. Safety shoes or an ID are required only when the post says so.',
+      'Businesses should write the floor work in one line: how many cases, how long, and how many people. Keep the pay upfront. The wrong category, such as restaurant, will not bring a warehouse crew.',
     ],
     faqs: [
       {
-        question: 'Kya heavy loading alag se likhni chahiye?',
-        answer: 'Haan. Jo kaam body pe heavy hai use posting mein likho, taaki log prepared aayein.',
+        question: 'Should heavy loading be written separately?',
+        answer: 'Yes. Write heavy work on the posting so people arrive prepared.',
       },
       {
-        question: 'Ek shift mein kitne log rakhun?',
-        answer: 'Jitni seats aap post karte ho. App us headcount ke hisaab se booking karta hai.',
+        question: 'How many people can I book for one shift?',
+        answer: 'As many seats as you post. The app books against that headcount.',
       },
     ],
   },
@@ -255,20 +256,20 @@ export const CATEGORIES: Category[] = [
     title: 'Event Staff | KaaamNow',
     description:
       'Hire event staff or pick up a shift at a venue. Hours and pay are on the post before anyone accepts.',
-    h1: 'Event Staff, Ek Raat ya Ek Weekend',
+    h1: 'Event staff, one night or one weekend',
     paragraphs: [
-      'Event staff ushers, registration, setup crew aur floor hosts ke liye hota hai, ek show ya ek shaadi ki tarikh ke saath. Kaam khatam, shift khatam. KaaamNow pe event tab dikhta hai jab organiser ne post kiya ho, kisi bhi calendar ke automatic event nahi.',
-      'India ke venues, Delhi se Kochi tak, aksar ek raat ya ek weekend ka crew mangte hain. Area aur call time card pe hon. Late brief se time badlega to woh pehle se likha hona chahiye, warna worker usi window ke liye aata hai.',
-      'Hire karte waqt headcount, dress agar koi ho, aur pay likho. “Smart casual” ambiguous hai, ek line kaafi hai. Workers ko chahiye ki woh sirf wahi event lo jiska end time unke agle plan se nahi takraye.',
+      'Event staff covers ushers, registration, setup crew, and floor hosts for a show or a wedding date. When the work ends, the shift ends. An event appears on KaaamNow when an organiser posts it, not from an automatic calendar.',
+      'Venues across India, from Delhi to Kochi, often need a crew for one night or one weekend. The area and the call time should be on the card. If a late briefing changes the time, that should be written first. Otherwise the worker comes for the window on the card.',
+      'When you hire, write the headcount, any dress note, and the pay. “Smart casual” is vague. One line is enough. Workers should take only an event whose end time does not clash with their next plan.',
     ],
     faqs: [
       {
-        question: 'Kya main sirf setup ke liye log manga sakta hoon?',
-        answer: 'Haan. Post mein setup likho aur end time usi hisaab se rakho. Hosting alag post ho sakti hai.',
+        question: 'Can I hire people only for setup?',
+        answer: 'Yes. Write setup on the post and set the end time to match. Hosting can be a separate post.',
       },
       {
-        question: 'Dress code kaun batata hai?',
-        answer: 'Business, posting mein. Jo nahi likha, use assume mat karo.',
+        question: 'Who sets the dress code?',
+        answer: 'The business, on the posting. Do not assume what was not written.',
       },
     ],
   },
@@ -278,20 +279,20 @@ export const CATEGORIES: Category[] = [
     title: 'Restaurant Staff | KaaamNow',
     description:
       'Kitchen helpers, servers and floor cover for a shift. Pay is shown before you take the job or post it.',
-    h1: 'Restaurant Staff, Ek Service ka Cover',
+    h1: 'Restaurant staff, cover for one service',
     paragraphs: [
-      'Restaurant staff is category mein servers, kitchen helpers, cleaning cover aur kabhi-kabhi counter support aata hai. Yeh tab hai jab ek service rush hai ya koi leave pe hai. Poori kitchen team replace karne ka claim nahi hai.',
-      'Cafes, hotels, dhabas aur family restaurants poore India mein ek shift post kar sakte hain. Dinner rush aur lunch rush ka time alag hota hai, isliye hours likhna zaroori hai. Pay card pe hota hai.',
-      'Workers ko chahiye ki woh hygiene aur timing seriously len. Businesses ko chahiye ki woh role ek line mein likhein: floor, dish, ya prep. Galat expectation se shift beech mein toot-ti hai, aur uska record app mein rehta hai.',
+      'Restaurant staff here means servers, kitchen helpers, cleaning cover, and sometimes counter support. It is for one rush or one leave. This page does not claim to replace a whole kitchen team.',
+      'Cafes, hotels, dhabas, and family restaurants across India can post one shift. Lunch and dinner run at different times, so the hours have to be written. The pay is on the card.',
+      'Workers should take hygiene and timing seriously. Businesses should write the role in one line: floor, dish, or prep. A wrong expectation breaks the shift in the middle, and that record stays in the app.',
     ],
     faqs: [
       {
-        question: 'Kya cook ki vacancy bhi yahan hai?',
-        answer: 'Sirf tab jab post mein cooking likhi ho. Kitchen helper aur head cook ek role nahi hai.',
+        question: 'Is a cook’s vacancy here too?',
+        answer: 'Only when the post says cooking. A kitchen helper and a head cook are not the same role.',
       },
       {
-        question: 'Dinner shift kitne baje end honi chahiye?',
-        answer: 'Woh time jo aap post karte ho. Worker usi end time ko dekh kar accept karta hai.',
+        question: 'When should a dinner shift end?',
+        answer: 'At the time you post. The worker accepts that end time.',
       },
     ],
   },
@@ -299,29 +300,29 @@ export const CATEGORIES: Category[] = [
 
 export const HOME_FAQS: Faq[] = [
   {
-    question: 'KaaamNow kya hai?',
+    question: 'What is KaaamNow?',
     answer:
-      'KaaamNow India ka flexible work platform hai. Workers daily shift, hourly aur part-time kaam dhoondte hain, aur businesses kam time ke liye staff hire karte hain. Har job pe pay pehle se dikhta hai.',
+      'KaaamNow is a flexible work platform for India. Workers look for daily, hourly, and part-time shifts, and businesses hire staff for a short time. Pay is shown on every job.',
   },
   {
-    question: 'Kaam kaise dhoondun?',
+    question: 'How do I find work?',
     answer:
-      'Worker app mein phone se account banao, apna shehar aur category chuno, aur open shifts padho. Jo time aur pay aapko theek lage, usi ko lo. Apply karna free hai.',
+      'Create a worker account with your phone, set your city and category, and read the open shifts. Take the one whose time and pay suit you. Applying is free.',
   },
   {
-    question: 'Workers kaise hire karun?',
+    question: 'How do I hire workers?',
     answer:
-      'Business app mein shift post karo: category, area, hours aur pay. Workers ko wahi detail dikhti hai. Seats bharte hi aap listing band kar sakte ho.',
+      'Post a shift in the business app: category, area, hours, and pay. Workers see that same detail. You can close the listing when the seats are full.',
   },
   {
-    question: 'Pay kab dikhta hai?',
+    question: 'When is the pay shown?',
     answer:
-      'Job post hote hi. Worker accept karne se pehle amount dekh leta hai. Yahan koi shehar-wide rate list nahi hai, kyunki pay har posting apna hota hai.',
+      'As soon as the job is posted. A worker sees the amount before accepting. There is no city-wide rate list, because each posting sets its own pay.',
   },
   {
-    question: 'Kya KaaamNow sirf kuch shehron mein hai?',
+    question: 'Is KaaamNow only in a few cities?',
     answer:
-      'Nahi. KaaamNow poore India mein hai. Aap app mein apna shehar set karte ho, aur businesses apna area post karte hain. City pages bade shehron ki searches ke liye hain. Aapka shehar list mein na ho, tab bhi app mein kaam dikh sakta hai.',
+      'No. KaaamNow is across India. You set your city in the app, and businesses post their own area. City pages exist for searches in larger cities. If your city is not listed, work can still appear in the app.',
   },
 ]
 

@@ -36,7 +36,7 @@ type Profile = {
 }
 
 const payNote =
-  'Har listing pe pay pehle se likha hota hai. Yahan koi shehar-wide rate nahi diya gaya, kyunki amount job, hours aur category pe depend karta hai.'
+  'Pay is written on every listing before you accept. There is no city-wide rate here, because the amount depends on the job, the hours, and the category.'
 
 const PROFILES: Profile[] = [
   {
@@ -44,297 +44,297 @@ const PROFILES: Profile[] = [
     name: 'Delhi',
     state: 'Delhi',
     scene:
-      'Subah ek warehouse mein loading hoti hai, dopahar ek restaurant ko extra hands chahiye, shaam ek event ko ushers. Demand neighbourhood ke hisaab se badalti hai, ek hi office ke hisaab se nahi.',
-    areas: 'Okhla aur Naraina ke godowns, Karol Bagh aur Lajpat Nagar ki shops, Dwarka ke banquet aur delivery pockets',
+      'A warehouse loads in the morning, a restaurant needs extra hands at lunch, and an event needs ushers in the evening. Demand changes by neighbourhood, not by one office.',
+    areas: 'Okhla and Naraina godowns, Karol Bagh and Lajpat Nagar shops, and banquet and delivery pockets in Dwarka',
     workerDay:
-      'Koi NCR ke andar shaam ki retail duty leta hai, koi weekend kitchen support, koi ek din ka promo staff. Door ki listing tabhi lo jab area card aapke route mein ho.',
+      'Someone takes an evening retail shift inside NCR, someone else weekend kitchen support, someone else one day of promo staff. Take a listing farther out only when the area on the card is on your route.',
     businessDay:
-      'Ek busy weekend, ek stock count, ya ek shaadi ki shaam poori payroll team justify nahi karti, lekin floor khaali nahi chal sakta. Post mein kitne log, kaun si category, kitne baje se kitne baje, aur kitna pay likho.',
+      'A busy weekend, a stock count, or a wedding evening does not justify a full payroll team, but the floor cannot run empty. Write how many people, which category, the hours, and the pay.',
   },
   {
     slug: 'mumbai',
     name: 'Mumbai',
     state: 'Maharashtra',
     scene:
-      'Local trains ke timing pe kaam bhi bandha hota hai. Docks aur Bhiwandi side ke godowns mein loading aati hai, Andheri aur Dadar ke markets mein counter support, aur south ya western suburbs mein ek raat ke events.',
-    areas: 'Dadar aur Crawford ke markets, Andheri aur Goregaon ke shops, Bhiwandi–Bhiwandi road ke warehouses, Bandra aur Lower Parel ke venues',
+      'Work follows local-train timings too. Loading comes up at the docks and the Bhiwandi godowns, counter support in the Andheri and Dadar markets, and one-night events in the south or the western suburbs.',
+    areas: 'Dadar and Crawford markets, Andheri and Goregaon shops, Bhiwandi warehouses, and Bandra and Lower Parel venues',
     workerDay:
-      'Subah ki loading aur shaam ki shop duty ek hi din mein tabhi fit hoti hai jab hours overlap na karein. Harbour, central ya western line ka commute card ke area se decide karo, “Mumbai” ek route nahi hai.',
+      'Morning loading and an evening shop shift fit the same day only when the hours do not overlap. Decide the harbour, central, or western line from the area on the card. “Mumbai” is not one route.',
     businessDay:
-      'Ek store ko sale weekend chahiye, ek godown ko inbound spike, ek venue ko sirf setup crew. Zone clearly likho. “Poora Mumbai” likhna worker ko station nahi batata.',
+      'A store needs a sale weekend, a godown needs an inbound spike, a venue needs only a setup crew. Write the zone clearly. “All of Mumbai” does not tell a worker which station.',
   },
   {
     slug: 'bengaluru',
     name: 'Bengaluru',
     state: 'Karnataka',
     scene:
-      'Peenya aur Electronics City ke aas-paas factories aur warehouses hain, Whitefield aur ORR pe offices ko moving ya pantry cover chahiye hota hai, aur KR Market se malls tak retail ka alag rush hai.',
-    areas: 'Peenya Industrial Area, KR Market, Whitefield, Electronics City aur Indiranagar–Koramangala ke cafes aur venues',
+      'Factories and warehouses sit around Peenya and Electronics City, offices along Whitefield and the ORR need moving or pantry cover, and retail has a different rush from KR Market to the malls.',
+    areas: 'Peenya Industrial Area, KR Market, Whitefield, Electronics City, and cafes and venues in Indiranagar–Koramangala',
     workerDay:
-      'Traffic is shehar mein shift ka hissa hai. Jo card pe start time hai, usi ke hisaab se niklo. Part-time aksar shaam ki cafe ya store duty hoti hai. Daily wage packing ya loading aksar subah ki hoti hai.',
+      'Traffic is part of a shift in this city. Leave according to the start time on the card. Part-time is often an evening cafe or store shift. Daily-wage packing or loading is often in the morning.',
     businessDay:
-      'Ek campus ko event ushers chahiye, ek warehouse ko pick-pack cover, ek restaurant ko dinner rush. Address likho, “Bengaluru” mat likh ke chhod do, warna Whitefield aur Peenya ek hi commute ban jayega.',
+      'A campus needs event ushers, a warehouse needs pick-and-pack cover, a restaurant needs the dinner rush. Write the address. Stopping at “Bengaluru” makes Whitefield and Peenya the same commute.',
   },
   {
     slug: 'hyderabad',
     name: 'Hyderabad',
     state: 'Telangana',
     scene:
-      'Jeedimetla aur Uppal side pe industrial aur godown ka kaam hai, Kukatpally aur Ameerpet pe shops, Gachibowli aur Madhapur pe office support aur events, aur purani city ke markets pe daily cover.',
-    areas: 'Kukatpally, Ameerpet, Uppal, Jeedimetla, Gachibowli aur Charminar–Begum Bazaar ke markets',
+      'Industrial and godown work sits toward Jeedimetla and Uppal, shops in Kukatpally and Ameerpet, office support and events in Gachibowli and Madhapur, and daily cover in the old-city markets.',
+    areas: 'Kukatpally, Ameerpet, Uppal, Jeedimetla, Gachibowli, and the Charminar–Begum Bazaar markets',
     workerDay:
-      'Do clusters ke beech ka distance lamba hai. Secunderabad side ki shift aur Gachibowli ki shift ko tabhi ek din mein mat rakho jab cards ke hours allow karein. Area pehle padho.',
+      'The distance between the two clusters is long. Do not put a Secunderabad shift and a Gachibowli shift on the same day unless the hours on the cards allow it. Read the area first.',
     businessDay:
-      'Ek exhibition stall, ek cloud-kitchen rush, ya ek godown ki counting, teeno ke liye alag category chuno. Pay upfront rakho taaki sirf wahi log aayein jo us amount pe taiyar hon.',
+      'An exhibition stall, a cloud-kitchen rush, and a godown count each need a different category. Keep the pay upfront so only people ready for that amount apply.',
   },
   {
     slug: 'chennai',
     name: 'Chennai',
     state: 'Tamil Nadu',
     scene:
-      'Ambattur aur Sriperumbudur ki industrial belt mein factory support chahiye hota hai, T Nagar aur Anna Nagar ki shops mein retail, George Town mein loading, aur beaches ya halls mein event cover.',
-    areas: 'T Nagar, Anna Nagar, Ambattur, George Town, Guindy aur OMR ke offices aur cafes',
+      'The Ambattur and Sriperumbudur industrial belt needs factory support, shops in T Nagar and Anna Nagar need retail, George Town needs loading, and beaches or halls need event cover.',
+    areas: 'T Nagar, Anna Nagar, Ambattur, George Town, Guindy, and offices and cafes on OMR',
     workerDay:
-      'Garmi aur distance dono matter karte hain. Ek din ki loading aur shaam ki shop duty alag posts hain. Sirf wahi lo jiska end time aapke agle plan se na takraye.',
+      'Heat and distance both matter. One day’s loading and an evening shop shift are separate posts. Take only the one whose end time does not clash with your next plan.',
     businessDay:
-      'Textile sale, auto-belt dispatch, ya ek marriage hall ki shaam, staffing ka window likh ke post karo. Permanent role ka substitute mat samjho. Yeh short cover hai.',
+      'A textile sale, an auto-belt dispatch, or an evening at a marriage hall: write the staffing window and post it. Do not treat this as a stand-in for a permanent role. It is short cover.',
   },
   {
     slug: 'kolkata',
     name: 'Kolkata',
     state: 'West Bengal',
     scene:
-      'Burrabazar aur Howrah side pe trading aur loading hai, Salt Lake aur New Town pe offices aur events, aur Gariahat ya Park Street pe restaurants aur shops ka peak alag hai.',
-    areas: 'Burrabazar, Howrah, Salt Lake, New Town, Gariahat aur Park Street',
+      'Trading and loading sit toward Burrabazar and Howrah, offices and events in Salt Lake and New Town, and restaurants and shops peak differently at Gariahat and Park Street.',
+    areas: 'Burrabazar, Howrah, Salt Lake, New Town, Gariahat, and Park Street',
     workerDay:
-      'Ferry ya local ka time shift se pehle dekh lo. Market ki subah aur office-side ki dopahar ek jaise nahi hoti. Category se helper, warehouse, restaurant ya event alag karo.',
+      'Check the ferry or local-train time before the shift. A market morning and an office-side afternoon are not the same. Use the category to separate helper, warehouse, restaurant, and event.',
     businessDay:
-      'Puja season ya ek trade fair ka extra haath chahiye ho to dates post mein likho. Season khatam hote hi purani shift ko open mat chhodo.',
+      'If you need extra hands for Puja season or a trade fair, write the dates on the post. Do not leave an old shift open after the season ends.',
   },
   {
     slug: 'pune',
     name: 'Pune',
     state: 'Maharashtra',
     scene:
-      'Chakan aur Pimpri–Chinchwad ki factories aur warehouses ko floor cover chahiye hota hai, Hinjewadi ke offices ko support staff, aur Kothrud ya camp ke cafes ko short shifts.',
-    areas: 'Pimpri–Chinchwad, Chakan, Hinjewadi, Kothrud, Hadapsar aur Camp',
+      'Factories and warehouses in Chakan and Pimpri–Chinchwad need floor cover, offices in Hinjewadi need support staff, and cafes in Kothrud or Camp need short shifts.',
+    areas: 'Pimpri–Chinchwad, Chakan, Hinjewadi, Kothrud, Hadapsar, and Camp',
     workerDay:
-      'Factory belt aur IT side ka commute alag hai. Card ka area padhe bina “Pune job” accept mat karo. Part-time students ke liye shaam ke hours tabhi useful hain jab end time clear ho.',
+      'The factory belt and the IT side are different commutes. Do not accept a “Pune job” without reading the area on the card. Evening hours help part-time students only when the end time is clear.',
     businessDay:
-      'Ek line ki production spike, ek office ka shifting day, ya ek cafe ka weekend. Headcount aur category sahi rakho, warna shop helper ko factory floor ki listing mil jayegi.',
+      'A production spike on one line, an office moving day, or a cafe weekend. Keep the headcount and category right, or a shop helper will see a factory-floor listing.',
   },
   {
     slug: 'ahmedabad',
     name: 'Ahmedabad',
     state: 'Gujarat',
     scene:
-      'Naroda aur Odhav ke industrial areas mein packing aur loading hai, CG Road aur Law Garden ke aas-paas retail aur events, aur SG Highway pe hotels aur offices ka cover.',
-    areas: 'Naroda, Odhav, CG Road, SG Highway, Maninagar aur Sarkhej',
+      'Packing and loading sit in the Naroda and Odhav industrial areas, retail and events around CG Road and Law Garden, and hotel and office cover on SG Highway.',
+    areas: 'Naroda, Odhav, CG Road, SG Highway, Maninagar, and Sarkhej',
     workerDay:
-      'Textile aur trading markets ki subah jaldi shuru hoti hai. Shaam ki event ya store duty alag post hai. Ek time pe ek shift rakho.',
+      'Textile and trading markets start early. An evening event or store shift is a separate post. Keep one shift at a time.',
     businessDay:
-      'Ek consignment ki packing, ek showroom ka weekend, ya ek banquet ki raat. “Staff chahiye” ko category, locality aur pay mein tod do.',
+      'Packing a consignment, a showroom weekend, or a banquet night. Break “staff needed” into a category, a locality, and pay.',
   },
   {
     slug: 'jaipur',
     name: 'Jaipur',
     state: 'Rajasthan',
     scene:
-      'Tourism, hotels aur handicraft godowns ka season alag hai, aur Sitapura side ke units ko packing cover chahiye hota hai. Wedding dates pe banquet crew ki demand badhti hai.',
-    areas: 'MI Road, C-Scheme, Tonk Road, Sitapura aur walled city ke workshops',
+      'Tourism, hotels, and handicraft godowns run on their own season, and units toward Sitapura need packing cover. Banquet crews are in demand on wedding dates.',
+    areas: 'MI Road, C-Scheme, Tonk Road, Sitapura, and workshops in the walled city',
     workerDay:
-      'Garmi mein door ki shift ka time bhi matter karta hai. Hotel ki shaam aur unit ki subah ko tabhi jod ke mat dekho jab cards overlap karein. Area alag se padho.',
+      'In the heat, the timing of a far shift matters too. Do not pair a hotel evening with a unit morning when the cards overlap. Read the area separately.',
     businessDay:
-      'Ek wedding weekend, ek tourist rush, ya ek godown ki packing. Helper aur event host ko ek post mein mat mila do. Venue ka area likho.',
+      'A wedding weekend, a tourist rush, or godown packing. Do not mix a helper and an event host in one post. Write the venue area.',
   },
   {
     slug: 'lucknow',
     name: 'Lucknow',
     state: 'Uttar Pradesh',
     scene:
-      'Aminabad aur Chowk ke markets mein daily shop support hai, Gomti Nagar mein cafes, offices aur events, aur Nadarganj ya Talkatora side pe warehouses.',
-    areas: 'Aminabad, Chowk, Gomti Nagar, Hazratganj, Alambagh aur Nadarganj',
+      'Daily shop support sits in the Aminabad and Chowk markets, cafes, offices, and events in Gomti Nagar, and warehouses toward Nadarganj or Talkatora.',
+    areas: 'Aminabad, Chowk, Gomti Nagar, Hazratganj, Alambagh, and Nadarganj',
     workerDay:
-      'Market ki poori shift aur Gomti Nagar ki shaam ki part-time alag tarah ki thakan hai. Jo hours card pe hain wahi maano. “Flexible” likha ho aur time na ho to skip karo.',
+      'A full market shift and an evening part-time shift in Gomti Nagar tire you in different ways. Trust the hours on the card. If it says “flexible” and has no time, skip it.',
     businessDay:
-      'Ek exhibition, ek restaurant ka dinner, ya ek godown ka inbound. Dates likho. Agle hafte ke liye nayi post, purani ko chupke mat badlo.',
+      'An exhibition, a restaurant dinner, or a godown inbound. Write the dates. For next week, make a new post. Do not quietly change the old one.',
   },
   {
     slug: 'surat',
     name: 'Surat',
     state: 'Gujarat',
     scene:
-      'Textile markets aur processing units ko packing aur helper cover chahiye hota hai, Ring Road aur Varachha ke shops ko retail, aur Sachin GIDC side pe factory shifts.',
-    areas: 'Ring Road, Varachha, Katargam, Sachin GIDC aur Udhna',
+      'Textile markets and processing units need packing and helper cover, shops on Ring Road and in Varachha need retail, and factory shifts sit toward Sachin GIDC.',
+    areas: 'Ring Road, Varachha, Katargam, Sachin GIDC, and Udhna',
     workerDay:
-      'Textile dispatch ki rush aur shop ki shaam ek jaise posts nahi hain. Category aur area dono padho. Apply free hai, lekin ek slot pe ek hi booking.',
+      'A textile-dispatch rush and an evening shop shift are not the same post. Read both the category and the area. Applying is free, but one slot holds one booking.',
     businessDay:
-      'Order spike pe extra haath chahiye hon to daily ya temporary shift post karo, poori payroll team ka wait mat karo. Kitne cases aur kitni der, ek line mein likho.',
+      'When an order spike needs extra hands, post a daily or temporary shift. Do not wait for a full payroll team. Write how many cases and how long, in one line.',
   },
   {
     slug: 'chandigarh',
     name: 'Chandigarh',
     state: 'Chandigarh',
     scene:
-      'Tri-city ka kaam sector markets, hotels, malls aur IT parks ke support roles mein bikhra hai. Kabhi showroom ko floor staff chahiye, kabhi hotel ko banquet cover, kabhi office ko ek din ka moving help.',
-    areas: 'Sector 17, Sector 22, Industrial Area, Elante ke aas-paas, aur Zirakpur ya Mohali ka edge jab business ne wahi area post kiya ho',
+      'Work across the tri-city is spread through sector markets, hotels, malls, and support roles in IT parks. Sometimes a showroom needs floor staff, sometimes a hotel needs banquet cover, sometimes an office needs moving help for a day.',
+    areas: 'Sector 17, Sector 22, Industrial Area, around Elante, and the Zirakpur or Mohali edge when the business posted that area',
     workerDay:
-      'Students aur dusri shift wale aksar shaam ke chaar-paanch ghante lete hain. Subah ki loading alag hoti hai. Panchkula ya Mohali tabhi aati hai jab card pe woh area ho.',
+      'Students and people with another shift often take four or five evening hours. Morning loading is separate. Panchkula or Mohali appears only when that area is on the card.',
     businessDay:
-      'Ek banquet, ek showroom ka weekend, ek office ki shifting. Sector ya locality likho. Industrial Area aur Sector 17 ko ek hi “Chandigarh” post se mat jodo.',
+      'A banquet, a showroom weekend, an office move. Write the sector or locality. Do not join Industrial Area and Sector 17 with one “Chandigarh” post.',
   },
   {
     slug: 'indore',
     name: 'Indore',
     state: 'Madhya Pradesh',
     scene:
-      'Sanwer aur Pithampur ki industrial belt mein factory support hai, Palda aur Sirpur ke godowns mein loading, aur Vijay Nagar ya Rajwada ke markets mein shop aur event cover.',
-    areas: 'Vijay Nagar, Palasia, Rajwada, Palda, Sanwer Road aur Pithampur',
+      'The Sanwer and Pithampur industrial belt needs factory support, godowns in Palda and Sirpur need loading, and the Vijay Nagar and Rajwada markets need shop and event cover.',
+    areas: 'Vijay Nagar, Palasia, Rajwada, Palda, Sanwer Road, and Pithampur',
     workerDay:
-      'Industrial belt ka subah ka slot aur city market ki dopahar alag commute hai. Sirf wahi shift lo jiska pay aur end time dono clear hon.',
+      'A morning slot in the industrial belt and an afternoon in the city market are different commutes. Take only a shift whose pay and end time are both clear.',
     businessDay:
-      'Ek plant ka extra shift cover, ek cloth market ka weekend, ya ek wedding ka crew. Category galat pad gayi to galat log ko alert jayega.',
+      'Extra cover on a plant shift, a weekend in the cloth market, or a wedding crew. If the category is wrong, the alert goes to the wrong people.',
   },
   {
     slug: 'kochi',
     name: 'Kochi',
     state: 'Kerala',
     scene:
-      'Ernakulam ke markets aur port side pe loading aur shop work hai, Kakkanad pe office aur event support, aur Willingdon ya MG Road pe hotels aur restaurants ka peak.',
-    areas: 'Ernakulam market, MG Road, Kakkanad, Edappally, Fort Kochi aur port-side godowns',
+      'Loading and shop work sit in the Ernakulam markets and toward the port, office and event support in Kakkanad, and hotels and restaurants peak around Willingdon Island and MG Road.',
+    areas: 'Ernakulam market, MG Road, Kakkanad, Edappally, Fort Kochi, and port-side godowns',
     workerDay:
-      'Ferry ya bus ka time shift se pehle check karo. Event ki raat aur market ki subah ko overlap mat karo. Pay card pe hoga, baad ka negotiation is page ka hissa nahi.',
+      'Check the ferry or bus time before the shift. Do not overlap an event night and a market morning. Pay will be on the card. Later negotiation is not part of this page.',
     businessDay:
-      'Ek hotel ka weekend, ek godown ka inbound, ya ek exhibition. Headcount likho aur dress ya tools tabhi maango jab post mein clearly ho.',
+      'A hotel weekend, a godown inbound, or an exhibition. Write the headcount, and ask for dress or tools only when the post says so clearly.',
   },
   {
     slug: 'coimbatore',
     name: 'Coimbatore',
     state: 'Tamil Nadu',
     scene:
-      'Engineering units, textile support aur foundries ko shop-floor cover chahiye hota hai. Gandhipuram aur Town Hall ke markets mein retail hai, Peelamedu aur RS Puram mein shops aur hospitals ke aas-paas ka support alag hai.',
-    areas: 'Gandhipuram, Town Hall, Peelamedu, RS Puram aur industrial belts jo posting mein likhi hon',
+      'Engineering units, textile support, and foundries need shop-floor cover. Retail sits in the Gandhipuram and Town Hall markets, and support around shops and hospitals in Peelamedu and RS Puram is separate.',
+    areas: 'Gandhipuram, Town Hall, Peelamedu, RS Puram, and the industrial belts named on the posting',
     workerDay:
-      'Factory gate ki shift aur market ki part-time ko alag cards samjho. Tiruppur side ka kaam tabhi is list mein aata hai jab business ne wahi area post kiya ho.',
+      'Treat a factory-gate shift and market part-time as different cards. Tiruppur work appears in this list only when a business posted that area.',
     businessDay:
-      'Ek dispatch ki packing, ek showroom ka festival weekend, ya ek unit ka loading day. Hours aur pay upfront, taaki worker taiyar hokar aaye.',
+      'Packing a dispatch, a showroom’s festival weekend, or a loading day at a unit. Hours and pay upfront, so a worker arrives ready.',
   },
   {
     slug: 'nagpur',
     name: 'Nagpur',
     state: 'Maharashtra',
     scene:
-      'Sitabuldi aur Itwari ke markets mein daily shop work hai, Hingna aur MIHAN side pe warehouses aur industrial cover, aur Central Avenue pe events aur restaurants.',
-    areas: 'Sitabuldi, Itwari, Hingna, MIHAN aur Central Avenue',
+      'Daily shop work sits in the Sitabuldi and Itwari markets, warehouses and industrial cover toward Hingna and MIHAN, and events and restaurants on Central Avenue.',
+    areas: 'Sitabuldi, Itwari, Hingna, MIHAN, and Central Avenue',
     workerDay:
-      'Market ka poora din aur industrial belt ki shift ek hi list mein dikh sakti hai, lekin area alag hota hai. Jo travel aap nahi karna chahte use skip karo.',
+      'A full market day and an industrial-belt shift can appear in the same list, but the area is different. Skip the travel you do not want to do.',
     businessDay:
-      'Ek mandi ka extra haath, ek warehouse ki counting, ya ek hall ki shaam. Temporary dates likho. Hamesha ki naukri is format mein mat post karo.',
+      'Extra hands at a mandi, a warehouse count, or an evening at a hall. Write temporary dates. Do not post a permanent job in this format.',
   },
   {
     slug: 'bhopal',
     name: 'Bhopal',
     state: 'Madhya Pradesh',
     scene:
-      'New Market aur MP Nagar mein shops, cafes aur offices hain, Govindpura mein industrial cover, aur Misrod ya Bairagarh side pe alag residential demand.',
-    areas: 'MP Nagar, New Market, Govindpura, Misrod aur Bairagarh',
+      'Shops, cafes, and offices sit in New Market and MP Nagar, industrial cover in Govindpura, and a different residential demand toward Misrod or Bairagarh.',
+    areas: 'MP Nagar, New Market, Govindpura, Misrod, and Bairagarh',
     workerDay:
-      'Shaam ki cafe duty aur subah ki loading alag posts hain. Part-time tab lo jab end time aapke ghar ya dusri duty se takraye nahi.',
+      'An evening cafe shift and morning loading are separate posts. Take part-time only when the end time does not clash with home or another duty.',
     businessDay:
-      'Ek office ka shifting, ek shop ka festival, ya ek plant ka short cover. Locality likho. “Bhopal” akela address nahi hai.',
+      'An office move, a shop festival, or short cover at a plant. Write the locality. “Bhopal” alone is not an address.',
   },
   {
     slug: 'patna',
     name: 'Patna',
     state: 'Bihar',
     scene:
-      'Boring Road aur Fraser Road pe shops, coaching hubs aur restaurants ka rush hai, Patliputra aur Didarganj side pe godowns aur events, aur Exhibition Road pe short retail cover.',
-    areas: 'Boring Road, Fraser Road, Patliputra, Exhibition Road aur Didarganj',
+      'Shops, coaching hubs, and restaurants are busy on Boring Road and Fraser Road, godowns and events toward Patliputra and Didarganj, and short retail cover on Exhibition Road.',
+    areas: 'Boring Road, Fraser Road, Patliputra, Exhibition Road, and Didarganj',
     workerDay:
-      'Coaching belt ke aas-paas part-time aksar shaam ko hoti hai. Godown ki subah alag hai. Dono cards ko time dekh kar alag rakho.',
+      'Part-time around the coaching belt is often in the evening. A godown morning is separate. Keep the two cards apart after you read the times.',
     businessDay:
-      'Ek function, ek store ka weekend, ya ek warehouse ka unloading. Pay khud set karo. Is page pe Patna ka koi fixed wage chart nahi hai.',
+      'A function, a store weekend, or unloading at a warehouse. Set the pay yourself. This page has no fixed wage chart for Patna.',
   },
   {
     slug: 'bhubaneswar',
     name: 'Bhubaneswar',
     state: 'Odisha',
     scene:
-      'Saheed Nagar aur Jayadev Vihar pe retail aur cafes hain, Patia aur Infocity pe office support, aur Rasulgarh ya Mancheswar pe industrial aur godown work.',
-    areas: 'Saheed Nagar, Jayadev Vihar, Patia, Rasulgarh aur Mancheswar',
+      'Retail and cafes sit in Saheed Nagar and Jayadev Vihar, office support in Patia and Infocity, and industrial and godown work in Rasulgarh and Mancheswar.',
+    areas: 'Saheed Nagar, Jayadev Vihar, Patia, Rasulgarh, and Mancheswar',
     workerDay:
-      'Office-side ki short shift aur industrial loading ko mix mat samjho. Area aur category dono se filter hota hai. Apply karna free hai.',
+      'Do not treat a short office-side shift and industrial loading as the same thing. Both area and category filter the list. Applying is free.',
     businessDay:
-      'Ek campus event, ek shop ka festival week, ya ek unit ka dispatch day. Seats bharte hi listing band karo aur agli date ke liye nayi post karo.',
+      'A campus event, a shop’s festival week, or a dispatch day at a unit. Close the listing when the seats are full, and post a new one for the next date.',
   },
   {
     slug: 'guwahati',
     name: 'Guwahati',
     state: 'Assam',
     scene:
-      'Paltan Bazaar aur Fancy Bazaar mein trading aur shop support hai, GS Road pe hotels, offices aur events, aur Noonmati ya Beltola side pe alag industrial aur market cover.',
-    areas: 'Paltan Bazaar, Fancy Bazaar, GS Road, Noonmati aur Beltola',
+      'Trading and shop support sit in Paltan Bazaar and Fancy Bazaar, hotels, offices, and events on GS Road, and separate industrial and market cover toward Noonmati or Beltola.',
+    areas: 'Paltan Bazaar, Fancy Bazaar, GS Road, Noonmati, and Beltola',
     workerDay:
-      'Barish ke mahine mein door ki shift ka time aur area dono padh lo. Market ki subah aur GS Road ki shaam alag bookings hain.',
+      'In the rainy months, read both the time and the area of a far shift. A market morning and a GS Road evening are different bookings.',
     businessDay:
-      'Ek hotel ka peak, ek bazaar ka extra counter, ya ek venue ki raat. Instructions ek line mein likho, taaki worker taiyari ke saath aaye.',
+      'A hotel peak, an extra counter in a bazaar, or a night at a venue. Write the instructions in one line so the worker arrives prepared.',
   },
   {
     slug: 'visakhapatnam',
     name: 'Visakhapatnam',
     state: 'Andhra Pradesh',
     scene:
-      'Port aur Gajuwaka–Autonagar ki industrial belt mein loading aur factory support hai, Dwaraka Nagar aur MVP pe shops aur restaurants, aur beach-side venues pe event cover.',
-    areas: 'Gajuwaka, Autonagar, Dwaraka Nagar, MVP Colony aur port-side yards jinhe posting naam se likhe',
+      'Loading and factory support sit in the port and the Gajuwaka–Autonagar industrial belt, shops and restaurants in Dwaraka Nagar and MVP, and event cover at beach-side venues.',
+    areas: 'Gajuwaka, Autonagar, Dwaraka Nagar, MVP Colony, and the port-side yards named on the posting',
     workerDay:
-      'Plant side aur beach-road side ka commute alag hai. Night shift tabhi lo jab hours poore card pe hon. Vehicle ki zaroorat tabhi maano jab post mein likhi ho.',
+      'The plant side and the beach-road side are different commutes. Take a night shift only when the hours are complete on the card. Assume a vehicle only when the post asks for one.',
     businessDay:
-      'Ek yard ka extra gang, ek store ka weekend, ya ek hall ki shaam. Security aur helper ko alag category do.',
+      'An extra gang at a yard, a store weekend, or an evening at a hall. Give security and helper separate categories.',
   },
   {
     slug: 'ludhiana',
     name: 'Ludhiana',
     state: 'Punjab',
     scene:
-      'Hosiery units, cycle-parts workshops, dyeing houses aur packaging floors aksar ek shift ke liye extra haath mangte hain, poori naukri ke liye nahi. Yeh Punjab ka ek industrial shehar hai, poore India ka limit nahi.',
-    areas: 'Focal Point, Gill Road, Dugri, Chandigarh Road aur Model Town ke aas-paas ke units, godowns aur shops',
+      'Hosiery units, cycle-parts workshops, dyeing houses, and packaging floors often need extra hands for one shift, not a full job. This is one industrial city in Punjab, not a limit on the rest of India.',
+    areas: 'Units, godowns, and shops around Focal Point, Gill Road, Dugri, Chandigarh Road, and Model Town',
     workerDay:
-      'Kisi din packing zyada hoti hai, kisi din loading, kisi din sirf ek counter. Factory ki subah aur shop ki dopahar alag posts hain. Doosre shehar ki listing yahan mix nahi hoti.',
+      'Some days there is more packing, some days loading, some days only a counter. A factory morning and a shop afternoon are separate posts. A listing from another city is not mixed in here.',
     businessDay:
-      'Dispatch badh jaye, packing ruk jaye, ya ek shop ko weekend cover chahiye, to daily shift post karo. “Ludhiana package” koi alag rate nahi hai. Jo pay aap likhte ho wahi worker dekhta hai.',
+      'If dispatch grows, packing stalls, or a shop needs weekend cover, post a daily shift. There is no separate “Ludhiana package” rate. The worker sees the pay you write.',
   },
 ]
 
 function jobsPage(city: Profile): City['jobs'] {
   return {
     title: `Daily Wage & Part-Time Jobs in ${city.name} | KaaamNow`,
-    description: `${city.name} me daily wage, hourly aur part-time jobs dhoondo. Pay upfront, apply free. KaaamNow poore India mein kaam dikhata hai.`,
-    h1: `${city.name} me Daily Wage aur Part-Time Jobs`,
+    description: `Find daily wage, hourly, and part-time jobs in ${city.name}. Pay is shown upfront and applying is free. KaaamNow lists work across India.`,
+    h1: `Daily wage and part-time jobs in ${city.name}`,
     paragraphs: [
-      `${city.name} ${city.state} mein hai. ${city.scene} KaaamNow inhi short openings ko ek list mein lata hai: daily wage, hourly aur part-time. Job khulte hi pay, time aur area dikhta hai, isliye aap pehle dekh sakte ho ki shift aapke din mein fit hoti hai ya nahi. Platform poore India ka hai. ${city.name} ki list sirf un businesses ki hai jo is shehar ka area post karte hain.`,
-      `${city.areas} ek jaise commute nahi hain. ${city.workerDay} Isliye “kaam chahiye ${city.name}” ka matlab har kisi ke liye alag shift hai. Aap category chunte ho, jaise helper, packing, loading, delivery, warehouse, restaurant, security ya event, aur sirf wahi cards dekhte ho.`,
-      `Account phone number se banta hai. Uske baad aap ${city.name} aur kaam ki type set karte ho. Jab koi business us category mein shift post karta hai, listing pe hours aur pay upfront hote hain. Apply karna free hai. Agar aap shift lete ho, to arrival aur completion app ke andar confirm hote hain, taaki dono taraf ko pata ho kaam hua. ${payNote}`,
-      `Part-time ${city.name} mein ek chhoti window hoti hai: shaam ki retail duty, weekend kitchen support, ya ek event ke kuch ghante. Daily wage aksar ek din ya ek shift ki hoti hai. Temporary kaam kuch din chal sakta hai, lekin har posting apni dates ke saath aati hai. Aap overlapping shifts nahi le sakte. ${city.state} ke is shehar ki job doosre state ke page pe nahi chipki hoti.`,
-      `Agar aap abhi ${city.name} mein ho aur aaj ya is hafte ka kaam dekhna chahte ho, to worker app kholo aur apne area ki open shifts padho. Yeh page ${city.name} ki search ko us screen tak le jata hai. Jo jobs live hain, woh app mein dikhti hain, is marketing page pe nahi. Aapka shehar is list mein na bhi ho, app mein apna area set kar sakte ho, kyunki hiring poore India mein chalti hai jahan business post kare.`,
+      `${city.name} is in ${city.state}. ${city.scene} KaaamNow puts these short openings in one list: daily wage, hourly, and part-time. Pay, time, and area show as soon as a job opens, so you can see whether the shift fits your day. The platform covers India. The ${city.name} list is only the businesses that post an area in this city.`,
+      `${city.areas} are not the same commute. ${city.workerDay} That is why “work in ${city.name}” means a different shift for each person. You choose a category, such as helper, packing, loading, delivery, warehouse, restaurant, security, or event, and you see only those cards.`,
+      `An account starts with a phone number. You then set ${city.name} and the kind of work. When a business posts a shift in that category, the listing shows the hours and the pay upfront. Applying is free. If you take a shift, arrival and completion are confirmed in the app, so both sides know the work happened. ${payNote}`,
+      `Part-time in ${city.name} is a short window: an evening retail shift, weekend kitchen support, or a few hours at an event. Daily wage is usually one day or one shift. Temporary work can run for a few days, and every posting comes with its own dates. You cannot take overlapping shifts. A job in this ${city.state} city is not attached to another state’s page.`,
+      `If you are in ${city.name} and want to see work for today or this week, open the worker app and read the open shifts in your area. This page takes a ${city.name} search to that screen. Live jobs appear in the app, not on this marketing page. If your city is not in this list, you can still set your area in the app, because hiring runs across India wherever a business posts.`,
     ],
     faqs: [
       {
-        question: `${city.name} mein daily wage job kaise dhoondun?`,
-        answer: `KaaamNow worker app mein account banao, ${city.name} set karo, aur apni category ki open shifts dekho. Har card pe time aur pay pehle se likha hota hai.`,
+        question: `How do I find a daily wage job in ${city.name}?`,
+        answer: `Create an account in the KaaamNow worker app, set ${city.name}, and read the open shifts in your category. Every card shows the time and the pay first.`,
       },
       {
-        question: `Kya ${city.name} ke alawa bhi kaam mil sakta hai?`,
+        question: `Can I also find work outside ${city.name}?`,
         answer:
-          'Haan. KaaamNow poore India mein hai. Doosre shehar ki shift tab dikhti hai jab aap us area ko choose karte ho. Default mein aap apne shehar ki posts dekhte ho.',
+          'Yes. KaaamNow covers India. A shift in another city appears when you choose that area. By default you see posts in your own city.',
       },
       {
-        question: 'Apply karne ka koi charge hai?',
-        answer: 'Nahi. Job dekhna aur apply karna free hai. Pay wahi hota hai jo listing pe dikhaya gaya ho.',
+        question: 'Is there a charge to apply?',
+        answer: 'No. Reading a job and applying are free. The pay is the amount shown on the listing.',
       },
       {
-        question: 'Main sirf part-time le sakta hoon?',
+        question: 'Can I take only part-time work?',
         answer:
-          'Haan. Aap wahi shift chuno jiske hours aapke time se match karte hon. Daily, hourly aur part-time posts alag-alag ho sakte hain.',
+          'Yes. Choose the shift whose hours match your time. Daily, hourly, and part-time posts can be separate.',
       },
     ],
   }
@@ -343,33 +343,33 @@ function jobsPage(city: Profile): City['jobs'] {
 function hirePage(city: Profile): City['hire'] {
   return {
     title: `Hire Workers in ${city.name} – Daily Shift & Temporary Staff | KaaamNow`,
-    description: `${city.name} me helper, delivery, security ya event staff chahiye? KaaamNow pe job post karo. Hiring poore India mein, aapke area ke hisaab se.`,
-    h1: `${city.name} me Workers Hire Karo`,
+    description: `Need a helper, delivery, security, or event staff in ${city.name}? Post the job on KaaamNow. Hiring runs across India, for the area you set.`,
+    h1: `Hire workers in ${city.name}`,
     paragraphs: [
-      `${city.name} ke businesses ko aksar poori team nahi, ek shift chahiye hoti hai. ${city.businessDay} KaaamNow pe aap daily shift, hourly ya temporary staff ke liye job post karte ho. Area, time aur pay aap likhte ho, aur wahi worker ko dikhta hai. Yeh sirf ${city.name} tak band platform nahi hai. Aap jis Indian shehar mein kaam karte ho, wahi area post karte ho.`,
-      `${city.areas} sab isi flow mein aa sakte hain. ${city.scene} Helper, loader, packer, delivery support, counter staff ya event crew, category aap choose karte ho taaki galat log ko alert na jaye. “Staff chahiye ${city.name}” ko ek clear post banao, ek vague message mat chhodo.`,
-      `Hiring ka order seedha hai. Business account banao, shift ka detail bharo, pay upfront set karo. Workers jo us category aur area mein hain, unhe job dikhti hai. Aap listing band kar sakte ho jab seats bhar jayein. Kaam ke din arrival aur completion app mein record hote hain. ${city.name} ka koi alag package rate is page pe claim nahi hai. Jo amount aap post karte ho, worker wahi dekhta hai. Platform fee tab dikhti hai jab aap app mein booking confirm karte ho.`,
-      `Temporary staffing yahan ek named agency contract nahi hai. Yeh ek dated shift hai jise aap band kar sakte ho jab seats full hon. Agar kal phir log chahiye, nayi post karo. ${city.state} ke bahar ke workers ko ${city.name} ki job tabhi dikhegi jab area wahi select ho, default nahi. Do shehron ko ek hi post se mat chalao.`,
-      `Pehli posting business app se karo. Category pehle decide karo, phir ${city.name} ka area aur hours likho. Live applicants isi posting se aate hain. Marketing page pe aaj ki headcount nahi dikhai gayi, kyunki woh din bhar badalti rehti hai.`,
+      `Businesses in ${city.name} often need one shift, not a whole team. ${city.businessDay} On KaaamNow you post a job for a daily shift, hourly cover, or temporary staff. You write the area, the time, and the pay, and the worker sees the same thing. The platform is not limited to ${city.name}. You post the area of the Indian city where you work.`,
+      `${city.areas} can all use this flow. ${city.scene} You choose the category, whether helper, loader, packer, delivery support, counter staff, or event crew, so the alert does not go to the wrong people. Turn “staff needed in ${city.name}” into a clear post. Do not leave a vague message.`,
+      `Hiring is a straight sequence. Create a business account, fill in the shift, and set the pay upfront. Workers in that category and area see the job. You can close the listing when the seats are full. On the day, arrival and completion are recorded in the app. This page does not claim a separate package rate for ${city.name}. The worker sees the amount you post. The platform fee appears when you confirm the booking in the app.`,
+      `Temporary staffing here is not a named agency contract. It is a dated shift you can close when the seats are full. If you need people again tomorrow, post again. Workers outside ${city.state} see a ${city.name} job only when that area is selected, not by default. Do not run two cities from one post.`,
+      `Make the first posting from the business app. Decide the category first, then write the ${city.name} area and the hours. Live applicants come from that posting. Today’s headcount is not shown on this marketing page, because it changes through the day.`,
     ],
     faqs: [
       {
-        question: `${city.name} mein helper kaise hire karun?`,
+        question: `How do I hire a helper in ${city.name}?`,
         answer:
-          'Business app mein helper category ki shift post karo, area aur hours likho, aur pay upfront set karo. Workers wahi detail dekhte hain.',
+          'Post a helper shift in the business app, write the area and the hours, and set the pay upfront. Workers see that same detail.',
       },
       {
-        question: 'Kya main sirf kuch ghante ke liye hire kar sakta hoon?',
-        answer: 'Haan, agar aap hourly ya short daily shift post karte ho aur end time clear likhte ho.',
+        question: 'Can I hire for only a few hours?',
+        answer: 'Yes, if you post an hourly or short daily shift and write a clear end time.',
       },
       {
-        question: `Kya sirf ${city.name} ke log apply karenge?`,
+        question: `Will only people in ${city.name} apply?`,
         answer:
-          'Jo workers us area ko apni list mein rakhte hain. KaaamNow poore India mein chalta hai, lekin aapke area ke bahar ka worker tabhi dekhta hai jab listing uske filter mein aati hai.',
+          'Workers who keep that area on their list. KaaamNow runs across India, and a worker outside your area sees the listing only when it matches their filter.',
       },
       {
-        question: 'Kitna pay likhun?',
-        answer: `Jo aap us shift ke liye dena chahte ho. Site ${city.name} ka koi rate fix nahi karti. Worker wahi amount dekhega jo aap post karoge.`,
+        question: 'How much pay should I write?',
+        answer: `Whatever you want to pay for that shift. The site does not fix a rate for ${city.name}. The worker will see the amount you post.`,
       },
     ],
   }

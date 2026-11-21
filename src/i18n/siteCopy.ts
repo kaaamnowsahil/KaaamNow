@@ -15,6 +15,7 @@ export type SiteCopy = {
     categories: string
     preview: string
     team: string
+    careers: string
     start: string
     language: string
     theme: string
@@ -156,6 +157,19 @@ export type SiteCopy = {
     roles: string[]
     thoughts: string[]
     portrait: string
+  }
+  careers: {
+    eyebrow: string
+    title: string
+    accent: string
+    description: string
+    planTitle: string
+    plans: { title: string; text: string }[]
+    applyTitle: string
+    applyLead: string
+    steps: string[]
+    emailLabel: string
+    note: string
   }
   notFound: { title: string; body: string; home: string }
   soon: { eyebrow: string; body: string; keep: string; gotIt: string; close: string }

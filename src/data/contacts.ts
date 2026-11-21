@@ -1,4 +1,5 @@
 export const CONTACT_EMAILS = [
+  { label: 'KaaamNow', email: 'kaaamnow@kaaamnow.in' },
   { label: 'Info', email: 'info@kaaamnow.in' },
   { label: 'Support', email: 'support@kaaamnow.in' },
   { label: 'Help', email: 'help@kaaamnow.in' },

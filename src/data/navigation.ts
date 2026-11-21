@@ -1,6 +1,6 @@
 export interface NavLink {
-  key: 'benefits' | 'how' | 'businesses' | 'workers' | 'categories' | 'preview' | 'team'
-  href: `#${string}` | '/team'
+  key: 'benefits' | 'how' | 'businesses' | 'workers' | 'categories' | 'preview' | 'team' | 'careers'
+  href: `#${string}`
 }
 
 export const NAV_LINKS: NavLink[] = [
@@ -10,5 +10,6 @@ export const NAV_LINKS: NavLink[] = [
   { key: 'workers', href: '#workers' },
   { key: 'categories', href: '#categories' },
   { key: 'preview', href: '#preview' },
-  { key: 'team', href: '/team' },
+  { key: 'team', href: '#team' },
+  { key: 'careers', href: '#careers' },
 ]

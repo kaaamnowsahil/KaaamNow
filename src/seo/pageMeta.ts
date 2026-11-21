@@ -14,7 +14,7 @@ const HIDDEN = 'noindex, nofollow'
 
 const HOME_TITLE = 'KaaamNow – Daily Wage Jobs & Hire Workers in India'
 const HOME_DESCRIPTION =
-  'Kaam chahiye ya workers? KaaamNow pe daily shift, hourly aur part-time jobs dhoondo ya staff hire karo. Pay pehle se dikhta hai.'
+  'Need work or workers? Find daily, hourly, and part-time shifts on KaaamNow, or hire staff for a short time. Pay is shown upfront.'
 
 const PAGES: Record<string, Omit<PageMeta, 'canonical'>> = {
   '/': {

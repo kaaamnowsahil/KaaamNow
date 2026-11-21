@@ -13,7 +13,9 @@ import { BusinessCategories } from './components/sections/BusinessCategories'
 import { Categories } from './components/sections/Categories'
 import { FinalCta } from './components/sections/FinalCta'
 import { HowItWorks } from './components/sections/HowItWorks'
+import { Careers } from './components/sections/Careers'
 import { ProductPreview } from './components/sections/preview/ProductPreview'
+import { Team } from './components/sections/Team'
 import { ComingSoonProvider } from './context/ComingSoonProvider'
 import { LocaleProvider, useLocale } from './i18n/locale'
 import { localizedPage } from './i18n/localize'
@@ -33,9 +35,7 @@ function normalizePath(pathname: string) {
 
 function browserPath() {
   if (typeof window === 'undefined') return '/'
-  const path = normalizePath(window.location.pathname)
-  if (path === '/' && window.location.hash === '#team') return '/team'
-  return path
+  return normalizePath(window.location.pathname)
 }
 
 export default function App({ path: pathProp }: { path?: string }) {
@@ -51,9 +51,6 @@ function AppContent({ path: pathProp }: { path?: string }) {
   const { language, copy } = useLocale()
 
   useEffect(() => {
-    if (path === '/team' && window.location.pathname !== '/team') {
-      window.history.replaceState(null, '', '/team')
-    }
     const meta = metaForPath(path)
     if (language !== 'en') {
       const landing = pageForPath(path)
@@ -105,6 +102,8 @@ function AppContent({ path: pathProp }: { path?: string }) {
           <Categories />
           <BusinessCategories />
           <ProductPreview />
+          <Team />
+          <Careers />
           <FinalCta />
         </main>
         <Footer />
