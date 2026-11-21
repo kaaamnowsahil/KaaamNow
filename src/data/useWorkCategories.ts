@@ -22,7 +22,7 @@ export function useWorkCategories(): WorkCategoryChip[] {
 
   useEffect(() => {
     let cancelled = false
-    fetch(`${API_BASE}/api/v1/work-categories`)
+    fetch(`${API_BASE}/api/v1/work-categories?lang=${encodeURIComponent(language)}`)
       .then((response) => (response.ok ? response.json() : []))
       .then((data: unknown) => {
         if (!cancelled && Array.isArray(data)) setItems(data as WorkCategory[])
@@ -31,7 +31,7 @@ export function useWorkCategories(): WorkCategoryChip[] {
     return () => {
       cancelled = true
     }
-  }, [])
+  }, [language])
 
   return items
     .filter((item) => item.is_active !== false && item.slug && item.name)
