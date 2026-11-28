@@ -2,8 +2,8 @@
  * Editable public-site facts. Landing copy for each city and category lives here
  * so a new city is one object, not a new template.
  *
- * App screens stay on APP_ORIGIN. That host is the signed-in product, not a
- * duplicate of this marketing site, so it is not redirected here.
+ * App screens stay on APP_ORIGIN. The bare www homepage redirects here so
+ * search engines describe this site instead of the sign-in app.
  */
 
 export const SITE_URL = 'https://kaaamnow.in'
