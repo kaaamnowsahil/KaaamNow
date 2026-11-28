@@ -97,6 +97,7 @@ export const en: SiteCopy = {
     description: 'Everything about KaaamNow is designed to make short-term work simple, fair, and fast — for the people hiring and the people working.',
     items: [
       { title: 'Flexible shifts', text: 'Book help for a few hours, a full day, or a whole week. Workers choose the shifts that suit their schedule.' },
+      { title: 'Available only', text: 'Workers turn Availability on when they can work. Businesses see those workers, not everyone on the platform.' },
       { title: 'Live Work, in minutes', text: 'Need help right now? Post a Live Work request, a nearby worker accepts, and you track them on the map until they arrive.' },
       { title: 'No worker? Search again', text: 'If nobody accepts in time, raise the pay and search again, or take a full refund. If the last search finds no one, the refund is automatic.' },
       { title: 'Matched by skill', text: 'Workers only see jobs in the work categories they picked, so the person who shows up knows the work.' },
@@ -205,6 +206,7 @@ export const en: SiteCopy = {
     discover: 'Discover',
     dashboard: 'Dashboard',
     availability: 'Availability',
+    available: 'Available',
     search: 'Search shifts...',
     verified: 'Verified',
     perHour: 'per hour',

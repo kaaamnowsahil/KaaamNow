@@ -148,7 +148,7 @@ export function WorkerPreview() {
             <div className={`${styles.card} ${styles.availability}`} aria-hidden="true">
               <div>
                 <p className={styles.availabilityTitle}>{preview.availability}</p>
-                <p className={styles.availabilityState}>LIVE</p>
+                <p className={styles.availabilityState}>{preview.available}</p>
               </div>
               <span className={styles.toggle} />
             </div>

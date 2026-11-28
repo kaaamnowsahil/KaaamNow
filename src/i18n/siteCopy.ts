@@ -88,6 +88,7 @@ export type SiteCopy = {
     discover: string
     dashboard: string
     availability: string
+    available: string
     search: string
     verified: string
     perHour: string

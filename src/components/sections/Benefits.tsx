@@ -5,6 +5,7 @@ import {
   RotateCcw,
   ShieldCheck,
   Tags,
+  UserRoundCheck,
   Wallet,
   Zap,
 } from 'lucide-react'
@@ -14,7 +15,7 @@ import card from '../ui/Card.module.css'
 import styles from './Benefits.module.css'
 import { useLocale } from '../../i18n/locale'
 
-const ICONS = [CalendarClock, Zap, RotateCcw, Tags, BellRing, ShieldCheck, Wallet, Compass]
+const ICONS = [CalendarClock, UserRoundCheck, Zap, RotateCcw, Tags, BellRing, ShieldCheck, Wallet, Compass]
 
 export function Benefits() {
   const { copy } = useLocale()
