@@ -9,8 +9,6 @@ export type PageMeta = {
 }
 
 const INDEX = 'index, follow, max-image-preview:large'
-const NOINDEX = 'noindex, follow'
-const HIDDEN = 'noindex, nofollow'
 
 const HOME_TITLE = 'KaaamNow – Daily Wage Jobs & Hire Workers in India'
 const HOME_DESCRIPTION =
@@ -28,46 +26,46 @@ const PAGES: Record<string, Omit<PageMeta, 'canonical'>> = {
     description:
       'Meet the founders of KaaamNow, the Indian platform that connects businesses with workers for hourly shifts and flexible jobs.',
     path: '/team',
-    robots: NOINDEX,
+    robots: INDEX,
   },
   '/privacy': {
     title: 'Privacy Policy — KaaamNow',
     description:
       'How KAAAMNOW TECHNOLOGY LLP collects, uses, and deletes personal information on kaaamnow.in and the KaaamNow apps.',
     path: '/privacy',
-    robots: NOINDEX,
+    robots: INDEX,
   },
   '/terms': {
     title: 'Terms — KaaamNow',
     description:
       'The rules for businesses and workers who use KaaamNow to hire staff or take hourly shifts and daily jobs in India.',
     path: '/terms',
-    robots: NOINDEX,
+    robots: INDEX,
   },
   '/terms/workers': {
     title: 'Worker Terms — KaaamNow',
     description: 'Terms for workers who take hourly shifts, daily jobs, and Live Work through KaaamNow.',
     path: '/terms/workers',
-    robots: NOINDEX,
+    robots: INDEX,
   },
   '/terms/businesses': {
     title: 'Business Terms — KaaamNow',
     description:
       'Terms for businesses that hire workers for hourly shifts, daily jobs, and temporary cover on KaaamNow.',
     path: '/terms/businesses',
-    robots: NOINDEX,
+    robots: INDEX,
   },
   '/account-deletion': {
     title: 'Account deletion — KaaamNow',
     description: 'Request deletion of a KaaamNow account. Open bookings must be settled first.',
     path: '/account-deletion',
-    robots: HIDDEN,
+    robots: INDEX,
   },
   '/404': {
     title: 'Page not found — KaaamNow',
     description: 'This page is not on KaaamNow. Browse jobs and hiring pages from the homepage.',
     path: '/404',
-    robots: HIDDEN,
+    robots: INDEX,
   },
 }
 
@@ -86,7 +84,7 @@ export function metaForPath(pathname: string): PageMeta {
         title: 'Page not found — KaaamNow',
         description: PAGES['/404'].description,
         path: normalized,
-        robots: HIDDEN,
+        robots: INDEX,
       })
   return { ...base, canonical: `${SITE_URL}${base.path === '/' ? '/' : base.path}` }
 }
@@ -111,7 +109,7 @@ function upsertCanonical(href: string) {
   element.setAttribute('href', href)
 }
 
-/** Sets the document head for the current public route. Unknown paths stay out of Google. */
+/** Sets the document head for the current public route. */
 export function applyPageMeta(meta: PageMeta) {
   document.title = meta.title
   upsertMeta('description', meta.description)

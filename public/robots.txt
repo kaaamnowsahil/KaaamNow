@@ -1,9 +1,4 @@
 User-agent: *
 Allow: /
-Disallow: /admin
-Disallow: /account-deletion
-Disallow: /api/
-Disallow: /worker/
-Disallow: /business/
 
 Sitemap: https://kaaamnow.in/sitemap.xml

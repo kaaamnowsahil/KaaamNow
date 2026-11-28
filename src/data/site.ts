@@ -415,6 +415,12 @@ export function pageForPath(pathname: string): LandingPage | null {
 export function indexablePaths() {
   return [
     '/',
+    '/team',
+    '/privacy',
+    '/terms',
+    '/terms/workers',
+    '/terms/businesses',
+    '/account-deletion',
     ...CATEGORIES.map((category) => category.path),
     ...CITIES.flatMap((city) => [cityJobsPath(city.slug), cityHirePath(city.slug)]),
   ]
